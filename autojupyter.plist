@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>jupyter-startup</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/users/ydchen/autoscripts/auto_jupyter.sh</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardOutPath</key>
+	<string>/users/ydchen/autoscripts/autojupyter.log</string>
+	<key>StandardErrorPath</key>
+	<string>/users/ydchen/autoscripts/autojupyter.log</string>
+</dict>
+</plist>

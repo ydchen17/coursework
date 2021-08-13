@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+  <!-- Launch Daemon do not always have access to all the  path variables
+       As a results, scripts will sometimes fail if the you are using path variables inside them
+       To enable the script to have access to all path variables, open up a terminal and type in -->
+  <!-- echo $PATH -->
+  <!-- You can opt to filter out some of the path variables which are not required by script-->
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+      <string>/usr/local/opt/icu4c/sbin:/usr/local/opt/icu4c/bin:/usr/local/opt/mariadb@10.1/bin/mysql:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/admin/go/bin</string>
+    </dict>
+    <key>Label</key>
+    <!-- By convention, easy launchctl proccesses have unique name as an identifier. To follow naming convention the name of the file should be the same as the identifier name -->
+    <string>com.startup</string>
+    <key>Program</key>
+    <!-- Full Path to the Script File. -->
+    <string>/Users/admin/Scripts/startup/startup.sh</string>
+    <!-- This key is used to start the job as soon as it has been loaded. For daemons this means execution at boot time, for agents execution at login. -->
+    <key>RunAtLoad</key>
+    <true/>
+    <!-- launchd may be used to make sure that a job is running depending on certain conditions. For this purpose we are setting it to false-->
+    <key>KeepAlive</key>
+    <false/>
+    <!-- Set Launch Only Once to make sure, that it is not repeatedly started-->
+    <key>LaunchOnlyOnce</key>        
+    <true/>
+    <!-- For debugging it is useful to print the output on a tmp file. While tweaking the script file with the script loaded onto the Daemon, it will echo script outputs-->
+    <key>StandardOutPath</key>
+    <string>/tmp/startup.stdout</string>
+    <!-- For debugging it is useful to print the errors on a tmp file. While tweaking the script file with the script loaded onto the Daemon, it will print errors on this file-->
+    <key>StandardErrorPath</key>
+    <string>/tmp/startup.stderr</string>
+    <!-- By default, Launch Daemon Process will run the script as root. But you still have the option to set the username and group to use while executing the script-->
+    <key>UserName</key>
+    <string>admin</string>
+    <key>GroupName</key>
+    <string>admin</string>
+    <key>InitGroups</key>
+    <true/>
+  </dict>
+</plist>
