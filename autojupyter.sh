@@ -1,0 +1,3 @@
+#!/bin/bash
+PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin"
+cd ~ && jupyter lab --port 8888 --no-browser
