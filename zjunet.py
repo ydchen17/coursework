@@ -22,7 +22,7 @@ post_header={
     }
 post_data= {'action': 'login',
             'username': 'yaoding.17%40intl.zju.edu.cn',
-            'password': "You'rewrong",
+            'password': "",
             'ac_id': '12',
             'user_ip': '',
             'nas_ip': '',
@@ -70,7 +70,7 @@ def email(msg):
     # 第三方 SMTP 服务
     mail_host="smtp.qq.com"  #设置服务器
     mail_user="frankydc@qq.com"    #用户名
-    mail_pass="rfzxiyvmxqxobfca"   #口令
+    mail_pass=""   #口令
 
     # 三个参数：第一个为文本内容，第二个 plain 设置文本格式，第三个 utf-8 设置编码
     message = MIMEText(msg, "plain", "utf-8")
