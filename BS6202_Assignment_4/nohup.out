@@ -1,0 +1,1284 @@
+[I 2021-08-17 19:02:51.079 ServerApp] jupyterlab | extension was successfully linked.
+[I 2021-08-17 19:02:51.198 ServerApp] nbclassic | extension was successfully linked.
+[I 2021-08-17 19:02:51.216 ServerApp] nbclassic | extension was successfully loaded.
+[I 2021-08-17 19:02:51.217 LabApp] JupyterLab extension loaded from /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/jupyterlab
+[I 2021-08-17 19:02:51.217 LabApp] JupyterLab application directory is /Library/Frameworks/Python.framework/Versions/3.9/share/jupyter/lab
+[I 2021-08-17 19:02:51.218 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2021-08-17 19:02:51.218 ServerApp] The port 8888 is already in use, trying another port.
+[I 2021-08-17 19:02:51.219 ServerApp] The port 8889 is already in use, trying another port.
+[I 2021-08-17 19:02:51.219 ServerApp] The port 8890 is already in use, trying another port.
+[I 2021-08-17 19:02:51.219 ServerApp] The port 8891 is already in use, trying another port.
+[I 2021-08-17 19:02:51.219 ServerApp] Serving notebooks from local directory: /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4
+[I 2021-08-17 19:02:51.219 ServerApp] Jupyter Server 1.10.2 is running at:
+[I 2021-08-17 19:02:51.220 ServerApp] http://localhost:8892/lab?token=94ac6932af84c4c7a8234fde30e84ce92e87990dfb2d75cd
+[I 2021-08-17 19:02:51.220 ServerApp]  or http://127.0.0.1:8892/lab?token=94ac6932af84c4c7a8234fde30e84ce92e87990dfb2d75cd
+[I 2021-08-17 19:02:51.220 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 2021-08-17 19:02:51.222 ServerApp] 
+    
+    To access the server, open this file in a browser:
+        file:///Users/ydchen/Library/Jupyter/runtime/jpserver-60927-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8892/lab?token=94ac6932af84c4c7a8234fde30e84ce92e87990dfb2d75cd
+     or http://127.0.0.1:8892/lab?token=94ac6932af84c4c7a8234fde30e84ce92e87990dfb2d75cd
+[I 2021-08-17 19:02:54.548 LabApp] Build is up to date
+[W 2021-08-17 19:03:04.231 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629198184227 (::1): /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:03:04.231 ServerApp] /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:03:04.232 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629198184227 (::1) 2.23ms referer=http://localhost:8892/lab/workspaces/auto-H
+ 1: 0x104718014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x1046efce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x1046ef6d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x1046eff3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+ 1: 0x104240014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x104217ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x1042176d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x104217f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+[W 2021-08-17 19:03:11.380 LabApp] Could not determine jupyterlab build status without nodejs
+[I 2021-08-17 19:03:48.997 ServerApp] New terminal with automatic name: 1
+TermSocket.open: 1
+not able to serialize: expected string or bytes-like object
+TermSocket.open: Opened 1
+[W 2021-08-17 19:40:06.973 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200406968 (::1): /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:40:06.973 ServerApp] /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:40:06.974 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200406968 (::1) 2.75ms referer=http://localhost:8892/lab/workspaces/auto-H
+ 1: 0x10283c014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x102813ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x1028136d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x102813f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+ 1: 0x100f60014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x100f37ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x100f376d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x100f37f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+[W 2021-08-17 19:40:10.321 LabApp] Could not determine jupyterlab build status without nodejs
+[W 2021-08-17 19:42:23.288 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200543279 (::1): /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:42:23.289 ServerApp] /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:42:23.289 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200543279 (::1) 7.26ms referer=http://localhost:8892/lab/workspaces/auto-H
+ 1: 0x1007d0014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x1007a7ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x1007a76d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x1007a7f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+ 1: 0x102af0014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x102ac7ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x102ac76d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x102ac7f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+[W 2021-08-17 19:42:27.408 LabApp] Could not determine jupyterlab build status without nodejs
+Websocket closed
+ 1: 0x100274014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x10024bce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x10024b6d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x10024bf3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+[W 2021-08-17 19:42:33.011 LabApp] Could not determine jupyterlab build status without nodejs
+ 1: 0x104c7c014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x104c53ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x104c536d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x104c53f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+ 1: 0x100bf0014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x100bc7ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x100bc76d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x100bc7f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+[W 2021-08-17 19:42:34.781 LabApp] Could not determine jupyterlab build status without nodejs
+[W 2021-08-17 19:42:39.543 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200559539 (::1): /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:42:39.543 ServerApp] /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:42:39.544 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200559539 (::1) 2.07ms referer=http://localhost:8892/lab/workspaces/auto-H
+[W 2021-08-17 19:42:50.322 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200570318 (::1): /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:42:50.322 ServerApp] /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:42:50.323 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200570318 (::1) 2.07ms referer=http://localhost:8892/lab/workspaces/auto-H/tree/task1.mzXML
+[I 2021-08-17 19:43:03.706 ServerApp] Creating new notebook in 
+[I 2021-08-17 19:43:03.987 ServerApp] Kernel started: 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af
+[I 2021-08-17 19:44:21.914 ServerApp] Starting buffering for 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af:fc5dc9f2-095f-4a86-bae6-613a7ce8e0d5
+ 1: 0x104f44014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x104f1bce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x104f1b6d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x104f1bf3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+[W 2021-08-17 19:44:23.423 LabApp] Could not determine jupyterlab build status without nodejs
+[I 2021-08-17 19:46:07.486 ServerApp] New terminal with automatic name: 2
+TermSocket.open: 2
+not able to serialize: expected string or bytes-like object
+TermSocket.open: Opened 2
+[I 2021-08-17 19:46:24.093 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 19:51:54.985 ServerApp] Kernel started: 4f293f5f-2b58-4c17-a998-2ee9d66a1572
+[I 2021-08-17 19:52:24.140 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/readMzXmlData_2.8.1.tgz'
+Content type 'application/x-gzip' length 336387 bytes (328 KB)
+==================================================
+downloaded 328 KB
+
+[I 2021-08-17 19:54:24.196 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 19:56:24.242 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 19:58:24.305 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 19:59:10.188 ServerApp] Kernel restarted: 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af
+[I 2021-08-17 19:59:10.192 ServerApp] Starting buffering for 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af:c02f000d-b92f-4644-9e49-f825d2dbd948
+[I 2021-08-17 19:59:10.200 ServerApp] Restoring connection for 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af:c02f000d-b92f-4644-9e49-f825d2dbd948
+[I 2021-08-17 20:00:24.357 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 20:02:24.412 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/ncdf4_1.17.tgz'
+Content type 'application/x-gzip' length 2284762 bytes (2.2 MB)
+==================================================
+downloaded 2.2 MB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/Rhdf5lib_1.14.2.tgz'
+Content type 'application/x-gzip' length 9168276 bytes (8.7 MB)
+==================================================
+downloaded 8.7 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/clue_0.3-59.tgz'
+Content type 'application/x-gzip' length 1146945 bytes (1.1 MB)
+==================================================
+downloaded 1.1 MB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/limma_3.48.3.tgz'
+Content type 'application/x-gzip' length 2827169 bytes (2.7 MB)
+==================================================
+downloaded 2.7 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/doParallel_1.0.16.tgz'
+Content type 'application/x-gzip' length 59803 bytes (58 KB)
+==================================================
+downloaded 58 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/mzR_2.26.1.tgz'
+Content type 'application/x-gzip' length 4342019 bytes (4.1 MB)
+==================================================
+downloaded 4.1 MB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/ProtGenerics_1.24.0.tgz'
+Content type 'application/x-gzip' length 211791 bytes (206 KB)
+==================================================
+downloaded 206 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/MsCoreUtils_1.4.0.tgz'
+Content type 'application/x-gzip' length 465547 bytes (454 KB)
+==================================================
+downloaded 454 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/vsn_3.60.0.tgz'
+Content type 'application/x-gzip' length 2088630 bytes (2.0 MB)
+==================================================
+downloaded 2.0 MB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/impute_1.66.0.tgz'
+Content type 'application/x-gzip' length 660313 bytes (644 KB)
+==================================================
+downloaded 644 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/pcaMethods_1.84.0.tgz'
+Content type 'application/x-gzip' length 1194462 bytes (1.1 MB)
+==================================================
+downloaded 1.1 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/MALDIquant_1.20.tgz'
+Content type 'application/x-gzip' length 2836003 bytes (2.7 MB)
+==================================================
+downloaded 2.7 MB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/mzID_1.30.0.tgz'
+Content type 'application/x-gzip' length 840959 bytes (821 KB)
+==================================================
+downloaded 821 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/R.oo_1.24.0.tgz'
+Content type 'application/x-gzip' length 967997 bytes (945 KB)
+==================================================
+downloaded 945 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/R.methodsS3_1.8.1.tgz'
+Content type 'application/x-gzip' length 79827 bytes (77 KB)
+==================================================
+downloaded 77 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/RBGL_1.68.0.tgz'
+Content type 'application/x-gzip' length 2754314 bytes (2.6 MB)
+==================================================
+downloaded 2.6 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/RUnit_0.4.32.tgz'
+Content type 'application/x-gzip' length 284546 bytes (277 KB)
+==================================================
+downloaded 277 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/MSnbase_2.18.0.tgz'
+Content type 'application/x-gzip' length 8311297 bytes (7.9 MB)
+==================================================
+downloaded 7.9 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/R.utils_2.10.1.tgz'
+Content type 'application/x-gzip' length 1405537 bytes (1.3 MB)
+=========================[I 2021-08-17 20:04:24.470 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+=========================
+downloaded 1.3 MB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/biocViews_1.60.0.tgz'
+Content type 'application/x-gzip' length 666967 bytes (651 KB)
+==================================================
+downloaded 651 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/data/experiment/src/contrib/RforProteomics_1.30.0.tar.gz'
+Content type 'application/x-gzip' length 8215164 bytes (7.8 MB)
+==================================================
+downloaded 7.8 MB
+
+* installing *source* package ‘RforProteomics’ ...
+** using staged installation
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+Warning message:
+In fun(libname, pkgname) :
+  mzR has been built against a different Rcpp version (1.0.6)
+than is installed on your system (1.0.7). This might lead to errors
+when loading mzR. If you encounter such issues, please send a report,
+including the output of sessionInfo() to the Bioc support forum at 
+https://support.bioconductor.org/. For details see also
+https://github.com/sneumann/mzR/wiki/mzR-Rcpp-compiler-linker-issue.
+Warning: replacing previous import ‘MSnbase::plot’ by ‘graphics::plot’ when loading ‘RforProteomics’
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+Warning in fun(libname, pkgname) :
+  mzR has been built against a different Rcpp version (1.0.6)
+than is installed on your system (1.0.7). This might lead to errors
+when loading mzR. If you encounter such issues, please send a report,
+including the output of sessionInfo() to the Bioc support forum at 
+https://support.bioconductor.org/. For details see also
+https://github.com/sneumann/mzR/wiki/mzR-Rcpp-compiler-linker-issue.
+Warning: replacing previous import ‘MSnbase::plot’ by ‘graphics::plot’ when loading ‘RforProteomics’
+** testing if installed package can be loaded from final location
+Warning in fun(libname, pkgname) :
+  mzR has been built against a different Rcpp version (1.0.6)
+than is installed on your system (1.0.7). This might lead to errors
+when loading mzR. If you encounter such issues, please send a report,
+including the output of sessionInfo() to the Bioc support forum at 
+https://support.bioconductor.org/. For details see also
+https://github.com/sneumann/mzR/wiki/mzR-Rcpp-compiler-linker-issue.
+Warning: replacing previous import ‘MSnbase::plot’ by ‘graphics::plot’ when loading ‘RforProteomics’
+** testing if installed package keeps a record of temporary installation path
+* DONE (RforProteomics)
+
+The downloaded source packages are in
+	‘/private/var/folders/pf/k2npvrzx44596h5my3p54vgm0000gn/T/RtmpVH9BlR/downloaded_packages’
+[I 2021-08-17 20:06:25.425 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 20:12:25.481 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 20:18:23.980 ServerApp] New terminal with automatic name: 3
+TermSocket.open: 3
+not able to serialize: expected string or bytes-like object
+TermSocket.open: Opened 3
+[I 2021-08-17 20:18:25.542 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 20:20:25.589 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 20:20:26.427 ServerApp] Kernel interrupted: 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af
+[I 2021-08-17 20:22:26.204 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 20:24:26.269 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 20:26:26.335 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 20:30:26.965 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 20:32:27.039 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 20:34:27.097 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/lazyeval_0.2.2.tgz'
+Content type 'application/x-gzip' length 156515 bytes (152 KB)
+==================================================
+downloaded 152 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/htmlwidgets_1.5.3.tgz'
+Content type 'application/x-gzip' length 264268 bytes (258 KB)
+==================================================
+downloaded 258 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/crosstalk_1.1.1.tgz'
+Content type 'application/x-gzip' length 782702 bytes (764 KB)
+==================================================
+downloaded 764 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/filelock_1.0.2.tgz'
+Content type 'application/x-gzip' length 26739 bytes (26 KB)
+==================================================
+downloaded 26 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/DT_0.18.tgz'
+Content type 'application/x-gzip' length 1678529 bytes (1.6 MB)
+==================================================
+downloaded 1.6 MB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/msmsEDA_1.30.0.tgz'
+Content type 'application/x-gzip' length 425882 bytes (415 KB)
+==================================================
+downloaded 415 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/edgeR_3.34.0.tgz'
+Content type 'application/x-gzip' length 2471068 bytes (2.4 MB)
+==================================================
+downloaded 2.4 MB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/qvalue_2.24.0.tgz'
+Content type 'application/x-gzip' length 2800443 bytes (2.7 MB)
+==================================================
+downloaded 2.7 MB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/BiocFileCache_2.0.0.tgz'
+Content type 'application/x-gzip' length 524757 bytes (512 KB)
+==================================================
+downloaded 512 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/interactiveDisplayBase_1.30.0.tgz'
+Content type 'application/x-gzip' length 32305 bytes (31 KB)
+==================================================
+downloaded 31 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/R.cache_0.15.0.tgz'
+Content type 'application/x-gzip' length 107882 bytes (105 KB)
+==================================================
+downloaded 105 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/BiocStyle_2.20.2.tgz'
+Content type 'application/x-gzip' length 814556 bytes (795 KB)
+==================================================
+downloaded 795 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/msmsTests_1.30.0.tgz'
+Content type 'application/x-gzip' length 383120 bytes (374 KB)
+==================================================
+downloaded 374 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/AnnotationHub_3.0.1.tgz'
+Content type 'application/x-gzip' length 1564313 bytes (1.5 MB)
+==================================================
+downloaded 1.5 MB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/MSnID_1.26.0.tgz'
+Content type 'application/x-gzip' length 4115775 bytes (3.9 MB)
+==================================================
+downloaded 3.9 MB
+
+trying URL 'https://cran.r-project.org/src/contrib/bookdown_0.23.tar.gz'
+Content type 'application/x-gzip' length 847677 bytes (827 KB)
+==================================================
+downloaded 827 KB
+
+* installing *source* package ‘bookdown’ ...
+** package ‘bookdown’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (bookdown)
+
+The downloaded source packages are in
+	‘/private/var/folders/pf/k2npvrzx44596h5my3p54vgm0000gn/T/RtmpVH9BlR/downloaded_packages’
+[I 2021-08-17 20:36:27.080 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/rpx_2.0.0.tgz'
+Content type 'application/x-gzip' length 140627 bytes (137 KB)
+==================================================
+downloaded 137 KB
+
+[I 2021-08-17 20:38:27.177 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 20:40:27.244 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/TH.data_1.0-10.tgz'
+Content type 'application/x-gzip' length 8477657 bytes (8.1 MB)
+==========================================[I 2021-08-17 20:42:27.375 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+========
+downloaded 8.1 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/DEoptimR_1.0-9.tgz'
+Content type 'application/x-gzip' length 39914 bytes (38 KB)
+==================================================
+downloaded 38 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/libcoin_1.0-8.tgz'
+Content type 'application/x-gzip' length 1041603 bytes (1017 KB)
+==================================================
+downloaded 1017 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/Formula_1.2-4.tgz'
+Content type 'application/x-gzip' length 174953 bytes (170 KB)
+==================================================
+downloaded 170 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/inum_1.0-4.tgz'
+Content type 'application/x-gzip' length 37080 bytes (36 KB)
+==================================================
+downloaded 36 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/multcomp_1.4-17.tgz'
+Content type 'application/x-gzip' length 726862 bytes (709 KB)
+================================================[I 2021-08-17 20:42:48.059 ServerApp] Kernel restarted: 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af
+[I 2021-08-17 20:42:48.069 ServerApp] Starting buffering for 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af:c02f000d-b92f-4644-9e49-f825d2dbd948
+[I 2021-08-17 20:42:48.090 ServerApp] Restoring connection for 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af:c02f000d-b92f-4644-9e49-f825d2dbd948
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/TH.data_1.0-10.tgz'
+Content type 'application/x-gzip' length 8477657 bytes (8.1 MB)
+==================================================
+downloaded 8.1 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/DEoptimR_1.0-9.tgz'
+Content type 'application/x-gzip' length 39914 bytes (38 KB)
+==================================================
+downloaded 38 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/libcoin_1.0-8.tgz'
+Content type 'application/x-gzip' length 1041603 bytes (1017 KB)
+==================================================
+downloaded 1017 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/Formula_1.2-4.tgz'
+Content type 'application/x-gzip' length 174953 bytes (170 KB)
+==================================================
+downloaded 170 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/inum_1.0-4.tgz'
+Content type 'application/x-gzip' length 37080 bytes (36 KB)
+==================================================
+downloaded 36 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/multcomp_1.4-17.tgz'
+Content type 'application/x-gzip' length 726862 bytes (709 KB)
+==================================================
+downloaded 709 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/miniUI_0.1.1.1.tgz'
+Content type 'application/x-gzip' length 34334 bytes (33 KB)
+==================================================
+downloaded 33 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/styler_1.5.1.tgz'
+Content type 'application/x-gzip' length 694415 bytes (678 KB)
+==================================================
+downloaded 678 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/classInt_0.4-3.tgz'
+Content type 'application/x-gzip' length 453300 bytes (442 KB)
+==================================================
+downloaded 442 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/labelled_2.8.0.tgz'
+Content type 'application/x-gzip' length 244419 bytes (238 KB)
+==================================================
+downloaded 238 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/rprojroot_2.0.2.tgz'
+Content type 'application/x-gzip' length 96326 bytes (94 KB)
+==================================================
+downloaded 94 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/diffobj_0.3.4.tgz'
+Content type 'application/x-gzip' length 997050 bytes (973 KB)
+==================================================
+downloaded 973 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/dotCall64_1.0-1.tgz'
+Content type 'application/x-gzip' length 41321 bytes (40 KB)
+==================================================
+downloaded 40 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/flexmix_2.3-17.tgz'
+Content type 'application/x-gzip' length 2366294 bytes (2.3 MB)
+======================================[I 2021-08-17 20:44:28.326 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+============
+downloaded 2.3 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/prabclus_2.3-2.tgz'
+Content type 'application/x-gzip' length 474599 bytes (463 KB)
+==================================================
+downloaded 463 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/diptest_0.76-0.tgz'
+Content type 'application/x-gzip' length 187956 bytes (183 KB)
+==================================================
+downloaded 183 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/robustbase_0.93-8.tgz'
+Content type 'application/x-gzip' length 3135821 bytes (3.0 MB)
+==================================================
+downloaded 3.0 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/igraph_1.2.6.tgz'
+Content type 'application/x-gzip' length 8847159 bytes (8.4 MB)
+==================================================
+downloaded 8.4 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/ModelMetrics_1.2.2.2.tgz'
+Content type 'application/x-gzip' length 557416 bytes (544 KB)
+==================================================
+downloaded 544 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/stabs_0.6-4.tgz'
+Content type 'application/x-gzip' length 137648 bytes (134 KB)
+==================================================
+downloaded 134 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/nnls_1.4.tgz'
+Content type 'application/x-gzip' length 40825 bytes (39 KB)
+==================================================
+downloaded 39 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/quadprog_1.5-8.tgz'
+Content type 'application/x-gzip' length 38464 bytes (37 KB)
+==================================================
+downloaded 37 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/partykit_1.2-13.tgz'
+Content type 'application/x-gzip' length 2418202 bytes (2.3 MB)
+==================================================
+downloaded 2.3 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/strucchange_1.5-2.tgz'
+Content type 'application/x-gzip' length 963742 bytes (941 KB)
+==================================================
+downloaded 941 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/coin_1.4-1.tgz'
+Content type 'application/x-gzip' length 1471960 bytes (1.4 MB)
+==================================================
+downloaded 1.4 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/zoo_1.8-9.tgz'
+Content type 'application/x-gzip' length 1025648 bytes (1001 KB)
+==================================================
+downloaded 1001 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/sandwich_3.0-1.tgz'
+Content type 'application/x-gzip' length 1489700 bytes (1.4 MB)
+==================================================
+downloaded 1.4 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/combinat_0.0-8.tgz'
+Content type 'application/x-gzip' length 40529 bytes (39 KB)
+==================================================
+downloaded 39 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/questionr_0.7.4.tgz'
+Content type 'application/x-gzip' length 1909530 bytes (1.8 MB)
+==================================================
+downloaded 1.8 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/brio_1.1.2.tgz'
+Content type 'application/x-gzip' length 37168 bytes (36 KB)
+==================================================
+downloaded 36 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/desc_1.3.0.tgz'
+Content type 'application/x-gzip' length 527405 bytes (515 KB)
+==================================================
+downloaded 515 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/pkgload_1.2.1.tgz'
+Content type 'application/x-gzip' length 152084 bytes (148 KB)
+==================================================
+downloaded 148 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/praise_1.0.0.tgz'
+Content type 'application/x-gzip' length 16129 bytes (15 KB)
+==================================================
+downloaded 15 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/waldo_0.2.5.tgz'
+Content type 'application/x-gzip' length 70106 bytes (68 KB)
+==================================================
+downloaded 68 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/lpSolve_5.6.15.tgz'
+Content type 'application/x-gzip' length 1069744 bytes (1.0 MB)
+==================================================
+downloaded 1.0 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/viridis_0.6.1.tgz'
+Content type 'application/x-gzip' length 3022032 bytes (2.9 MB)
+==================================================
+downloaded 2.9 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/segmented_1.3-4.tgz'
+Content type 'application/x-gzip' length 537106 bytes (524 KB)
+==================================================
+downloaded 524 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/brew_1.0-6.tgz'
+Content type 'application/x-gzip' length 106877 bytes (104 KB)
+==================================================
+downloaded 104 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/spam_2.7-0.tgz'
+Content type 'application/x-gzip' length 2772740 bytes (2.6 MB)
+==================================================
+downloaded 2.6 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/maps_3.3.0.tgz'
+Content type 'application/x-gzip' length 3688207 bytes (3.5 MB)
+==================================================
+downloaded 3.5 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/permute_0.9-5.tgz'
+Content type 'application/x-gzip' length 499950 bytes (488 KB)
+==================================================
+downloaded 488 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/gdata_2.18.0.tgz'
+Content type 'application/x-gzip' length 1219791 bytes (1.2 MB)
+==================================================
+downloaded 1.2 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/pls_2.7-3.tgz'
+Content type 'application/x-gzip' length 1267565 bytes (1.2 MB)
+==================================================
+downloaded 1.2 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/sfsmisc_1.1-11.tgz'
+Content type 'application/x-gzip' length 643449 bytes (628 KB)
+==================================================
+downloaded 628 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/fpc_2.2-9.tgz'
+Content type 'application/x-gzip' length 838784 bytes (819 KB)
+==================================================
+downloaded 819 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/gbm_2.1.8.tgz'
+Content type 'application/x-gzip' length 1025250 bytes (1001 KB)
+==================================================
+downloaded 1001 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/hwriter_1.3.2.tgz'
+Content type 'application/x-gzip' length 159842 bytes (156 KB)
+==================================================
+downloaded 156 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/threejs_0.3.3.tgz'
+Content type 'application/x-gzip' length 941623 bytes (919 KB)
+==================================================
+downloaded 919 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/mlbench_2.1-3.tgz'
+Content type 'application/x-gzip' length 1049077 bytes (1.0 MB)
+==================================================
+downloaded 1.0 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/e1071_1.7-8.tgz'
+Content type 'application/x-gzip' length 908799 bytes (887 KB)
+==================================================
+downloaded 887 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/randomForest_4.6-14.tgz'
+Content type 'application/x-gzip' length 250573 bytes (244 KB)
+==================================================
+downloaded 244 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/gpls_1.64.0.tgz'
+Content type 'application/x-gzip' length 204816 bytes (200 KB)
+==================================================
+downloaded 200 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/pamr_1.56.1.tgz'
+Content type 'application/x-gzip' length 820543 bytes (801 KB)
+==================================================
+downloaded 801 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/som_0.3-5.1.tgz'
+Content type 'application/x-gzip' length 274721 bytes (268 KB)
+==================================================
+downloaded 268 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/caret_6.0-88.tgz'
+Content type 'application/x-gzip' length 6288394 bytes (6.0 MB)
+==================[I 2021-08-17 20:48:28.406 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+================================
+downloaded 6.0 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/ada_2.0-5.tgz'
+Content type 'application/x-gzip' length 732998 bytes (715 KB)
+==================================================
+downloaded 715 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/keggorthology_2.44.0.tgz'
+Content type 'application/x-gzip' length 727712 bytes (710 KB)
+==================================================
+downloaded 710 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/kernlab_0.9-29.tgz'
+Content type 'application/x-gzip' length 2452677 bytes (2.3 MB)
+==================================================
+downloaded 2.3 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/mboost_2.9-5.tgz'
+Content type 'application/x-gzip' length 2498160 bytes (2.4 MB)
+==================================================
+downloaded 2.4 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/party_1.3-7.tgz'
+Content type 'application/x-gzip' length 962135 bytes (939 KB)
+==================================================
+downloaded 939 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/klaR_0.6-15.tgz'
+Content type 'application/x-gzip' length 565187 bytes (551 KB)
+==================================================
+downloaded 551 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/testthat_3.0.4.tgz'
+Content type 'application/x-gzip' length 2911400 bytes (2.8 MB)
+==================================================
+downloaded 2.8 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/mclust_5.4.7.tgz'
+Content type 'application/x-gzip' length 4343714 bytes (4.1 MB)
+==================================================
+downloaded 4.1 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/sampling_2.9.tgz'
+Content type 'application/x-gzip' length 911281 bytes (889 KB)
+==================================================
+downloaded 889 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/proxy_0.4-26.tgz'
+Content type 'application/x-gzip' length 232168 bytes (226 KB)
+==================================================
+downloaded 226 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/FNN_1.1.3.tgz'
+Content type 'application/x-gzip' length 134618 bytes (131 KB)
+==================================================
+downloaded 131 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/hexbin_1.28.2.tgz'
+Content type 'application/x-gzip' length 1469736 bytes (1.4 MB)
+==================================================
+downloaded 1.4 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/dendextend_1.15.1.tgz'
+Content type 'application/x-gzip' length 3884984 bytes (3.7 MB)
+==================================================
+downloaded 3.7 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/mvtnorm_1.1-2.tgz'
+Content type 'application/x-gzip' length 260377 bytes (254 KB)
+==================================================
+downloaded 254 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/LaplacesDemon_16.1.6.tgz'
+Content type 'application/x-gzip' length 4046477 bytes (3.9 MB)
+==================================================
+downloaded 3.9 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/coda_0.19-4.tgz'
+Content type 'application/x-gzip' length 321941 bytes (314 KB)
+==================================================
+downloaded 314 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/mixtools_1.2.0.tgz'
+Content type 'application/x-gzip' length 1433279 bytes (1.4 MB)
+==================================================
+downloaded 1.4 MB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/biomaRt_2.48.3.tgz'
+Content type 'application/x-gzip' length 935889 bytes (913 KB)
+==================================================
+downloaded 913 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/roxygen2_7.1.1.tgz'
+Content type 'application/x-gzip' length 978147 bytes (955 KB)
+==================================================
+downloaded 955 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/rgl_0.107.10.tgz'
+Content type 'application/x-gzip' length 6118590 bytes (5.8 MB)
+==================================================
+downloaded 5.8 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/akima_0.6-2.1.tgz'
+Content type 'application/x-gzip' length 257028 bytes (251 KB)
+==================================================
+downloaded 251 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/fields_12.5.tgz'
+Content type 'application/x-gzip' length 3955934 bytes (3.8 MB)
+=======================================[I 2021-08-17 20:51:34.965 ServerApp] Kernel restarted: 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af
+[I 2021-08-17 20:51:34.970 ServerApp] Starting buffering for 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af:c02f000d-b92f-4644-9e49-f825d2dbd948
+[I 2021-08-17 20:51:34.983 ServerApp] Restoring connection for 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af:c02f000d-b92f-4644-9e49-f825d2dbd948
+[I 2021-08-17 20:52:06.565 ServerApp] Kernel started: d55da53f-2f24-4796-941a-cd780033d8be
+[I 2021-08-17 20:52:29.158 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+trying URL 'https://bioconductor.org/packages/3.13/data/experiment/src/contrib/msdata_0.32.0.tar.gz'
+Content type 'application/x-gzip' length 446178858 bytes (425.5 MB)
+==================================================
+downloaded 425.5 MB
+
+* installing *source* package ‘msdata’ ...
+** using staged installation
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (msdata)
+
+The downloaded source packages are in
+	‘/private/var/folders/pf/k2npvrzx44596h5my3p54vgm0000gn/T/RtmpKHKuyF/downloaded_packages’
+[I 2021-08-17 20:54:29.231 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 20:58:29.308 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 21:00:29.371 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 21:02:29.447 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 21:04:29.564 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/TH.data_1.0-10.tgz'
+Content type 'application/x-gzip' length 8477657 bytes (8.1 MB)
+==================================================
+downloaded 8.1 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/DEoptimR_1.0-9.tgz'
+Content type 'application/x-gzip' length 39914 bytes (38 KB)
+==================================================
+downloaded 38 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/libcoin_1.0-8.tgz'
+Content type 'application/x-gzip' length 1041603 bytes (1017 KB)
+==================================================
+downloaded 1017 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/Formula_1.2-4.tgz'
+Content type 'application/x-gzip' length 174953 bytes (170 KB)
+==================================================
+downloaded 170 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/inum_1.0-4.tgz'
+Content type 'application/x-gzip' length 37080 bytes (36 KB)
+==================================================
+downloaded 36 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/multcomp_1.4-17.tgz'
+Content type 'application/x-gzip' length 726862 bytes (709 KB)
+==================================================
+downloaded 709 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/miniUI_0.1.1.1.tgz'
+Content type 'application/x-gzip' length 34334 bytes (33 KB)
+==================================================
+downloaded 33 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/styler_1.5.1.tgz'
+Content type 'application/x-gzip' length 694415 bytes (678 KB)
+==================================================
+downloaded 678 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/classInt_0.4-3.tgz'
+Content type 'application/x-gzip' length 453300 bytes (442 KB)
+==================================================
+downloaded 442 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/labelled_2.8.0.tgz'
+Content type 'application/x-gzip' length 244419 bytes (238 KB)
+==================================================
+downloaded 238 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/rprojroot_2.0.2.tgz'
+Content type 'application/x-gzip' length 96326 bytes (94 KB)
+==================================================
+downloaded 94 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/diffobj_0.3.4.tgz'
+Content type 'application/x-gzip' length 997050 bytes (973 KB)
+==================================================
+downloaded 973 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/dotCall64_1.0-1.tgz'
+Content type 'application/x-gzip' length 41321 bytes (40 KB)
+==================================================
+downloaded 40 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/flexmix_2.3-17.tgz'
+Content type 'application/x-gzip' length 2366294 bytes (2.3 MB)
+==================================================
+downloaded 2.3 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/prabclus_2.3-2.tgz'
+Content type 'application/x-gzip' length 474599 bytes (463 KB)
+==================================================
+downloaded 463 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/diptest_0.76-0.tgz'
+Content type 'application/x-gzip' length 187956 bytes (183 KB)
+==================================================
+downloaded 183 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/robustbase_0.93-8.tgz'
+Content type 'application/x-gzip' length 3135821 bytes (3.0 MB)
+================================[I 2021-08-17 21:06:29.646 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+==================
+downloaded 3.0 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/igraph_1.2.6.tgz'
+Content type 'application/x-gzip' length 8847159 bytes (8.4 MB)
+==================================================
+downloaded 8.4 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/ModelMetrics_1.2.2.2.tgz'
+Content type 'application/x-gzip' length 557416 bytes (544 KB)
+==================================================
+downloaded 544 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/stabs_0.6-4.tgz'
+Content type 'application/x-gzip' length 137648 bytes (134 KB)
+==================================================
+downloaded 134 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/nnls_1.4.tgz'
+Content type 'application/x-gzip' length 40825 bytes (39 KB)
+==================================================
+downloaded 39 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/quadprog_1.5-8.tgz'
+Content type 'application/x-gzip' length 38464 bytes (37 KB)
+==================================================
+downloaded 37 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/partykit_1.2-13.tgz'
+Content type 'application/x-gzip' length 2418202 bytes (2.3 MB)
+==================================================
+downloaded 2.3 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/strucchange_1.5-2.tgz'
+Content type 'application/x-gzip' length 963742 bytes (941 KB)
+==================================================
+downloaded 941 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/coin_1.4-1.tgz'
+Content type 'application/x-gzip' length 1471960 bytes (1.4 MB)
+==================================================
+downloaded 1.4 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/zoo_1.8-9.tgz'
+Content type 'application/x-gzip' length 1025648 bytes (1001 KB)
+==================================================
+downloaded 1001 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/sandwich_3.0-1.tgz'
+Content type 'application/x-gzip' length 1489700 bytes (1.4 MB)
+==================================================
+downloaded 1.4 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/combinat_0.0-8.tgz'
+Content type 'application/x-gzip' length 40529 bytes (39 KB)
+==================================================
+downloaded 39 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/questionr_0.7.4.tgz'
+Content type 'application/x-gzip' length 1909530 bytes (1.8 MB)
+==================================================
+downloaded 1.8 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/brio_1.1.2.tgz'
+Content type 'application/x-gzip' length 37168 bytes (36 KB)
+==================================================
+downloaded 36 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/desc_1.3.0.tgz'
+Content type 'application/x-gzip' length 527405 bytes (515 KB)
+==================================================
+downloaded 515 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/pkgload_1.2.1.tgz'
+Content type 'application/x-gzip' length 152084 bytes (148 KB)
+==================================================
+downloaded 148 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/praise_1.0.0.tgz'
+Content type 'application/x-gzip' length 16129 bytes (15 KB)
+==================================================
+downloaded 15 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/waldo_0.2.5.tgz'
+Content type 'application/x-gzip' length 70106 bytes (68 KB)
+==================================================
+downloaded 68 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/lpSolve_5.6.15.tgz'
+Content type 'application/x-gzip' length 1069744 bytes (1.0 MB)
+==================================================
+downloaded 1.0 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/viridis_0.6.1.tgz'
+Content type 'application/x-gzip' length 3022032 bytes (2.9 MB)
+====[I 2021-08-17 21:08:29.733 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+==============================================
+downloaded 2.9 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/segmented_1.3-4.tgz'
+Content type 'application/x-gzip' length 537106 bytes (524 KB)
+==================================================
+downloaded 524 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/brew_1.0-6.tgz'
+Content type 'application/x-gzip' length 106877 bytes (104 KB)
+==================================================
+downloaded 104 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/spam_2.7-0.tgz'
+Content type 'application/x-gzip' length 2772740 bytes (2.6 MB)
+==================================================
+downloaded 2.6 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/maps_3.3.0.tgz'
+Content type 'application/x-gzip' length 3688207 bytes (3.5 MB)
+==================================================
+downloaded 3.5 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/permute_0.9-5.tgz'
+Content type 'application/x-gzip' length 499950 bytes (488 KB)
+==================================================
+downloaded 488 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/gdata_2.18.0.tgz'
+Content type 'application/x-gzip' length 1219791 bytes (1.2 MB)
+==================================================
+downloaded 1.2 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/pls_2.7-3.tgz'
+Content type 'application/x-gzip' length 1267565 bytes (1.2 MB)
+==================================================
+downloaded 1.2 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/sfsmisc_1.1-11.tgz'
+Content type 'application/x-gzip' length 643449 bytes (628 KB)
+==================================================
+downloaded 628 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/fpc_2.2-9.tgz'
+Content type 'application/x-gzip' length 838784 bytes (819 KB)
+==================================================
+downloaded 819 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/gbm_2.1.8.tgz'
+Content type 'application/x-gzip' length 1025250 bytes (1001 KB)
+==================================================
+downloaded 1001 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/hwriter_1.3.2.tgz'
+Content type 'application/x-gzip' length 159842 bytes (156 KB)
+==================================================
+downloaded 156 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/threejs_0.3.3.tgz'
+Content type 'application/x-gzip' length 941623 bytes (919 KB)
+==================================================
+downloaded 919 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/mlbench_2.1-3.tgz'
+Content type 'application/x-gzip' length 1049077 bytes (1.0 MB)
+==================================================
+downloaded 1.0 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/e1071_1.7-8.tgz'
+Content type 'application/x-gzip' length 908799 bytes (887 KB)
+==================================================
+downloaded 887 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/randomForest_4.6-14.tgz'
+Content type 'application/x-gzip' length 250573 bytes (244 KB)
+==================================================
+downloaded 244 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/gpls_1.64.0.tgz'
+Content type 'application/x-gzip' length 204816 bytes (200 KB)
+==================================================
+downloaded 200 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/pamr_1.56.1.tgz'
+Content type 'application/x-gzip' length 820543 bytes (801 KB)
+==================================================
+downloaded 801 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/som_0.3-5.1.tgz'
+Content type 'application/x-gzip' length 274721 bytes (268 KB)
+==================================================
+downloaded 268 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/caret_6.0-88.tgz'
+Content type 'application/x-gzip' length 6288394 bytes (6.0 MB)
+==================================================
+downloaded 6.0 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/ada_2.0-5.tgz'
+Content type 'application/x-gzip' length 732998 bytes (715 KB)
+==================================================
+downloaded 715 KB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/keggorthology_2.44.0.tgz'
+Content type 'application/x-gzip' length 727712 bytes (710 KB)
+==================================================
+downloaded 710 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/kernlab_0.9-29.tgz'
+Content type 'application/x-gzip' length 2452677 bytes (2.3 MB)
+==================================================
+downloaded 2.3 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/mboost_2.9-5.tgz'
+Content type 'application/x-gzip' length 2498160 bytes (2.4 MB)
+==================================================
+downloaded 2.4 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/party_1.3-7.tgz'
+Content type 'application/x-gzip' length 962135 bytes (939 KB)
+==================================================
+downloaded 939 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/klaR_0.6-15.tgz'
+Content type 'application/x-gzip' length 565187 bytes (551 KB)
+==================================================
+downloaded 551 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/testthat_3.0.4.tgz'
+Content type 'application/x-gzip' length 2911400 bytes (2.8 MB)
+==================================================
+downloaded 2.8 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/mclust_5.4.7.tgz'
+Content type 'application/x-gzip' length 4343714 bytes (4.1 MB)
+==================================================
+downloaded 4.1 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/sampling_2.9.tgz'
+Content type 'application/x-gzip' length 911281 bytes (889 KB)
+==================================================
+downloaded 889 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/proxy_0.4-26.tgz'
+Content type 'application/x-gzip' length 232168 bytes (226 KB)
+==================================================
+downloaded 226 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/FNN_1.1.3.tgz'
+Content type 'application/x-gzip' length 134618 bytes (131 KB)
+==================================================
+downloaded 131 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/hexbin_1.28.2.tgz'
+Content type 'application/x-gzip' length 1469736 bytes (1.4 MB)
+==================================================
+downloaded 1.4 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/dendextend_1.15.1.tgz'
+Content type 'application/x-gzip' length 3884984 bytes (3.7 MB)
+==================================================
+downloaded 3.7 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/mvtnorm_1.1-2.tgz'
+Content type 'application/x-gzip' length 260377 bytes (254 KB)
+==================================================
+downloaded 254 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/LaplacesDemon_16.1.6.tgz'
+Content type 'application/x-gzip' length 4046477 bytes (3.9 MB)
+==================================================
+downloaded 3.9 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/coda_0.19-4.tgz'
+Content type 'application/x-gzip' length 321941 bytes (314 KB)
+==================================================
+downloaded 314 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/mixtools_1.2.0.tgz'
+Content type 'application/x-gzip' length 1433279 bytes (1.4 MB)
+==================================================
+downloaded 1.4 MB
+
+trying URL 'https://bioconductor.org/packages/3.13/bioc/bin/macosx/contrib/4.1/biomaRt_2.48.3.tgz'
+Content type 'application/x-gzip' length 935889 bytes (913 KB)
+==================================================
+downloaded 913 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/roxygen2_7.1.1.tgz'
+Content type 'application/x-gzip' length 978147 bytes (955 KB)
+==================================================
+downloaded 955 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/rgl_0.107.10.tgz'
+Content type 'application/x-gzip' length 6118590 bytes (5.8 MB)
+==================================================
+downloaded 5.8 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/akima_0.6-2.1.tgz'
+Content type 'application/x-gzip' length 257028 bytes (251 KB)
+==================================================
+downloaded 251 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/fields_12.5.tgz'
+Content type 'application/x-gzip' length 3955934 bytes (3.8 MB)
+==================================================
+downloaded 3.8 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/vegan_2.5-7.tgz'
+Content type 'application/x-gzip' length 3636938 bytes (3.5 MB)
+==================================================
+downloaded 3.5 MB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/Rtsne_0.15.tgz'
+Content type 'application/x-gzip' length 567329 bytes (554 KB)
+==================================================
+downloaded 554 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/nipals_0.7.tgz'
+Content type 'application/x-gzip' length 94753 bytes (92 KB)
+==================================================
+downloaded 92 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/reshape_0.8.8.tgz'
+Content type 'application/x-gzip' length 167909 bytes (163 KB)
+==================================================
+downloaded 163 KB
+
+trying URL 'https://cran.r-project.org/bin/macosx/contrib/4.1/magick_2.7.2.tgz'
+Content type 'application/x-gzip' length 38926256 bytes (37.1 MB)
+==========================================Warning messages:
+1: In doTryCatch(return(expr), name, parentenv, handler) :
+  "full" is not a graphical parameter
+2: In doTryCatch(return(expr), name, parentenv, handler) :
+  "full" is not a graphical parameter
+3: In doTryCatch(return(expr), name, parentenv, handler) :
+  "full" is not a graphical parameter
+4: In doTryCatch(return(expr), name, parentenv, handler) :
+  "full" is not a graphical parameter
+5: In doTryCatch(return(expr), name, parentenv, handler) :
+  "full" is not a graphical parameter
+6: In doTryCatch(return(expr), name, parentenv, handler) :
+  "full" is not a graphical parameter
+[I 2021-08-17 21:17:53.223 ServerApp] Kernel restarted: 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af
+[I 2021-08-17 21:17:53.227 ServerApp] Starting buffering for 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af:c02f000d-b92f-4644-9e49-f825d2dbd948
+[I 2021-08-17 21:17:53.237 ServerApp] Restoring connection for 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af:c02f000d-b92f-4644-9e49-f825d2dbd948
+[I 2021-08-17 21:18:29.813 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 21:20:29.878 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 21:22:30.008 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-17 21:24:30.072 ServerApp] Saving file at /BS6202 Assignment 4.ipynb
+[I 2021-08-18 01:25:06.045 ServerApp] Starting buffering for 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af:c02f000d-b92f-4644-9e49-f825d2dbd948
+[I 2021-08-18 01:25:06.063 ServerApp] Starting buffering for d55da53f-2f24-4796-941a-cd780033d8be:50b58aa5-1b18-4024-afb3-643cdd010b6a
+Websocket closed
+[I 2021-08-18 01:25:06.071 ServerApp] Starting buffering for 4f293f5f-2b58-4c17-a998-2ee9d66a1572:2454272c-6d2d-4198-9d2a-017636d552eb
+Websocket closed
+[C 2021-08-19 18:24:29.012 ServerApp] received signal 15, stopping
+[I 2021-08-19 18:24:29.038 ServerApp] Shutting down 2 extensions
+[I 2021-08-19 18:24:29.047 ServerApp] Shutting down 3 kernels
+[I 2021-08-19 18:24:29.070 ServerApp] Kernel shutdown: 7cdfff98-6d7a-40f7-8cf9-e0b672ec22af
+[I 2021-08-19 18:24:29.084 ServerApp] Kernel shutdown: 4f293f5f-2b58-4c17-a998-2ee9d66a1572
+[I 2021-08-19 18:24:29.096 ServerApp] Kernel shutdown: d55da53f-2f24-4796-941a-cd780033d8be
+[I 2021-08-19 18:24:31.342 ServerApp] Shutting down 3 terminals
+[I 2021-08-19 18:24:31.353 ServerApp] EOF on FD 20; stopping reading
+[I 2021-08-19 18:24:31.459 ServerApp] Terminal 1 closed
+[I 2021-08-19 18:24:31.468 ServerApp] EOF on FD 50; stopping reading
+[I 2021-08-19 18:24:31.574 ServerApp] Terminal 2 closed
+[I 2021-08-19 18:24:31.584 ServerApp] EOF on FD 39; stopping reading
+[I 2021-08-19 18:24:31.690 ServerApp] Terminal 3 closed

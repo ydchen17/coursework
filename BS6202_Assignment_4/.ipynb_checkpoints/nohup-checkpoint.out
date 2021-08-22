@@ -1,0 +1,90 @@
+[I 2021-08-17 19:02:51.079 ServerApp] jupyterlab | extension was successfully linked.
+[I 2021-08-17 19:02:51.198 ServerApp] nbclassic | extension was successfully linked.
+[I 2021-08-17 19:02:51.216 ServerApp] nbclassic | extension was successfully loaded.
+[I 2021-08-17 19:02:51.217 LabApp] JupyterLab extension loaded from /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/jupyterlab
+[I 2021-08-17 19:02:51.217 LabApp] JupyterLab application directory is /Library/Frameworks/Python.framework/Versions/3.9/share/jupyter/lab
+[I 2021-08-17 19:02:51.218 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2021-08-17 19:02:51.218 ServerApp] The port 8888 is already in use, trying another port.
+[I 2021-08-17 19:02:51.219 ServerApp] The port 8889 is already in use, trying another port.
+[I 2021-08-17 19:02:51.219 ServerApp] The port 8890 is already in use, trying another port.
+[I 2021-08-17 19:02:51.219 ServerApp] The port 8891 is already in use, trying another port.
+[I 2021-08-17 19:02:51.219 ServerApp] Serving notebooks from local directory: /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4
+[I 2021-08-17 19:02:51.219 ServerApp] Jupyter Server 1.10.2 is running at:
+[I 2021-08-17 19:02:51.220 ServerApp] http://localhost:8892/lab?token=94ac6932af84c4c7a8234fde30e84ce92e87990dfb2d75cd
+[I 2021-08-17 19:02:51.220 ServerApp]  or http://127.0.0.1:8892/lab?token=94ac6932af84c4c7a8234fde30e84ce92e87990dfb2d75cd
+[I 2021-08-17 19:02:51.220 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 2021-08-17 19:02:51.222 ServerApp] 
+    
+    To access the server, open this file in a browser:
+        file:///Users/ydchen/Library/Jupyter/runtime/jpserver-60927-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8892/lab?token=94ac6932af84c4c7a8234fde30e84ce92e87990dfb2d75cd
+     or http://127.0.0.1:8892/lab?token=94ac6932af84c4c7a8234fde30e84ce92e87990dfb2d75cd
+[I 2021-08-17 19:02:54.548 LabApp] Build is up to date
+[W 2021-08-17 19:03:04.231 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629198184227 (::1): /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:03:04.231 ServerApp] /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:03:04.232 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629198184227 (::1) 2.23ms referer=http://localhost:8892/lab/workspaces/auto-H
+ 1: 0x104718014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x1046efce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x1046ef6d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x1046eff3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+ 1: 0x104240014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x104217ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x1042176d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x104217f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+[W 2021-08-17 19:03:11.380 LabApp] Could not determine jupyterlab build status without nodejs
+[I 2021-08-17 19:03:48.997 ServerApp] New terminal with automatic name: 1
+TermSocket.open: 1
+not able to serialize: expected string or bytes-like object
+TermSocket.open: Opened 1
+[W 2021-08-17 19:40:06.973 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200406968 (::1): /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:40:06.973 ServerApp] /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:40:06.974 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200406968 (::1) 2.75ms referer=http://localhost:8892/lab/workspaces/auto-H
+ 1: 0x10283c014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x102813ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x1028136d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x102813f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+ 1: 0x100f60014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x100f37ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x100f376d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x100f37f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+[W 2021-08-17 19:40:10.321 LabApp] Could not determine jupyterlab build status without nodejs
+[W 2021-08-17 19:42:23.288 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200543279 (::1): /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:42:23.289 ServerApp] /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:42:23.289 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200543279 (::1) 7.26ms referer=http://localhost:8892/lab/workspaces/auto-H
+ 1: 0x1007d0014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x1007a7ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x1007a76d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x1007a7f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+ 1: 0x102af0014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x102ac7ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x102ac76d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x102ac7f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+[W 2021-08-17 19:42:27.408 LabApp] Could not determine jupyterlab build status without nodejs
+Websocket closed
+ 1: 0x100274014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x10024bce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x10024b6d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x10024bf3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+[W 2021-08-17 19:42:33.011 LabApp] Could not determine jupyterlab build status without nodejs
+ 1: 0x104c7c014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x104c53ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x104c536d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x104c53f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+ 1: 0x100bf0014 node::Abort() [/opt/homebrew/bin/node]
+ 2: 0x100bc7ce8 node::PlatformInit() [/opt/homebrew/bin/node]
+ 3: 0x100bc76d8 node::InitializeOncePerProcess(int, char**, node::InitializationSettingsFlags) [/opt/homebrew/bin/node]
+ 4: 0x100bc7f3c node::Start(int, char**) [/opt/homebrew/bin/node]
+ 5: 0x188d45430 start [/usr/lib/system/libdyld.dylib]
+[W 2021-08-17 19:42:34.781 LabApp] Could not determine jupyterlab build status without nodejs
+[W 2021-08-17 19:42:39.543 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200559539 (::1): /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:42:39.543 ServerApp] /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6202/BS6202 Assignment 4/Assg4.odt is not UTF-8 encoded
+[W 2021-08-17 19:42:39.544 ServerApp] 400 GET /api/contents/Assg4.odt?format=text&type=file&content=1&1629200559539 (::1) 2.07ms referer=http://localhost:8892/lab/workspaces/auto-H
