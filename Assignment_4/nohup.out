@@ -1,0 +1,44 @@
+[I 2021-08-21 16:52:04.169 ServerApp] jupyterlab | extension was successfully linked.
+[I 2021-08-21 16:52:04.306 ServerApp] nbclassic | extension was successfully linked.
+[I 2021-08-21 16:52:04.328 ServerApp] nbclassic | extension was successfully loaded.
+[I 2021-08-21 16:52:04.328 LabApp] JupyterLab extension loaded from /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/jupyterlab
+[I 2021-08-21 16:52:04.328 LabApp] JupyterLab application directory is /Library/Frameworks/Python.framework/Versions/3.9/share/jupyter/lab
+[I 2021-08-21 16:52:04.330 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2021-08-21 16:52:04.330 ServerApp] The port 8888 is already in use, trying another port.
+[I 2021-08-21 16:52:04.331 ServerApp] Serving notebooks from local directory: /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6201
+[I 2021-08-21 16:52:04.331 ServerApp] Jupyter Server 1.10.2 is running at:
+[I 2021-08-21 16:52:04.331 ServerApp] http://localhost:8889/lab?token=72f2143148d5ae553bd07573727c13d51df4dd9859590c74
+[I 2021-08-21 16:52:04.331 ServerApp]  or http://127.0.0.1:8889/lab?token=72f2143148d5ae553bd07573727c13d51df4dd9859590c74
+[I 2021-08-21 16:52:04.331 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 2021-08-21 16:52:04.334 ServerApp] 
+    
+    To access the server, open this file in a browser:
+        file:///Users/ydchen/Library/Jupyter/runtime/jpserver-37219-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8889/lab?token=72f2143148d5ae553bd07573727c13d51df4dd9859590c74
+     or http://127.0.0.1:8889/lab?token=72f2143148d5ae553bd07573727c13d51df4dd9859590c74
+[I 2021-08-21 16:52:07.371 LabApp] Build is up to date
+[W 2021-08-21 16:52:07.493 ServerApp] 404 GET /api/contents/Lecture_4.ipynb?content=0&1629535927488 (::1): No such file or directory: Lecture_4.ipynb
+[W 2021-08-21 16:52:07.493 ServerApp] No such file or directory: Lecture_4.ipynb
+[W 2021-08-21 16:52:07.494 ServerApp] 404 GET /api/contents/Lecture_4.ipynb?content=0&1629535927488 (::1) 2.21ms referer=http://localhost:8889/lab
+[I 2021-08-21 16:52:12.229 ServerApp] Creating new notebook in 
+[I 2021-08-21 16:52:12.574 ServerApp] Kernel started: 656cb7cb-5fe6-4daf-9704-b37570350009
+[I 2021-08-21 16:53:37.338 ServerApp] Starting buffering for 656cb7cb-5fe6-4daf-9704-b37570350009:656a0504-08ec-47cc-96c8-bc85eedcbcbb
+[I 2021-08-21 16:53:39.121 LabApp] Build is up to date
+[W 2021-08-21 16:53:39.891 ServerApp] Notebook Lecture_4.ipynb is not trusted
+[I 2021-08-21 16:53:40.795 ServerApp] Kernel started: 24592070-8724-4bd5-af0e-290b1f6e52ae
+[I 2021-08-21 16:55:44.625 ServerApp] Saving file at /BS6201_AI_Assignment4_YaodingChen.ipynb
+[I 2021-08-21 16:55:46.993 ServerApp] Saving file at /Lecture_4.ipynb
+[W 2021-08-21 16:55:46.994 ServerApp] Notebook Lecture_4.ipynb is not trusted
+[I 2021-08-21 16:56:36.013 ServerApp] interrupted
+Serving notebooks from local directory: /Users/ydchen/OneDrive - Nanyang Technological University/Study at NTU Singapore/BS6201
+2 active kernels
+Jupyter Server 1.10.2 is running at:
+http://localhost:8889/lab?token=72f2143148d5ae553bd07573727c13d51df4dd9859590c74
+ or http://127.0.0.1:8889/lab?token=72f2143148d5ae553bd07573727c13d51df4dd9859590c74
+Shutdown this Jupyter server (y/[n])? [C 2021-08-21 16:56:36.787 ServerApp] received signal 2, stopping
+[I 2021-08-21 16:56:36.791 ServerApp] Shutting down 2 extensions
+[I 2021-08-21 16:56:36.792 ServerApp] Shutting down 2 kernels
+[I 2021-08-21 16:56:36.793 ServerApp] Kernel shutdown: 656cb7cb-5fe6-4daf-9704-b37570350009
+[I 2021-08-21 16:56:36.794 ServerApp] Kernel shutdown: 24592070-8724-4bd5-af0e-290b1f6e52ae
+[I 2021-08-21 16:56:37.007 ServerApp] Shutting down 0 terminals
