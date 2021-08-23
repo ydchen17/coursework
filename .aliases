@@ -6,3 +6,5 @@ alias study='cd "/Users/ydchen/OneDrive - Nanyang Technological University/2 课
 alias dailypaper='cd "/Users/ydchen/OneDrive - Nanyang Technological University/3 科研阅读/DailyPapers"; touch $(date +"%Y-%m-%d")_paper.md;  typora $(date +"%Y-%m-%d")_paper.md'
 alias ignore='[ ! -f ".gitignore" ] && wget "https://raw.githubusercontent.com/ydchen17/archive/main/.gitignore"'
 
+alias killjupyter='jupyter lab list | awk -F "/|:" "{print $5}" | jupyter lab stop'
+
