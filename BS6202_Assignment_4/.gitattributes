@@ -1,3 +1,0 @@
-*.raw filter=lfs diff=lfs merge=lfs -text
-*.mzML filter=lfs diff=lfs merge=lfs -text
-20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzML filter=lfs diff=lfs merge=lfs -text

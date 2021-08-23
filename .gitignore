@@ -29,6 +29,7 @@ __pycache__
 .coverage
 .pytest_cache
 src
+.gitattributes
 
 *.swp
 *.map
@@ -51,3 +52,8 @@ geckodriver.log
 *.code-workspace
 .history
 .vscode
+
+# R
+.Rhistory
+.RData
+nohup.out
