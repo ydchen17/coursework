@@ -1,0 +1,2 @@
+#subset_elements_str	#model_weights_filename
+0123456789	saved_models/model_weights__2019_09_05__18_43_15__0123456789__128000.h5
