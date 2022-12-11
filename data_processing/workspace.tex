@@ -1,0 +1,882 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Description of data pre-processing},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Description of data pre-processing}
+\author{}
+\date{\vspace{-2.5em}2022-12-11}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{1 Introduction}\label{introduction}}
+
+The aim of this documentation is to illustrate how the data
+pre-processing is done for the data-set of the HP407 group project.
+
+To replicate this study, you will need to install R, which is available
+at \url{https://r-project.org/}. For this preprocessing workflow, the
+current version of R on my computer is as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{R.Version}\NormalTok{()}\SpecialCharTok{$}\NormalTok{version.string}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "R version 4.2.2 (2022-10-31)"
+\end{verbatim}
+
+To proceed, you must install and load the required packages, which is as
+follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# installation}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"readxl"}\NormalTok{)}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"openxlsx"}\NormalTok{)}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"naniar"}\NormalTok{)}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"dplyr"}\NormalTok{)}
+
+\CommentTok{\# loading}
+\FunctionTok{library}\NormalTok{(readxl)}
+\FunctionTok{library}\NormalTok{(openxlsx)}
+\FunctionTok{library}\NormalTok{(naniar)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{loading-the-dataset}{%
+\section{2 Loading the dataset}\label{loading-the-dataset}}
+
+Use the following code to load the dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load the dataset}
+\NormalTok{dataset }\OtherTok{\textless{}{-}} \FunctionTok{read\_xlsx}\NormalTok{(}\StringTok{"Dataset.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## * `Intervention Intervention details` -> `Intervention Intervention
+##   details...97`
+## * `Intervention Intervention details` -> `Intervention Intervention
+##   details...98`
+## * `ADL after treatment SD` -> `ADL after treatment SD...352`
+## * `ADL after treatment mean` -> `ADL after treatment mean...353`
+## * `ADL after treatment N` -> `ADL after treatment N...354`
+## * `ADL Baseline SD` -> `ADL Baseline SD...362`
+## * `ADL Baseline mean` -> `ADL Baseline mean...363`
+## * `ADL Baseline N` -> `ADL Baseline N...364`
+## * `ADL after treatment mean` -> `ADL after treatment mean...391`
+## * `ADL after treatment N` -> `ADL after treatment N...392`
+## * `ADL after treatment SD` -> `ADL after treatment SD...393`
+## * `ADL Baseline mean` -> `ADL Baseline mean...394`
+## * `ADL Baseline N` -> `ADL Baseline N...395`
+## * `ADL Baseline SD` -> `ADL Baseline SD...396`
+## * `` -> `...5226`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# replace the string value "{-}" with NA}
+\NormalTok{dataset[dataset}\SpecialCharTok{==}\StringTok{"{-}"}\NormalTok{]  }\OtherTok{\textless{}{-}} \ConstantTok{NA}
+
+\CommentTok{\# remove the rows all data item is NA}
+\NormalTok{dataset }\OtherTok{\textless{}{-}}\NormalTok{ dataset[}\FunctionTok{rowSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(dataset)) }\SpecialCharTok{!=} \FunctionTok{ncol}\NormalTok{(dataset), ]}
+
+\CommentTok{\# remove the columns all data item is NA}
+\NormalTok{dataset }\OtherTok{\textless{}{-}}\NormalTok{ dataset[,}\FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(dataset))}\SpecialCharTok{\textless{}}\FunctionTok{nrow}\NormalTok{(dataset)]}
+\end{Highlighting}
+\end{Shaded}
+
+When loading the dataset, R will alter some of the row names in case of
+incompatibility. After loading the dataset, we will first have a look at
+its size, with the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# show the size of the dataset}
+\FunctionTok{dim}\NormalTok{(dataset)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  733 3705
+\end{verbatim}
+
+It is clear that this is a very large dataset with 733 rows and 3705
+columns. This means the dataset contains 733 studies. We can first have
+a look at the first five rows of the dataset, with the following code to
+know what the columns might be about:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# show first five rows}
+\FunctionTok{head}\NormalTok{(dataset)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 3,705
+##   Study ~1  Year Inter~2 Inter~3 Inter~4 Country Setting Types~5 Type ~6 Updat~7
+##   <chr>    <dbl> <chr>   <chr>   <chr>   <chr>   <chr>   <chr>   <chr>   <chr>  
+## 1 Moraes ~  2008 Donepe~ Pharma~ Establ~ Brazil  partic~ Alzhei~ Dement~ Mild t~
+## 2 Moraes ~  2008 Placebo No int~ No int~ Brazil  partic~ Alzhei~ Dement~ Mild t~
+## 3 Liu 200~  2008 electr~ Tradit~ Acupun~ China   Hospit~ Vascul~ Dement~ Any se~
+## 4 Liu 200~  2008 medica~ Pharma~ Non-es~ China   Hospit~ Vascul~ Dement~ Any se~
+## 5 Liu 200~  2008 Scalp-~ Tradit~ Acupun~ China   hospit~ Vascul~ Dement~ Any se~
+## 6 Liu 200~  2008 Wester~ Pharma~ Establ~ China   hospit~ Vascul~ Dement~ Any se~
+## # ... with 3,695 more variables:
+## #   `Is this a study focusing on carers of people living with dementia or mild cognitive impairment?` <chr>,
+## #   `Primary Cognition Measure standardized z-score change` <chr>, Type <chr>,
+## #   `Baseline Score - Primary Cognition` <chr>,
+## #   `Number of Participants at Baseline` <chr>, `Baseline SD` <chr>,
+## #   `Post Treatment Score` <chr>, `Post Treatment N` <chr>,
+## #   `Post Treatment SD` <chr>, ...
+\end{verbatim}
+
+The 3705 columns are not all useful to us, except for the first several
+columns containing basic information. Because it will be very difficult
+for us to read all the columns with either Excel or R, we can first
+output all these names to a seperate file with the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sink}\NormalTok{(}\StringTok{"colnames.txt"}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(dataset)}
+\FunctionTok{sink}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{screening-by-intervention-type}{%
+\section{3 Screening by intervention
+type}\label{screening-by-intervention-type}}
+
+Here we aim to filter the studies by the intervention type. First we can
+have a look at the column names related to ``Intervention'':
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_cols }\OtherTok{\textless{}{-}} \FunctionTok{colnames}\NormalTok{(dataset)}
+\NormalTok{df\_cols[}\FunctionTok{grep}\NormalTok{(}\StringTok{\textquotesingle{}Intervention\textquotesingle{}}\NormalTok{, df\_cols)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "Intervention"                                                                                                                                                                                                                                                   
+##  [2] "Intervention types"                                                                                                                                                                                                                                             
+##  [3] "Intervention subgroups"                                                                                                                                                                                                                                         
+##  [4] "Intervention Brief description of intervention"                                                                                                                                                                                                                 
+##  [5] "Intervention Brief description ofi ntervention"                                                                                                                                                                                                                 
+##  [6] "Intervention Brief intervention description"                                                                                                                                                                                                                    
+##  [7] "Intervention Brief introduction to the intervention"                                                                                                                                                                                                            
+##  [8] "Intervention Intervention details...97"                                                                                                                                                                                                                         
+##  [9] "Intervention Intervention details...98"                                                                                                                                                                                                                         
+## [10] "Intervention Intervention details (duration and intensity of the intervention, dosage of drugs, existence of a protocol or manual for psychosocial, training or education interventions)"                                                                       
+## [11] "Intervention intervention type"                                                                                                                                                                                                                                 
+## [12] "Intervention Intervention type.1"                                                                                                                                                                                                                               
+## [13] "Intervention Interv. Type:"                                                                                                                                                                                                                                     
+## [14] "Intervention Interv. type [SELECT: Pharmaceutical; Traditional Chinese Medicine; Other trad. medicines; Non-pharmacol.; Multicomponent (record each component); Interv. for carers; End of life care; Treatment/prevention of co-morbidities; Technology; Diagn"
+## [15] "Intervention Interv. type [SELECT: Pharmaceutical; Traditional Chinese Medicine; Other trad. medicines; Non-pharmacol.; Multicomponent (record each component); Interv. for carers; End of life care; Treatment/preventioo-morbidities; Technology; Diagnostic;"
+## [16] "Intervention Name of intervention"                                                                                                                                                                                                                              
+## [17] "Zarit Burden Interview (ZBI) Post Intervention Change mean"                                                                                                                                                                                                     
+## [18] "Zarit Burden Interview (ZBI) Post Intervention Change N"                                                                                                                                                                                                        
+## [19] "Zarit Burden Interview (ZBI) Post Intervention Change SD"
+\end{verbatim}
+
+Among these variables, ``Intervention types'' seems to provide most
+relevant information for fast screening:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{table}\NormalTok{(dataset[}\StringTok{\textquotesingle{}Intervention types\textquotesingle{}}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lr@{}}
+\toprule()
+Intervention.types & Freq \\
+\midrule()
+\endhead
+Comprehensive care interventions & 7 \\
+Electrical brain stimulation & 14 \\
+Multicomponent interventions & 28 \\
+Music interventions & 8 \\
+No intervention & 251 \\
+Nutrition & 4 \\
+Other interventions & 2 \\
+Pharmaceutical & 130 \\
+Physical exercise & 17 \\
+Structured therapeutic psychosocial interventions & 38 \\
+Supplements & 44 \\
+Support for carers & 14 \\
+Supportive psychosocial interventions & 8 \\
+Traditional Chinese Medicine & 156 \\
+Training and education for carers & 6 \\
+Treatment of co-morbidities or additional risks & 4 \\
+Unstructured therapeutic interventions & 2 \\
+\bottomrule()
+\end{longtable}
+
+Thus, we will select `Support for carers' and `Training and education
+for carers'. But in case of any missingness, we also explore the studies
+under the intervention types of `Structured therapeutic psychosocial
+interventions', `Comprehensive care interventions', `Supportive
+psychosocial interventions', `Treatment of co-morbidities or additional
+risks', `Unstructured therapeutic interventions' and `Multicomponent
+interventions', but there is none related to support or education for
+caregivers.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_studies }\OtherTok{\textless{}{-}}\NormalTok{ dataset[dataset}\SpecialCharTok{$}\StringTok{\textquotesingle{}Intervention types\textquotesingle{}} \SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}
+    \StringTok{"Structured therapeutic psychosocial interventions"}\NormalTok{, }
+    \StringTok{"Training and education for carers"}\NormalTok{, }
+    \StringTok{"Other interventions"}\NormalTok{, }
+    \StringTok{"Support for carers"}\NormalTok{,}
+    \StringTok{"Comprehensive care interventions"}\NormalTok{,}
+    \StringTok{"Supportive psychosocial interventons"}\NormalTok{,}
+    \StringTok{"Treatment of co{-}morbidities or additional risks"}\NormalTok{, }
+    \StringTok{"Unstructured therapeutic interventions"}\NormalTok{,}
+    \StringTok{"Multicomponent interventions"}\NormalTok{), ]}
+\FunctionTok{dim}\NormalTok{(df\_studies)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  101 3705
+\end{verbatim}
+
+Thus, we reduce the scope of the analysis from 733 studies to only 101
+of them. Then we screen the further details of the intervention.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{table}\NormalTok{(df\_studies}\SpecialCharTok{$}\StringTok{\textquotesingle{}Intervention subgroups\textquotesingle{}}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.9315}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.0685}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Var1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Freq
+\end{minipage} \\
+\midrule()
+\endhead
+Cognitive stimulation therapy & 2 \\
+Cognitive training & 14 \\
+Combination of structured psychosocial interventions & 3 \\
+Community-based interventions & 1 \\
+Group support and therapy & 7 \\
+Individual-based interventions & 6 \\
+Information, education, and training to support carers & 7 \\
+Multicomponent electrical brain stimulation + therapeutic substance &
+2 \\
+Multicomponent interventions & 2 \\
+Multicomponent pharmaceutical + nutrition & 1 \\
+Multicomponent pharmaceutical + psychosocial & 1 \\
+Multicomponent pharmaceutical + TCM & 7 \\
+Multicomponent physical exercise + psychosocial intervention & 4 \\
+Multicomponent TCM & 7 \\
+Multicomponent TCM + psychosocial or nursing intervention & 4 \\
+Occupational therapy & 3 \\
+Other interventions & 2 \\
+Other structured therapeutic psychosocial interventions & 5 \\
+Rehabilitation & 4 \\
+Reminiscence therapy & 7 \\
+Training and education for professional carers & 2 \\
+Training and education for unpaid carers & 4 \\
+Treatment of co-morbidities or additional risks & 4 \\
+Unstructured therapeutic interventions & 2 \\
+\bottomrule()
+\end{longtable}
+
+We surely do not want to include any drug-related intervention, so we
+exclude the terms including ``TCM'', ``pharmaceutical'', ``nutrition'',
+``therapeutic substance''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{included\_terms }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(df\_studies}\SpecialCharTok{$}\StringTok{\textquotesingle{}Intervention subgroups\textquotesingle{}}\NormalTok{)[}\SpecialCharTok{{-}} \FunctionTok{grep}\NormalTok{(}
+  \StringTok{"TCM|pharmaceutical|nutrition|therapeutic substance"}\NormalTok{,}
+  \FunctionTok{unique}\NormalTok{(df\_studies}\SpecialCharTok{$}\StringTok{\textquotesingle{}Intervention subgroups\textquotesingle{}}\NormalTok{))]}
+\NormalTok{df\_studies }\OtherTok{\textless{}{-}}\NormalTok{ df\_studies[df\_studies}\SpecialCharTok{$}\StringTok{\textquotesingle{}Intervention subgroups\textquotesingle{}} \SpecialCharTok{\%in\%}\NormalTok{ included\_terms, ]}
+\NormalTok{df\_studies }\OtherTok{\textless{}{-}}\NormalTok{ df\_studies[,}\FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(df\_studies))}\SpecialCharTok{\textless{}}\FunctionTok{nrow}\NormalTok{(df\_studies)]}
+\FunctionTok{dim}\NormalTok{(df\_studies)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]   79 1244
+\end{verbatim}
+
+Thus, we reduce the number of studies from 101 to 79. Then I output the
+information of the remaining studies to a excel file for further manual
+screening.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write.xlsx}\NormalTok{(df\_studies, }\StringTok{"Dataset\_intervention\_screening.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The manual screening will check the details of the intervention,
+especially whether it involves support or training for carers. Thus, the
+following studies are selected:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{selected\_studies }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}selected\_studies.txt\textquotesingle{}}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(selected\_studies)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6944}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3056}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Intervention.types
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Study.Identifier
+\end{minipage} \\
+\midrule()
+\endhead
+Comprehensive care interventions & Wang 2010b \\
+Comprehensive care interventions & ZHAO 2010 \\
+Comprehensive care interventions & SUN 2010 \\
+Comprehensive care interventions & SU 2012 \\
+Comprehensive care interventions & JIANG 2012 \\
+Comprehensive care interventions & Wang 2014a \\
+Comprehensive care interventions & Yang 2017a \\
+Structured therapeutic psychosocial interventions & He 2012 \\
+Structured therapeutic psychosocial interventions & Novelli 2018 \\
+Structured therapeutic psychosocial interventions & Lok 2019 \\
+Support for carers & Pahlavanzadeh 2010 \\
+Support for carers & Wang 2012e \\
+Support for carers & Aboulafia-Brakha 2014 \\
+Support for carers & Mercedeh 2014 \\
+Support for carers & Kamkhagi 2015 \\
+Support for carers & Söylemez 2016 \\
+Support for carers & Shata 2017 \\
+Support for carers & Salamizadeh 2017 \\
+Support for carers & Mahdavi 2017 \\
+Support for carers & Lök 2017 \\
+Support for carers & Orawan 2018 \\
+Training and education for carers & Amit 2008 \\
+Training and education for carers & TAN 2010 \\
+Training and education for carers & Guerra 2011 \\
+Training and education for carers & Wang 2017e \\
+Training and education for carers & Wang 2017c \\
+Training and education for carers & Lin 2017 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{screening-by-column-names}{%
+\section{4 Screening by column names}\label{screening-by-column-names}}
+
+However, it will be hard in term of human labour to look thourgh the
+3000+ columns for data extraction, so I use a series of keywords to
+screen the relevant columns for meta-analysis.
+
+\hypertarget{reserved-columns}{%
+\subsection{4.1 Reserved columns}\label{reserved-columns}}
+
+Before we start, we reserved the first 19 columns as they contain the
+most essential information about the studies from our perspective.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reserved\_cols }\OtherTok{\textless{}{-}} \FunctionTok{head}\NormalTok{(df\_cols,}\DecValTok{19}\NormalTok{)}
+\NormalTok{reserved\_cols}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "Study Identifier"                                                                               
+##  [2] "Year"                                                                                           
+##  [3] "Intervention"                                                                                   
+##  [4] "Intervention types"                                                                             
+##  [5] "Intervention subgroups"                                                                         
+##  [6] "Country"                                                                                        
+##  [7] "Setting"                                                                                        
+##  [8] "Types of disease_clean"                                                                         
+##  [9] "Type of disease in two categories (dementia and MCI)"                                           
+## [10] "Updated Dementia Severity"                                                                      
+## [11] "Is this a study focusing on carers of people living with dementia or mild cognitive impairment?"
+## [12] "Primary Cognition Measure standardized z-score change"                                          
+## [13] "Type"                                                                                           
+## [14] "Baseline Score - Primary Cognition"                                                             
+## [15] "Number of Participants at Baseline"                                                             
+## [16] "Baseline SD"                                                                                    
+## [17] "Post Treatment Score"                                                                           
+## [18] "Post Treatment N"                                                                               
+## [19] "Post Treatment SD"
+\end{verbatim}
+
+\hypertarget{keyword-screening}{%
+\subsection{4.2 Keyword screening}\label{keyword-screening}}
+
+We note that there are quite a lot of depression/caregiver burden
+related metrics also in the columns. So we output the colnames to a
+seperate file named colnames.txt for manual screening of useful columns.
+According to our preliminary screening, we notice a number of metrics to
+measure caregiver burden.
+
+\hypertarget{direct-measure-of-care-giver-burdern}{%
+\subsubsection{4.2.1 Direct measure of care giver
+burdern}\label{direct-measure-of-care-giver-burdern}}
+
+First we screen the column names with the keywords for direct
+measurement of caregiver burden
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Hinton 2020} and \textbf{Uyar 2019:} Zarit Burden Interview
+  (ZBI)
+\item
+  \textbf{Govindakumari 2020:} Care giver burden, unspecified
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{caregiver\_burden\_keys }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(}\FunctionTok{c}\NormalTok{(}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"burden"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"Burden"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"ZBI"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"Zarit"}\NormalTok{, df\_cols)}
+\NormalTok{    ))}
+\NormalTok{caregiver\_burden\_keys }\OtherTok{\textless{}{-}}\NormalTok{ df\_cols[caregiver\_burden\_keys]}
+
+\CommentTok{\# show the number of selected columns}
+\FunctionTok{length}\NormalTok{(caregiver\_burden\_keys) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 91
+\end{verbatim}
+
+There are a total of 91 columns selected. We will look at all the
+columns selected but for brevity of this article, we omit the output of
+the following code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{caregiver\_burden\_keys}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{neuropsychiatric-symptom-scales}{%
+\subsubsection{4.2.2 Neuropsychiatric symptom
+scales}\label{neuropsychiatric-symptom-scales}}
+
+Similar procedures are used to screen the colunms related to
+neuropsychiatric symptoms of caregivers.
+
+Neuropsychiatric symptoms of caregivers:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Hinton 2020:} Depression/anxiety symptoms, measured with the
+  Patient Health Questionnaire-4 (PHQ-4)
+\item
+  \textbf{Uyar 2019:} Depression symptoms, measured with Beck Depression
+  Inventory (BDI)
+\item
+  \textbf{Uyar 2019:} Anxiety symptoms, measured with Beck Anxiety
+  Inventory (BAI)
+\item
+  \textbf{Uyar 2019:} Neuropsychiatric symptoms, measured with
+  Neuropsychiatric Inventory-Distress (NPI-D)
+\item
+  \textbf{Ghaffari 2019:} Neuropsychiatric symptoms, measured with
+  General Health Questionnaire (GHQ-28)
+\item
+  \textbf{Zarepour 2020:} Anxiety symtoms, measured with the Spielberger
+  questionnaires
+\item
+  \textbf{Pan 2019:} Depression symptoms, measured with 10-item CES-D
+\item
+  \textbf{Uyar 2019:} Quality of life, measured with Quality of Life
+  Scale SF36 (SF36 mental health)
+\end{itemize}
+
+Neuropsychiatric symptoms of patients:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Chen 2020} and \textbf{Pan 2019:} Mini Mental State
+  Examinination (MMSE)
+\item
+  \textbf{Uyar 2019:} Neuropsychiatric symptoms, measured with
+  Neuropsychiatric Inventory--Severity (NPI-S)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# keywords for neuropsychiatric symptoms:}
+\NormalTok{mental\_health\_keys }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(}\FunctionTok{c}\NormalTok{(}
+
+    \CommentTok{\# abbreviations}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"PHQ"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"SF36"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"NPI"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"GHQ"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"PHQ"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"BDI"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"BAI"}\NormalTok{, df\_cols),}
+    
+    \CommentTok{\# we don\textquotesingle{}t include MMSE as this is all for care recipients}
+    \CommentTok{\# according to our additional analysis}
+    \CommentTok{\# grep("MMSE", df\_cols), }
+
+    \CommentTok{\# words and phrases}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"Neuropsychiatric"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"neuropsychiatric"}\NormalTok{, df\_cols), }
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"Depression"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"depression"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"Anxiety"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"anxiety"}\NormalTok{, df\_cols)}
+\NormalTok{    ))}
+
+\CommentTok{\# select mental health keys and drop columns and rows with only NAs}
+\NormalTok{mental\_health\_keys }\OtherTok{\textless{}{-}}\NormalTok{ df\_cols[mental\_health\_keys]}
+
+\CommentTok{\# show the number of selected columns}
+\FunctionTok{length}\NormalTok{(mental\_health\_keys)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 139
+\end{verbatim}
+
+\hypertarget{behavioural-metrics}{%
+\subsubsection{4.2.3 Behavioural metrics}\label{behavioural-metrics}}
+
+Behavioural metrics of caregivers:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Uyar 2019:} Quality of life, measured with Quality of Life
+  Scale SF36 (SF36 physical health)
+\item
+  \textbf{Pan 2019:} Positive/Negative coping, measured with the
+  Simplified Coping Scale
+\item
+  \textbf{Pan 2019:} Mutuality, measured with 15-item Mutuality Scale
+\end{itemize}
+
+Behavioural metrics of patients:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Uyar 2019:} Quality of life, measured with Quality of life in
+  Alzheimer's Disease (QoL-AD)
+\item
+  \textbf{Chen 2020:} Barthel activities of daily living scale (BADL)
+\item
+  \textbf{Chen 2020:} Behavioral pathology assessment scale of
+  Alzheimer's disease (BEHAVE-AD)
+\item
+  \textbf{Govindakumari 2020:} Quality of life, unspecified
+\item
+  \textbf{Pan 2019:} Quality of life, measured with the 14-item
+  Activities of Daily Living scale (ADL)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# keywords for behavioural metrics:}
+\NormalTok{behvaioural\_keys }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(}\FunctionTok{c}\NormalTok{(}
+
+    \CommentTok{\# abbreviations}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"SF36"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"QoL"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"BADL"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"BEHAVE"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"ADL"}\NormalTok{, df\_cols),}
+
+    \CommentTok{\# words and phrases}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"Quality"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"quality"}\NormalTok{, df\_cols), }
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"Coping"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"coping"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"Mutuality"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"mutuality"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"daily"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"Daily"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"Barthel"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"Behaviour"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"Behaviour"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"behavior"}\NormalTok{, df\_cols),}
+    \FunctionTok{grep}\NormalTok{(}\StringTok{"behavior"}\NormalTok{, df\_cols)}
+\NormalTok{    ))}
+
+\CommentTok{\# select behavioural keys and drop columns and rows with only NAs}
+\NormalTok{behvaioural\_keys }\OtherTok{\textless{}{-}}\NormalTok{ df\_cols[behvaioural\_keys]}
+\CommentTok{\# behvaioural\_keys[{-}grepl(\textquotesingle{}sleep\textquotesingle{}, behvaioural\_keys)]}
+
+\CommentTok{\# show the number of selected columns}
+\FunctionTok{length}\NormalTok{(behvaioural\_keys)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 336
+\end{verbatim}
+
+\hypertarget{subsetting-the-dataset}{%
+\subsection{4.3 Subsetting the dataset}\label{subsetting-the-dataset}}
+
+We first simplify the selected studies from a data frame to a list of
+study identifier.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{selected\_studies }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}selected\_studies.txt\textquotesingle{}}\NormalTok{)}
+\NormalTok{selected\_studies }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(selected\_studies}\SpecialCharTok{$}\NormalTok{Study.Identifier)}
+\FunctionTok{length}\NormalTok{(selected\_studies)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 27
+\end{verbatim}
+
+Then we can subset the dataset according to our selection of studies and
+columns. For example, for the study that directly measures caregiver
+burden, we can use the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# subset by caregiver burden{-}related columns}
+\NormalTok{df\_caregiver\_burden }\OtherTok{\textless{}{-}} 
+\NormalTok{  dataset[}\FunctionTok{which}\NormalTok{(}\FunctionTok{rowSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(dataset[caregiver\_burden\_keys]))}
+                \SpecialCharTok{!=} \FunctionTok{ncol}\NormalTok{(dataset[caregiver\_burden\_keys])), ]}
+\CommentTok{\# subset by selected studies}
+\NormalTok{df\_caregiver\_burden }\OtherTok{\textless{}{-}} 
+\NormalTok{  df\_caregiver\_burden[df\_caregiver\_burden}\SpecialCharTok{$}\StringTok{\textquotesingle{}Study Identifier\textquotesingle{}} 
+                      \SpecialCharTok{\%in\%} \FunctionTok{as.list}\NormalTok{(selected\_studies), ]}
+
+\CommentTok{\# drop rows and columns with only NA}
+\NormalTok{df\_caregiver\_burden }\OtherTok{\textless{}{-}} 
+\NormalTok{  df\_caregiver\_burden[}\FunctionTok{rowSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(df\_caregiver\_burden)) }
+                      \SpecialCharTok{!=} \FunctionTok{ncol}\NormalTok{(df\_caregiver\_burden), ]}
+\NormalTok{df\_caregiver\_burden }\OtherTok{\textless{}{-}} 
+\NormalTok{  df\_caregiver\_burden[,}\FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(df\_caregiver\_burden))}
+                      \SpecialCharTok{\textless{}} \FunctionTok{nrow}\NormalTok{(df\_caregiver\_burden)]}
+
+\CommentTok{\# show the size of simplified dataset}
+\FunctionTok{dim}\NormalTok{(df\_caregiver\_burden)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  22 164
+\end{verbatim}
+
+Thus, the dataset is significantly reduced, which we can manually curate
+for a meta analysis-ready dataset. Similary, we can generate the dataset
+for caregiver mental health and caregiver quality of life (behaviour):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# subset for caregiver mental health}
+\NormalTok{df\_mental\_health }\OtherTok{\textless{}{-}} 
+\NormalTok{  dataset[}\FunctionTok{which}\NormalTok{(}\FunctionTok{rowSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(dataset[mental\_health\_keys]))}
+                \SpecialCharTok{!=}\FunctionTok{ncol}\NormalTok{(dataset[mental\_health\_keys])), ]}
+\NormalTok{df\_mental\_health }\OtherTok{\textless{}{-}} 
+\NormalTok{  df\_mental\_health[df\_mental\_health}\SpecialCharTok{$}\StringTok{\textquotesingle{}Study Identifier\textquotesingle{}} 
+                   \SpecialCharTok{\%in\%} \FunctionTok{as.list}\NormalTok{(selected\_studies), ]}
+\NormalTok{df\_mental\_health }\OtherTok{\textless{}{-}} 
+\NormalTok{  df\_mental\_health[}\FunctionTok{rowSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(df\_mental\_health)) }
+                   \SpecialCharTok{!=} \FunctionTok{ncol}\NormalTok{(df\_mental\_health), ]}
+\NormalTok{df\_mental\_health }\OtherTok{\textless{}{-}} 
+\NormalTok{  df\_mental\_health[,}\FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(df\_mental\_health))}
+                   \SpecialCharTok{\textless{}} \FunctionTok{nrow}\NormalTok{(df\_mental\_health)]}
+
+\CommentTok{\# print dimensions of the dataset}
+\FunctionTok{dim}\NormalTok{(df\_mental\_health)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  4 87
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# subset for caregiver behaviour or quality of life}
+\NormalTok{df\_behavioural }\OtherTok{\textless{}{-}} 
+\NormalTok{  dataset[}\FunctionTok{which}\NormalTok{(}\FunctionTok{rowSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(dataset[behvaioural\_keys]))}
+                \SpecialCharTok{!=}\FunctionTok{ncol}\NormalTok{(dataset[behvaioural\_keys])), ]}
+\NormalTok{df\_behavioural }\OtherTok{\textless{}{-}} 
+\NormalTok{  df\_behavioural[df\_behavioural}\SpecialCharTok{$}\StringTok{\textquotesingle{}Study Identifier\textquotesingle{}} 
+                 \SpecialCharTok{\%in\%} \FunctionTok{as.list}\NormalTok{(selected\_studies), ]}
+\NormalTok{df\_behavioural }\OtherTok{\textless{}{-}} 
+\NormalTok{  df\_behavioural[}\FunctionTok{rowSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(df\_behavioural)) }
+                 \SpecialCharTok{!=} \FunctionTok{ncol}\NormalTok{(df\_behavioural), ]}
+\NormalTok{df\_behavioural }\OtherTok{\textless{}{-}} 
+\NormalTok{  df\_behavioural[,}\FunctionTok{colSums}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(df\_behavioural)) }
+                 \SpecialCharTok{\textless{}} \FunctionTok{nrow}\NormalTok{(df\_behavioural)]}
+
+\CommentTok{\# print dimensions of the dataset}
+\FunctionTok{dim}\NormalTok{(df\_behavioural)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  16 163
+\end{verbatim}
+
+Eventually, we can write these subsets to a single Excel file for
+further curation, with the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create the workbook}
+\NormalTok{wb }\OtherTok{\textless{}{-}} \FunctionTok{createWorkbook}\NormalTok{()}
+
+\CommentTok{\# add the worksheets}
+\FunctionTok{addWorksheet}\NormalTok{(wb, }\StringTok{"caregiver\_Burden"}\NormalTok{)}
+\FunctionTok{addWorksheet}\NormalTok{(wb, }\StringTok{"caregiver\_MentalHealth"}\NormalTok{)}
+\FunctionTok{addWorksheet}\NormalTok{(wb, }\StringTok{"caregiver\_Behaviour"}\NormalTok{)}
+
+\CommentTok{\# write the workbook}
+\FunctionTok{writeData}\NormalTok{(wb, }\StringTok{"caregiver\_Burden"}\NormalTok{, df\_caregiver\_burden)}
+\FunctionTok{writeData}\NormalTok{(wb, }\StringTok{"caregiver\_MentalHealth"}\NormalTok{, df\_mental\_health)}
+\FunctionTok{writeData}\NormalTok{(wb, }\StringTok{"caregiver\_Behaviour"}\NormalTok{, df\_behavioural)}
+
+\CommentTok{\# save the workbook}
+\FunctionTok{saveWorkbook}\NormalTok{(wb, }\StringTok{"Dataset\_data\_filtered\_final.xlsx"}\NormalTok{, }\AttributeTok{overwrite =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
