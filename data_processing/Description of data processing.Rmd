@@ -1,8 +1,15 @@
 ---
-title: "Description of data pre-processing"
+title: "Description of data processing"
 author: ""
 date: "`r Sys.Date()`"
-output: word_document
+output: 
+  word_document: 
+    toc: true
+    toc_depth: 3
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    latex_engine: xelatex
 ---
 
 ```{r setup, include=FALSE}
@@ -23,23 +30,17 @@ To proceed, you must install and load the required packages, which is as follows
 
 ```{r, eval=FALSE}
 # installation
-install.packages("readxl")
 install.packages("openxlsx")
 install.packages("naniar")
-install.packages("dplyr")
 
 # loading
-library(readxl)
 library(openxlsx)
 library(naniar)
-library(dplyr)
 ```
 
 ```{r include=FALSE}
-library(readxl)
 library(openxlsx)
 library(naniar)
-library(dplyr)
 ```
 
 # 2 Loading the dataset
@@ -48,7 +49,7 @@ Use the following code to load the dataset:
 
 ```{r}
 # load the dataset
-dataset <- read_xlsx("Dataset.xlsx")
+dataset <- read.xlsx("Dataset.xlsx")
 
 # replace the string value "-" with NA
 dataset[dataset=="-"]  <- NA
@@ -67,9 +68,9 @@ When loading the dataset, R will alter some of the row names in case of incompat
 dim(dataset)
 ```
 
-It is clear that this is a very large dataset with 733 rows and 3705 columns. This means the dataset contains 733 studies. We can first have a look at the first five rows of the dataset, with the following code to know what the columns might be about:
+It is clear that this is a very large dataset with 733 rows and 3705 columns. This means the dataset contains 733 studies. We can first have a look at the first five rows of the dataset, with the following code to know what the columns might be about. The output of the code is omitted, as they are too long, due to the very large number of columns.
 
-```{r}
+```{r eval=FALSE, include=TRUE}
 # show first five rows
 head(dataset)
 ```
@@ -90,15 +91,17 @@ df_cols <- colnames(dataset)
 df_cols[grep('Intervention', df_cols)]
 ```
 
+## 3.1 Intervention types
+
 Among these variables, "Intervention types" seems to provide most relevant information for fast screening:
 
 ```{r}
-knitr::kable(table(dataset['Intervention types']))
+knitr::kable(table(dataset$'Intervention.types'))
 ```
 Thus, we will select 'Support for carers' and 'Training and education for carers'. But in case of any missingness, we also explore the studies under the intervention types of 'Structured therapeutic psychosocial interventions', 'Comprehensive care interventions', 'Supportive psychosocial interventions', 'Treatment of co-morbidities or additional risks', 'Unstructured therapeutic interventions' and 'Multicomponent interventions', but there is none related to support or education for caregivers.
 
 ```{r}
-df_studies <- dataset[dataset$'Intervention types' %in% c(
+df_studies <- dataset[dataset$'Intervention.types' %in% c(
     "Structured therapeutic psychosocial interventions", 
     "Training and education for carers", 
     "Other interventions", 
@@ -113,13 +116,15 @@ dim(df_studies)
 
 Thus, we reduce the scope of the analysis from 733 studies to only 101 of them. Then we screen the further details of the intervention.
 
+## 3.2 Intervention subgroups
+
 ```{r}
-knitr::kable(table(df_studies$'Intervention subgroups'))
+knitr::kable(table(df_studies$'Intervention.subgroups'))
 ```
 We surely do not want to include any drug-related intervention, so we exclude the terms including "TCM", "pharmaceutical", "nutrition", "therapeutic substance".
 
 ```{r}
-included_terms <- unique(df_studies$'Intervention subgroups')[- grep(
+included_terms <- unique(df_studies$'Intervention.subgroups')[- grep(
   "TCM|pharmaceutical|nutrition|therapeutic substance",
   unique(df_studies$'Intervention subgroups'))]
 df_studies <- df_studies[df_studies$'Intervention subgroups' %in% included_terms, ]
@@ -133,12 +138,15 @@ Thus, we reduce the number of studies from 101 to 79. Then I output the informat
 write.xlsx(df_studies, "Dataset_intervention_screening.xlsx")
 ```
 
+## 3.3 Manual curation
+
 The manual screening will check the details of the intervention, especially whether it involves support or training for carers. Thus, the following studies are selected:
 
 ```{r}
 selected_studies <- read.csv('selected_studies.txt')
 knitr::kable(selected_studies)
 ```
+
 # 4 Screening by column names
 
 However, it will be hard in term of human labour to look thourgh the 3000+ columns for data extraction, so I use a series of keywords to screen the relevant columns for meta-analysis.
@@ -165,10 +173,9 @@ First we screen the column names with the keywords for direct measurement of car
 
 ```{r}
 caregiver_burden_keys <- unique(c(
-    grep("burden", df_cols),
-    grep("Burden", df_cols),
-    grep("ZBI", df_cols),
-    grep("Zarit", df_cols)
+    grep("Burden", df_cols, ignore.case=TRUE),
+    grep("ZBI", df_cols, ignore.case=TRUE),
+    grep("Zarit", df_cols, ignore.case=TRUE)
     ))
 caregiver_burden_keys <- df_cols[caregiver_burden_keys]
 
@@ -209,25 +216,19 @@ Neuropsychiatric symptoms of patients:
 mental_health_keys <- unique(c(
 
     # abbreviations
-    grep("PHQ", df_cols),
-    grep("SF36", df_cols),
-    grep("NPI", df_cols),
-    grep("GHQ", df_cols),
-    grep("PHQ", df_cols),
-    grep("BDI", df_cols),
-    grep("BAI", df_cols),
-    
-    # we don't include MMSE as this is all for care recipients
-    # according to our additional analysis
-    # grep("MMSE", df_cols), 
+    grep("PHQ", df_cols, ignore.case=TRUE),
+    grep("SF36", df_cols, ignore.case=TRUE),
+    grep("NPI", df_cols, ignore.case=TRUE),
+    grep("GHQ", df_cols, ignore.case=TRUE),
+    grep("PHQ", df_cols, ignore.case=TRUE),
+    grep("BDI", df_cols, ignore.case=TRUE),
+    grep("BAI", df_cols, ignore.case=TRUE),
+    grep("MMSE", df_cols, ignore.case=TRUE), 
 
     # words and phrases
-    grep("Neuropsychiatric", df_cols),
-    grep("neuropsychiatric", df_cols), 
-    grep("Depression", df_cols),
-    grep("depression", df_cols),
-    grep("Anxiety", df_cols),
-    grep("anxiety", df_cols)
+    grep("neuropsychiatric", df_cols, ignore.case=TRUE),
+    grep("depression", df_cols, ignore.case=TRUE),
+    grep("anxiety", df_cols, ignore.case=TRUE)
     ))
 
 # select mental health keys and drop columns and rows with only NAs
@@ -258,26 +259,20 @@ Behavioural metrics of patients:
 behvaioural_keys <- unique(c(
 
     # abbreviations
-    grep("SF36", df_cols),
-    grep("QoL", df_cols),
-    grep("BADL", df_cols),
-    grep("BEHAVE", df_cols),
-    grep("ADL", df_cols),
+    grep("SF36", df_cols, ignore.case=TRUE),
+    grep("QoL", df_cols, ignore.case=TRUE),
+    grep("BADL", df_cols, ignore.case=TRUE),
+    grep("BEHAVE", df_cols, ignore.case=TRUE),
+    grep("ADL", df_cols, ignore.case=TRUE),
 
     # words and phrases
-    grep("Quality", df_cols),
-    grep("quality", df_cols), 
-    grep("Coping", df_cols),
-    grep("coping", df_cols),
-    grep("Mutuality", df_cols),
-    grep("mutuality", df_cols),
-    grep("daily", df_cols),
-    grep("Daily", df_cols),
-    grep("Barthel", df_cols),
-    grep("Behaviour", df_cols),
-    grep("Behaviour", df_cols),
-    grep("behavior", df_cols),
-    grep("behavior", df_cols)
+    grep("Quality", df_cols, ignore.case=TRUE),
+    grep("Coping", df_cols, ignore.case=TRUE),
+    grep("Mutuality", df_cols, ignore.case=TRUE),
+    grep("Daily", df_cols, ignore.case=TRUE),
+    grep("Barthel", df_cols, ignore.case=TRUE),
+    grep("Behaviour", df_cols, ignore.case=TRUE),
+    grep("Behavior", df_cols, ignore.case=TRUE)
     ))
 
 # select behavioural keys and drop columns and rows with only NAs
@@ -307,7 +302,7 @@ df_caregiver_burden <-
                 != ncol(dataset[caregiver_burden_keys])), ]
 # subset by selected studies
 df_caregiver_burden <- 
-  df_caregiver_burden[df_caregiver_burden$'Study Identifier' 
+  df_caregiver_burden[df_caregiver_burden$'Study.Identifier' 
                       %in% as.list(selected_studies), ]
 
 # drop rows and columns with only NA
@@ -330,7 +325,7 @@ df_mental_health <-
   dataset[which(rowSums(is.na(dataset[mental_health_keys]))
                 !=ncol(dataset[mental_health_keys])), ]
 df_mental_health <- 
-  df_mental_health[df_mental_health$'Study Identifier' 
+  df_mental_health[df_mental_health$'Study.Identifier' 
                    %in% as.list(selected_studies), ]
 df_mental_health <- 
   df_mental_health[rowSums(is.na(df_mental_health)) 
@@ -349,7 +344,7 @@ df_behavioural <-
   dataset[which(rowSums(is.na(dataset[behvaioural_keys]))
                 !=ncol(dataset[behvaioural_keys])), ]
 df_behavioural <- 
-  df_behavioural[df_behavioural$'Study Identifier' 
+  df_behavioural[df_behavioural$'Study.Identifier' 
                  %in% as.list(selected_studies), ]
 df_behavioural <- 
   df_behavioural[rowSums(is.na(df_behavioural)) 
@@ -361,6 +356,8 @@ df_behavioural <-
 # print dimensions of the dataset
 dim(df_behavioural)
 ```
+
+# 5 Saving the filtered dataset
 
 Eventually, we can write these subsets to a single Excel file for further curation, with the following code:
 
