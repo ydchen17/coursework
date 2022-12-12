@@ -126,8 +126,8 @@ We surely do not want to include any drug-related intervention, so we exclude th
 ```{r}
 included_terms <- unique(df_studies$'Intervention.subgroups')[- grep(
   "TCM|pharmaceutical|nutrition|therapeutic substance",
-  unique(df_studies$'Intervention subgroups'))]
-df_studies <- df_studies[df_studies$'Intervention subgroups' %in% included_terms, ]
+  unique(df_studies$'Intervention.subgroups'))]
+df_studies <- df_studies[df_studies$'Intervention.subgroups' %in% included_terms, ]
 df_studies <- df_studies[,colSums(is.na(df_studies))<nrow(df_studies)]
 dim(df_studies)
 ```
