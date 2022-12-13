@@ -1,0 +1,14 @@
+---
+title: "Procedures of meta-analysis"
+author: ""
+date: "`r Sys.Date()`"
+output: 
+  word_document: 
+    toc: true
+    toc_depth: 3
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    latex_engine: xelatex
+---
+
