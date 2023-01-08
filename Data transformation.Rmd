@@ -22,6 +22,7 @@ There are two well-maintained R packages available for meta-analysis, namely 'me
 
 ```{r eval = FALSE}
 Dataset <- read.xlsx('~/Documents/Coding/HP407/Dataset_version_latest.xlsx', 'Combined')
+Dataset <- Dataset[Dataset$Source != 'excluded', ]
 # colnames(Dataset)
 ```
 
@@ -30,11 +31,23 @@ Dataset <- read.xlsx('~/Documents/Coding/HP407/Dataset_version_latest.xlsx', 'Co
 ### Renaming and adjusting columns
 
 ```{r eval = FALSE}
+
 colnames(Dataset)[which(colnames(Dataset)=="Measurement.points.(days.from.start)")] <- 
   "Measurement.point"
 Dataset$Measurement.point <- as.numeric(Dataset$Measurement.point)
 colnames(Dataset)[which(colnames(Dataset)=="Treatment.duration.(days.from.start)")] <- 
   "Treatment.duration"
+
+colnames(Dataset)[which(colnames(Dataset)=="Baseline.Female.(percent)")] <- 
+  "Patient.female_percent"
+colnames(Dataset)[which(colnames(Dataset)=="Patient.age.in.year.(mean)")] <- 
+  "Patient.mean_age"
+
+colnames(Dataset)[which(colnames(Dataset)=="Baseline.For.studies.in.carers.only:.Caregiver.female.(percent)")] <- 
+  "Caregiver.female_percent"
+colnames(Dataset)[which(colnames(Dataset)=="Baseline.For.studies.in.carers.only:.Caregiver.age.in.years.(mean)")] <- 
+  "Caregiver.mean_age"
+
 Dataset$Country <- 
   relevel(as.factor(Dataset$Country), "Vietnam")
 Dataset$Caregiver.intervention.type <- 
@@ -47,8 +60,17 @@ Dataset$Caregiver.intervention.type <-
 
 Then, we convert all the data from control and experimental groups of the same study and measurement to the same row with the following code:
 
+```{r}
+colnames(Dataset)
+```
+
+
 ```{r eval = FALSE}
-data_cols <- c("Pre_mean","Pre_N","Pre_SD","Post_mean","Post_N","Post_SD")
+data_cols <- c("Pre_mean","Recruitment_N","Pre_N","Pre_SD",
+               "Post_mean","Post_N","Post_SD",
+               "Attrition", "Attrition.percent",
+               "Patient.female_percent","Patient.mean_age",
+               "Caregiver.female_percent","Caregiver.mean_age")
 info_cols <- colnames(Dataset)[-which(colnames(Dataset) %in% data_cols)]
 meta_df.ctrl <- 
   Dataset[Dataset$Caregiver.intervention.type == 'No intervention', ]
@@ -59,8 +81,12 @@ for (i in 1:nrow(meta_df.expt)){
     item <- meta_df.expt[i, ]
     item_info <- item[info_cols]
     item_data <- item[data_cols]
-    colnames(item_data) <- c("Expt_Pre_mean","Expt_Pre_N","Expt_Pre_SD",
-                             "Expt_Post_mean","Expt_Post_N","Expt_Post_SD")
+    colnames(item_data) <- c("Expt_Pre_mean","Expt_Recruitment_N",
+                             "Expt_Pre_N","Expt_Pre_SD",
+                             "Expt_Post_mean","Expt_Post_N","Expt_Post_SD",
+                             "Expt_Artrition", 'Expt_Attrition.percent',
+                             "Expt_Patient.female_percent","Expt_Patient.mean_age",
+                             "Expt_Caregiver.female_percent","Expt_Caregiver.mean_age")
     
     # selection by study 
     item_data_ctrl <- 
@@ -120,8 +146,12 @@ for (i in 1:nrow(meta_df.expt)){
     item_data_ctrl <- item_data_ctrl[data_cols]
     
     # rename the columns of selected data
-    colnames(item_data_ctrl) <- c("Ctrl_Pre_mean","Ctrl_Pre_N","Ctrl_Pre_SD",
-                                  "Ctrl_Post_mean","Ctrl_Post_N","Ctrl_Post_SD")
+    colnames(item_data_ctrl) <- c("Ctrl_Pre_mean", "Ctrl_Recruitment_N",
+                                  "Ctrl_Pre_N","Ctrl_Pre_SD",
+                                  "Ctrl_Post_mean","Ctrl_Post_N","Ctrl_Post_SD",
+                                  "Ctrl_Artrition", 'Ctrl_Attrition.percent',
+                                  "Ctrl_Patient.female_percent","Ctrl_Patient.mean_age",
+                                  "Ctrl_Caregiver.female_percent","Ctrl_Caregiver.mean_age")
     
     # combine the data into a data entry
     data_item <- cbind(item_info, item_data, item_data_ctrl)
@@ -133,6 +163,11 @@ for (i in 1:nrow(meta_df.expt)){
 ```
 
 When we finish the transformation, we perform multiplicity detection to make sure each measurement is represented by only one data entry, in case of multiple eligible measurement points and scales.
+
+```{r}
+meta_df.es
+```
+
 
 ### Dealing with multiplicity of measurements
 
@@ -221,6 +256,8 @@ es.stats[es.stats$Effect.measure == "Caregiver burden", ]$Ctrl_Post_N <-
   es.stats[es.stats$Effect.measure == "Caregiver burden", ]$Ctrl_Post_N - 31
 es.stats$Sample_size <- es.stats$Expt_Post_N + es.stats$Ctrl_Post_N
 es.stats <- bind_cols(es.stats, 'Freq'=es.stats.freq$Freq)
+es.stats <- es.stats[order(- es.stats$Freq), ]
+rownames(es.stats) <- NULL
 es.stats
 ```
 
@@ -233,6 +270,7 @@ es.stats
 meta_df.es.raw <- meta_df.es[meta_df.es$Measurement.type == 'Raw',]
 meta_df.es.regression <- meta_df.es[meta_df.es$Measurement.type == 'Regression',]
 meta_df.es.smd <- meta_df.es[meta_df.es$Measurement.type == 'SMD',]
+meta_df.es.md <- meta_df.es[meta_df.es$Measurement.type == 'MD',]
 ```
 
 ### Converting Cohen's d to Hedge's g
@@ -262,10 +300,11 @@ meta_df.es.smd$standard_error <-
 
 ```{r eval = FALSE}
 # esc outputs
-esc_B(meta_df.es.regression$Expt_Post_mean, meta_df.es.regression$Expt_Post_SD, 
-      meta_df.es.regression$Expt_Post_N, meta_df.es.regression$Ctrl_Post_N, es.type = 'd')
-esc_B(meta_df.es.regression$Expt_Post_mean, meta_df.es.regression$Expt_Post_SD, 
-      meta_df.es.regression$Expt_Post_N, meta_df.es.regression$Ctrl_Post_N, es.type = 'g')
+esc_B(meta_df.es.regression$Expt_Post_mean, 
+      meta_df.es.regression$Expt_Post_SD, 
+      meta_df.es.regression$Expt_Post_N, 
+      meta_df.es.regression$Ctrl_Post_N, 
+      es.type = 'd')
 ```
 
 #### Estimation 1: Coefficient/Variance
@@ -310,6 +349,45 @@ meta_df.es.regression$variance <- meta_df.es.regression.SMD$var
 meta_df.es.regression$standard_error <- meta_df.es.regression.SMD$se
 meta_df.es.regression
 ```
+### Calculating effect size from mean differences
+
+
+```{r eval = FALSE}
+reserved_cols <- c('Ctrl_Post_mean', 'Ctrl_Post_SD', 'Ctrl_Post_N', 
+                   'Expt_Post_mean', 'Expt_Post_SD','Expt_Post_N',
+                   'Study.Identifier')
+
+meta_df.es.md.data <- meta_df.es.md[reserved_cols]
+meta_df.es.md.data
+```
+```{r}
+row_SMD<- function(row_data){
+  transformed <- esc_mean_sd(
+    
+    grp2m = as.numeric(row_data[1]), 
+    grp2sd = as.numeric(row_data[2]), 
+    grp2n = as.numeric(row_data[3]), 
+    
+    grp1m = as.numeric(row_data[4]), 
+    grp1sd = as.numeric(row_data[5]), 
+    grp1n = as.numeric(row_data[6]), 
+    
+    es.type = 'g',
+    study = row_data[7])
+
+  df <- data.frame(transformed)
+  rownames(df) <- NULL
+  return(df)
+}
+meta_df.es.md.SMD <- do.call('rbind', apply(meta_df.es.md.data, 1, row_SMD))
+meta_df.es.md.SMD
+
+meta_df.es.md$mean.effect <- meta_df.es.md.SMD$es
+meta_df.es.md$variance <- meta_df.es.md.SMD$var
+meta_df.es.md$standard_error <- meta_df.es.md.SMD$se
+meta_df.es.md
+```
+
 
 ### Calculating effect size from raw
 
@@ -317,10 +395,17 @@ meta_df.es.regression
 
 ```{r eval = FALSE}
 library(metafor)
-meta_df.es.transformed <- escalc(m1i=Expt_Post_mean, sd1i=Expt_Post_SD, n1i=Expt_Post_N, 
-                            m2i=Ctrl_Post_mean, sd2i=Ctrl_Post_SD, n2i=Ctrl_Post_N,
-                            measure="SMD", vtype="UB", data=meta_df.es.raw, 
-                            slab = Study.Identifier, var.names = c('mean.effect', 'variance'))
+meta_df.es.transformed <- escalc(m1i=Expt_Post_mean, 
+                                 sd1i=Expt_Post_SD, 
+                                 n1i=Expt_Post_N, 
+                                 m2i=Ctrl_Post_mean, 
+                                 sd2i=Ctrl_Post_SD, 
+                                 n2i=Ctrl_Post_N,
+                                 measure="SMD", 
+                                 vtype="UB", 
+                                 data=meta_df.es.raw, 
+                                 slab = Study.Identifier, 
+                                 var.names = c('mean.effect', 'variance'))
 #meta_df.es.transformed$mean.effect
 #meta_df.es.transformed$variance
 ```
@@ -353,26 +438,30 @@ row_SMD<- function(row_data){
     
     es.type = 'g',
     study = row_data[11])
-  # print(row_data[11])
+
   df <- data.frame(transformed)
   rownames(df) <- NULL
   return(df)
 }
 meta_df.es.raw.SMD <- do.call('rbind', apply(meta_df.es.raw.data, 1, row_SMD))
+meta_df.es.raw.SMD
 ```
 
 ```{r eval = FALSE}
 meta_df.es.raw$mean.effect <- meta_df.es.raw.SMD$es
 meta_df.es.raw$variance <- meta_df.es.raw.SMD$var
 meta_df.es.raw$standard_error <- meta_df.es.raw.SMD$se
+meta_df.es.raw
 ```
 
 ```{r eval = FALSE}
 ncol(meta_df.es.raw)
 ncol(meta_df.es.smd)
 ncol(meta_df.es.regression)
+ncol(meta_df.es.md)
 colnames(meta_df.es.smd) <- colnames(meta_df.es.raw)
 colnames(meta_df.es.regression) <- colnames(meta_df.es.raw)
+colnames(meta_df.es.md) <- colnames(meta_df.es.raw)
 #colnames(meta_df.es.raw)
 #colnames(meta_df.es.regression)
 ```
@@ -380,10 +469,28 @@ colnames(meta_df.es.regression) <- colnames(meta_df.es.raw)
 ### Combine and save effect size data
 
 ```{r eval = FALSE}
-meta_df.es.g <- rbind(meta_df.es.raw, meta_df.es.smd,meta_df.es.regression)
-meta_df.es.g$N <- meta_df.es.g$Expt_Post_N + meta_df.es.g$Ctrl_Post_N
+meta_df.es.g <- rbind(meta_df.es.raw, 
+                      meta_df.es.smd,
+                      meta_df.es.regression, 
+                      meta_df.es.md)
+meta_df.es.g$Recruitment_total_N <- 
+  meta_df.es.g$Expt_Recruitment_N + meta_df.es.g$Ctrl_Recruitment_N
+meta_df.es.g$Post_total_N <- meta_df.es.g$Expt_Post_N + meta_df.es.g$Ctrl_Post_N
+
 # t(meta_df.es.g[meta_df.es.g$Study.Identifier == 'Mahdavi 2017', ])
-meta_df.es.g[meta_df.es.g$Study.Identifier == 'Mahdavi 2017', ]$N <- 28+30+31
+meta_df.es.g[meta_df.es.g$Study.Identifier == 'Mahdavi 2017', ]$Post_total_N <- 
+  28+30+31
+meta_df.es.g[meta_df.es.g$Study.Identifier == 'Mahdavi 2017', ]$Recruitment_total_N <-
+  35+32+33
+
+meta_df.es.g$Total_attrition <- 
+  meta_df.es.g$Recruitment_total_N - meta_df.es.g$Post_total_N
+meta_df.es.g$Total_attrition.percent <- 
+  100 * (meta_df.es.g$Total_attrition / meta_df.es.g$Recruitment_total_N) 
+
+meta_df.es.g[meta_df.es.g$Study.Identifier == 'Wang 2012e', ]$Total_attrition.percent <-
+  7.7
+meta_df.es.g
 ```
 
 ```{r}
