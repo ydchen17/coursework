@@ -1,0 +1,106 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# R data and workspace files
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VSCode settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# Environment files
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# Python virtual environment folders
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Pip wheel files
+*.whl
+
+# IPython history
+.history
+
+# Compiled C extensions
+*.so
+
+# Log files
+*.log
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytest
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+.cache
+
+# Jupyter Notebook local kernel spec
+.local_share/
+
+# Temporary or backup files
+*~
+*.bak
+*.tmp
+*.swp
+
+# System-wide Python configuration
+python-config.json
+
+# Large files
+*.zip
+*.tar.gz
+*.rar
+
+# Ignore model weights, if any
+*.h5
+*.pt
+*.pth
+
+# Ignore PDFs or generated outputs
+*.pdf
+*.aux
+*.out
+*.toc
+
+# Node modules (if JS used)
+node_modules/
+
+# Quarto / R Markdown output
+*.html
+*.docx
+*.pptx
+*_cache/
+.cache/
+
