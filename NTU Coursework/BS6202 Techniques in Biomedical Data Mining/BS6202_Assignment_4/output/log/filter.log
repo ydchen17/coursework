@@ -1,0 +1,25 @@
+[36mINFO[0m[20:40:39] Executing Filter  v4.0.0                     
+[36mINFO[0m[20:40:39] Processing peptide identification files      
+[36mINFO[0m[20:40:40] 1+ Charge profile                             [36mdecoy[0m=0 [36mtarget[0m=0
+[36mINFO[0m[20:40:40] 2+ Charge profile                             [36mdecoy[0m=0 [36mtarget[0m=0
+[36mINFO[0m[20:40:40] 3+ Charge profile                             [36mdecoy[0m=147 [36mtarget[0m=4924
+[36mINFO[0m[20:40:40] 4+ Charge profile                             [36mdecoy[0m=11 [36mtarget[0m=483
+[36mINFO[0m[20:40:40] 5+ Charge profile                             [36mdecoy[0m=1 [36mtarget[0m=29
+[36mINFO[0m[20:40:40] 6+ Charge profile                             [36mdecoy[0m=0 [36mtarget[0m=0
+[36mINFO[0m[20:40:40] Database search results                       [36mions[0m=4818 [36mpeptides[0m=4487 [36mpsms[0m=5595
+[36mINFO[0m[20:40:40] Converged to 1.00 % FDR with 5274 PSMs        [36mdecoy[0m=53 [36mthreshold[0m=0.2338 [36mtotal[0m=5327
+[36mINFO[0m[20:40:40] Converged to 1.00 % FDR with 4170 Peptides    [36mdecoy[0m=42 [36mthreshold[0m=0.2782 [36mtotal[0m=4212
+[36mINFO[0m[20:40:40] Converged to 1.00 % FDR with 4501 Ions        [36mdecoy[0m=45 [36mthreshold[0m=0.2669 [36mtotal[0m=4546
+[36mINFO[0m[20:40:40] Protein inference results                     [36mdecoy[0m=161 [36mtarget[0m=1618
+[36mINFO[0m[20:40:40] Converged to 1.04 % FDR with 1347 Proteins    [36mdecoy[0m=14 [36mthreshold[0m=0.6435 [36mtotal[0m=1361
+[36mINFO[0m[20:40:40] Applying sequential FDR estimation            [36mions[0m=4473 [36mpeptides[0m=4146 [36mpsms[0m=5235
+[36mINFO[0m[20:40:40] Converged to 0.26 % FDR with 5221 PSMs        [36mdecoy[0m=14 [36mthreshold[0m=0.2371 [36mtotal[0m=5235
+[36mINFO[0m[20:40:40] Converged to 0.33 % FDR with 4132 Peptides    [36mdecoy[0m=14 [36mthreshold[0m=0.2453 [36mtotal[0m=4146
+[36mINFO[0m[20:40:40] Converged to 0.31 % FDR with 4459 Ions        [36mdecoy[0m=14 [36mthreshold[0m=0.2453 [36mtotal[0m=4473
+[36mINFO[0m[20:40:41] Post processing identifications              
+[36mINFO[0m[20:40:41] Mapping modifications                        
+[36mINFO[0m[20:40:42] Assigning protein identifications to layers  
+[36mINFO[0m[20:40:42] Processing protein inference                 
+[36mINFO[0m[20:40:44] Synchronizing PSMs and proteins              
+[36mINFO[0m[20:40:44] Saving                                       
+[36mINFO[0m[20:40:45] Done                                         
