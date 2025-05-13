@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ~$*
 .DS_Store
 
@@ -156,6 +157,9 @@ cython_debug/
 
 
 MANIFEST
+=======
+ANIFEST
+>>>>>>> temp/main
 build
 dist
 _build
@@ -186,6 +190,10 @@ __pycache__
 .coverage
 .pytest_cache
 src
+<<<<<<< HEAD
+=======
+.gitattributes
+>>>>>>> temp/main
 
 *.swp
 *.map
@@ -209,7 +217,14 @@ geckodriver.log
 .history
 .vscode
 
+<<<<<<< HEAD
 # copied changelog
 docs/source/changelog.md
 
 .jupyter_releaser_checkout
+=======
+# R
+.Rhistory
+.RData
+nohup.out
+>>>>>>> temp/main
