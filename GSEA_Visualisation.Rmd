@@ -1,0 +1,188 @@
+---
+title: "Untitled"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+human_all <- as.list(read.csv("~/Downloads/entrez/human_all_entrez.txt", header = F))$V1
+human_conserved <- as.list(read.csv("~/Downloads/entrez/human_conserved_entrez.txt", header = F))$V1
+human_specific <- as.list(read.csv("~/Downloads/entrez/human_specific_entrez.txt", header = F))$V1
+
+yeast_all <- as.list(read.csv("~/Downloads/entrez/yeast_all_entrez.txt", header = F))$V1
+yeast_conserved <- as.list(read.csv("~/Downloads/entrez/yeast_conserved_entrez.txt", header = F))$V1
+yeast_specific <- as.list(read.csv("~/Downloads/entrez/yeast_specific_entrez.txt", header = F))$V1
+
+library(org.Hs.eg.db)
+library(org.Sc.sgd.db)
+library(enrichplot)
+library(clusterProfiler)
+library(GOSemSim)
+library(clusterProfiler)
+library(stringr)
+library(ggplot2)
+
+```
+
+
+
+# mgeneSim(genes, semData=hsGO2, measure="Wang", combine="BMA", verbose=FALSE)
+#mgeneSim(genes, semData=hsGO2, measure="Wang", combine="BMA", verbose=FALSE)
+
+#mclusterSim(list(a=human_conserved, b=human_specific),
+#            semData=godata('org.Hs.eg.db', ont="MF"), 
+#            measure="Jiang", combine="BMA")
+#mclusterSim(list(a=human_conserved, b=human_specific),
+#            semData=godata('org.Hs.eg.db', ont="BP"), 
+#            measure="Jiang", combine="BMA")
+#mclusterSim(list(a=human_conserved, b=human_specific),
+#            semData=godata('org.Hs.eg.db', ont="CC"), 
+#            measure="Jiang", combine="BMA")
+
+#mclusterSim(list(a=yeast_conserved, b=yeast_specific),
+#            semData=godata('org.Sc.sgd.db', ont="MF"), 
+#            measure="Jiang", combine="BMA")
+#mclusterSim(list(a=human_conserved, b=yeast_specific),
+#            semData=godata('org.Sc.sgd.db', ont="BP"), 
+#            measure="Jiang", combine="BMA")
+#mclusterSim(list(a=human_conserved, b=yeast_specific),
+#            semData=godata('org.Sc.sgd.db', ont="CC"), 
+#            measure="Jiang", combine="BMA")
+
+# GO Over-representation Analysis
+
+
+
+```{r}
+human_specific_ego <- enrichGO(gene = human_specific, 
+                               universe = names(human_all),
+                               OrgDb = org.Hs.eg.db,
+                               ont           = "ALL",
+                               pAdjustMethod = "fdr",
+                               pvalueCutoff  = 0.01,
+                               qvalueCutoff  = 0.05)
+head(human_specific_ego)
+```
+
+
+```{r}
+human_conserved_ego <- enrichGO(gene = human_conserved, 
+                                universe = names(human_all),
+                                OrgDb = org.Hs.eg.db,
+                                ont = "ALL",
+                                pAdjustMethod = "fdr",
+                                pvalueCutoff  = 0.01,
+                                qvalueCutoff  = 0.05)
+head(human_conserved_ego)
+
+```
+
+dim(human_conserved_ego)
+dim(human_specific_ego)
+dim(yeast_conserved_ego)
+dim(yeast_specific_ego)
+
+```{r}
+yeast_specific_ego <- enrichGO(gene = yeast_specific, 
+                               universe = names(yeast_all),
+                               OrgDb = org.Sc.sgd.db,
+                               ont = "ALL",
+                               pAdjustMethod = "fdr",
+                               pvalueCutoff  = 0.01,
+                               qvalueCutoff  = 0.05)
+head(human_specific_ego)
+```
+
+
+human_specific_ego
+
+```{r}
+yeast_conserved_ego <- enrichGO(gene = yeast_conserved, 
+                                universe = yeast_all,
+                                OrgDb = org.Sc.sgd.db,
+                                ont = "ALL",
+                                pAdjustMethod = "fdr",
+                                pvalueCutoff  = 0.01,
+                                qvalueCutoff  = 0.05)
+head(yeast_conserved_ego)
+
+```
+
+# Gene Set Enrichment Analysis
+
+human_conserved_gse <- gseGO(geneList = sort(human_conserved, decreasing = TRUE),
+              OrgDb        = org.Hs.eg.db,
+              ont          = "ALL",
+              minGSSize    = 100,
+              maxGSSize    = 500,
+              pvalueCutoff = 0.05)
+head(human_conserved_gse)
+
+human_specific_gse <- gseGO(geneList = human_specific,
+              OrgDb        = org.Hs.eg.db,
+              ont          = "ALL",
+              minGSSize    = 100,
+              maxGSSize    = 500,
+              pvalueCutoff = 0.05)
+head(human_specific_gse)
+
+yeast_conserved_gse <- gseGO(geneList = yeast_conserved,
+              OrgDb        = org.Hs.eg.db,
+              ont          = "ALL",
+              minGSSize    = 100,
+              maxGSSize    = 500,
+              pvalueCutoff = 0.05,
+              verbose      = FALSE)
+head(human_specific_gse)
+
+yeast_specific_gse <- gseGO(geneList = yeast_specific,
+              OrgDb        = org.Hs.eg.db,
+              ont          = "ALL",
+              minGSSize    = 100,
+              maxGSSize    = 500,
+              pvalueCutoff = 0.05,
+              verbose      = FALSE)
+head(human_specific_gse)
+
+
+
+
+
+
+
+
+
+head(human_specific_ego)
+
+```{r}
+dotplot(human_specific_ego, showCategory=30)+
+scale_y_discrete(labels=function(x) str_wrap(x, width=30))+xlim(0, 0.15)
+```
+
+```{r}
+dotplot(human_conserved_ego, showCategory=30)+
+scale_y_discrete(labels=function(x) str_wrap(x, width=30))+
+                 xlim(0, 0.15)
+```
+
+```{r}
+dotplot(human_conserved_ego, showCategory=30)+
+scale_y_discrete(labels=function(x) str_wrap(x, width=30))+xlim(0, 0.15)
+```
+
+
+```{r}
+p <- dotplot(human_specific_ego, showCategory=30)+scale_y_discrete(labels=function(x) str_wrap(x, width=30))+xlim(0, 0.15)
+```
+
+
+# https://zhuanlan.zhihu.com/p/133342400
+
+goplot(human_specific_ego)
+
+
