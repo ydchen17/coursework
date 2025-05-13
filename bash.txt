@@ -1,0 +1,168 @@
+ssh s1796192@eddie.ecdf.ed.ac.uk
+qlogin -q staging
+module load igmm/apps/BEDTools/2.30.0
+cd /exports/cmvm/datastore/sbms/groups/young-lab
+bedtools intersect -a hg19_outcomes_stranded.bed.gz -b ORCADES_proteomics_significant.bed.gz -C
+zcat ORCADES_proteomics_significant.bed.gz | grep -v '#' | awk '{print $NF}' | uniq -c
+
+ORCADES-hg19-counts
+-u -a
+
+/exports/cmvm/datastore/sbms/groups/young-lab/yaoding/hg19_ambiguous
+
+zcat hg19_outcomes_stranded.bed.gz | grep "ambiguous" > /exports/cmvm/datastore/sbms/groups/young-lab/yaoding/hg19_ambiguous
+zcat hg19_outcomes_stranded.bed.gz | grep "mouse-diminished" > /exports/cmvm/datastore/sbms/groups/young-lab/yaoding/hg19_mouse-diminished
+zcat hg19_outcomes_stranded.bed.gz | grep "expression-turnover" > /exports/cmvm/datastore/sbms/groups/young-lab/yaoding/hg19_expression-turnover
+zcat hg19_outcomes_stranded.bed.gz | grep "human-inserted" > /exports/cmvm/datastore/sbms/groups/young-lab/yaoding/hg19_human-inserted
+zcat hg19_outcomes_stranded.bed.gz | grep "mouse-deleted" > /exports/cmvm/datastore/sbms/groups/young-lab/yaoding/hg19_mouse-deleted
+zcat hg19_outcomes_stranded.bed.gz | grep "matched" > /exports/cmvm/datastore/sbms/groups/young-lab/yaoding/hg19_matched
+zcat ORCADES_proteomics_significant.bed.gz > /exports/cmvm/datastore/sbms/groups/young-lab/yaoding/ORCADES_all
+
+/exports/cmvm/datastore/sbms/groups/young-lab/frank/hg19/hg19_all
+
+bedtools intersect -a ORCADES_all -b hg19_ambiguous -C | grep -v '#' | awk '{print $NF}' 
+bedtools intersect -c -a promoters.bed -b QTLs.bed | awk '$NF>0{print}' | wc -l
+
+bedtools intersect -c -a hg19_ambiguous -b ORCADES_all | awk '$NF>0{print}' | wc -l
+bedtools intersect -c -a hg19_expression-turnover -b ORCADES_all | awk '$NF>0{print}' | wc -l
+bedtools intersect -c -a hg19_human-inserted -b ORCADES_all | awk '$NF>0{print}' | wc -l
+bedtools intersect -c -a hg19_matched -b ORCADES_all | awk '$NF>0{print}' | wc -l
+bedtools intersect -c -a hg19_mouse-deleted -b ORCADES_all | awk '$NF>0{print}' | wc -l
+bedtools intersect -c -a hg19_mouse-diminished -b ORCADES_all | awk '$NF>0{print}' | wc -l
+
+
+windowBed -w 50 -c -a hg19_ambiguous -b ORCADES_all | awk '$NF>0{print}' | wc -l
+windowBed -w 50 -c -a hg19_expression-turnover -b ORCADES_all | awk '$NF>0{print}' | wc -l
+windowBed -w 50 -c -a hg19_human-inserted -b ORCADES_all | awk '$NF>0{print}' | wc -l
+windowBed -w 50 -c -a hg19_matched -b ORCADES_all | awk '$NF>0{print}' | wc -l
+windowBed -w 50 -c -a hg19_mouse-deleted -b ORCADES_all | awk '$NF>0{print}' | wc -l
+windowBed -w 50 -c -a hg19_mouse-diminished -b ORCADES_all | awk '$NF>0{print}' | wc -l
+
+windowBed -w 50 -c -a hg19_mouse-diminished -b ORCADES_all | uniq -c | wc -l
+
+
+windowBed -w 50 -c -a hg19_ambiguous -b ORCADES_all 
+
+
+bedtools intersect -a hg19_ambiguous -b ORCADES_all | uniq -c | wc -l
+bedtools intersect -a hg19_expression-turnover -b ORCADES_all | uniq -c | wc -l
+bedtools intersect -a hg19_human-inserted -b ORCADES_all | uniq -c | wc -l
+bedtools intersect -a hg19_matched -b ORCADES_all | uniq -c | wc -l
+bedtools intersect -a hg19_mouse-deleted -b ORCADES_all | uniq -c | wc -l
+bedtools intersect -a hg19_mouse-diminished -b ORCADES_all | uniq -c | wc -l
+
+fisher.test(data.frame(c(58, 138), c(14342,31353))
+fisher.test(data.frame(c(37, 138), c(8745,31353)))
+fisher.test(data.frame(c(16, 138), c(2456,31353)))
+fisher.test(data.frame(c(81, 138), c(11168,31353)))
+fisher.test(data.frame(c(33, 138), c(8018,31353)))
+fisher.test(data.frame(c(200, 138), c(76245,31353)))
+
+
+
+windowBed -w 50 -a hg19_ambiguous -b ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19_expression-turnover -b ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19_human-inserted -b ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19_matched -b ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19_mouse-deleted -b ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19_mouse-diminished -b ORCADES_all | uniq -c | wc -l
+
+fisher.test(data.frame(c(428, 858), c(13972,30633)))
+fisher.test(data.frame(c(242, 858), c(8540,30633)))
+fisher.test(data.frame(c(87, 858), c(2385,30633)))
+fisher.test(data.frame(c(470, 858), c(10779,30633)))
+fisher.test(data.frame(c(174, 858), c(7877,30633)))
+fisher.test(data.frame(c(1082, 858), c(775363877,30633)))
+
+
+windowBed -w 50 -a hg19/hg19_ambiguous -b ORCADES/ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_expression-turnover -b ORCADES/ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_human-inserted -b ORCADES/ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_matched -b ORCADES/ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_mouse-deleted -b ORCADES/ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_mouse-diminished -b ORCADES/ORCADES_all | uniq -c | wc -l
+
+
+windowBed -w 50 -a hg19/hg19_ambiguous -b ORCADES/ORCADES_all  | grep -v '#' | awk '{print $NF}' | uniq -c
+windowBed -w 50 -a hg19/hg19_expression-turnover -b ORCADES/ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_human-inserted -b ORCADES/ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_matched -b ORCADES/ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_mouse-deleted -b ORCADES/ORCADES_all | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_mouse-diminished -b ORCADES/ORCADES_all | uniq -c | wc -l
+
+
+windowBed -w 50 -a hg19/hg19_mouse-diminished -b plasma/plasma.txt  | uniq -c | wc -l
+
+intersectBed -a hg19/hg19_all -b plasma/plasma.txt  | grep "ambiguous" | uniq -c | wc -l
+intersectBed -a hg19/hg19_all -b plasma/plasma.txt  | grep "expression-turnover" | uniq -c | wc -l
+intersectBed -a hg19/hg19_all -b plasma/plasma.txt  | grep "human-inserted" | uniq -c | wc -l
+intersectBed -a hg19/hg19_all -b plasma/plasma.txt  | grep "mouse-deleted" | uniq -c | wc -l
+intersectBed -a hg19/hg19_all -b plasma/plasma.txt  | grep "mouse-diminished" | uniq -c | wc -l
+intersectBed -a hg19/hg19_all -b plasma/plasma.txt  | grep "matched" | uniq -c | wc -l
+
+fisher.test(data.frame(c(7176, 15656), c(7224,15835)))
+fisher.test(data.frame(c(4211, 15656), c(4571,15835)))
+fisher.test(data.frame(c(1197, 15656), c(1275,15835)))
+fisher.test(data.frame(c(5575, 15656), c(5674,15835)))
+fisher.test(data.frame(c(3923, 15656), c(4128,15835)))
+
+windowBed -w 50 -a hg19/hg19_all -b plasma/plasma.txt  | grep "ambiguous" | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_all -b plasma/plasma.txt  | grep "expression-turnover" | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_all -b plasma/plasma.txt  | grep "human-inserted" | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_all -b plasma/plasma.txt  | grep "mouse-deleted" | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_all -b plasma/plasma.txt  | grep "mouse-diminished" | uniq -c | wc -l
+windowBed -w 50 -a hg19/hg19_all -b plasma/plasma.txt  | grep "matched" | sort -k2,3 -u | wc -l
+
+
+cat filename.txt | sort -t' ' -k3,4 -u
+
+windowBed -w 50 -a hg19/hg19_all -b plasma/plasma.txt  | grep "ambiguous" | sort -k2,3 -u | wc -l
+
+windowBed -w 50 -a hg19/hg19_ambiguous -b ORCADES/ORCADES_all | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19/hg19_expression-turnover -b ORCADES/ORCADES_all | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19/hg19_human-inserted -b ORCADES/ORCADES_all | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19/hg19_matched -b ORCADES/ORCADES_all | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19/hg19_mouse-deleted -b ORCADES/ORCADES_all | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19/hg19_mouse-diminished -b ORCADES/ORCADES_all | sort -k1,2 -u | wc -l
+
+windowBed -w 50 -a hg19/hg19_all -b ORCADES/ORCADES_all  | grep "ambiguous" | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19/hg19_all -b ORCADES/ORCADES_all  | grep "expression-turnover" | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19/hg19_all -b ORCADES/ORCADES_all  | grep "human-inserted" | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19/hg19_all -b ORCADES/ORCADES_all  | grep "mouse-deleted" | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19/hg19_all -b ORCADES/ORCADES_all  | grep "mouse-diminished" | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19/hg19_all -b ORCADES/ORCADES_all  | grep "matched" | sort -k1,2 -u | wc -l
+
+fisher.test(data.frame(c(308, 554), c(14092,30937)))
+fisher.test(data.frame(c(156, 554), c(8626,30937)))
+fisher.test(data.frame(c(53, 554), c(2419,30937)))
+fisher.test(data.frame(c(297, 554), c(10952,30937)))
+fisher.test(data.frame(c(133, 554), c(7918,30937)))
+fisher.test(data.frame(c(837, 554), c(75608,30937)))
+
+
+windowBed -w 50 -a hg19/hg19_all -b ORCADES/ORCADES_all  | grep "mouse-diminished" | sort -k2,3 -u
+module load igmm/apps/BEDTools/2.30.0
+cd /exports/cmvm/datastore/sbms/groups/young-lab
+
+/exports/cmvm/datastore/sbms/groups/young-lab/human/VIS_proteomics_significant.bed.gz
+
+human/VIS_proteomics_significant.bed.gz
+
+windowBed -w 50 -a hg19_outcomes_stranded.bed.gz -b VIS_proteomics_significant.bed.gz  | grep "ambiguous" | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19_outcomes_stranded.bed.gz -b VIS_proteomics_significant.bed.gz  | grep "expression-turnover" | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19_outcomes_stranded.bed.gz -b VIS_proteomics_significant.bed.gz  | grep "human-inserted" | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19_outcomes_stranded.bed.gz -b VIS_proteomics_significant.bed.gz  | grep "mouse-deleted" | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19_outcomes_stranded.bed.gz -b VIS_proteomics_significant.bed.gz  | grep "mouse-diminished" | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19_outcomes_stranded.bed.gz -b VIS_proteomics_significant.bed.gz  | grep "matched" | sort -k1,2 -u | wc -l
+windowBed -w 50 -a hg19_shuffle.promoters.CDS.bed.gz -b VIS_proteomics_significant.bed.gz | sort -k1,2 -u | wc -l
+
+fisher.test(data.frame(c(164, 293), c(14236,31198)))
+fisher.test(data.frame(c(80, 293), c(8702,31198)))
+fisher.test(data.frame(c(37, 293), c(2435,31198)))
+fisher.test(data.frame(c(163, 293), c(11086,31198)))
+fisher.test(data.frame(c(68, 293), c(7983,31198)))
+fisher.test(data.frame(c(424, 293), c(76021,31198)))
+
+windowBed -w 50 -a ORCADES_proteomics_significant.bed.gz -b hg19_shuffle.promoters.CDS.bed.gz | sort -k2,3 -u | wc -l
+
+windowBed -w 50 -a hg19_shuffle.promoters.bed.gz -b VIS_proteomics_significant.bed.gz | sort -k2,3 -u | wc -l
