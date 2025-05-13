@@ -1,0 +1,408 @@
+---
+title: 'IBMS3 ICA2: data analysis report'
+date: 2020-03-27
+tags: r
+categories: data-analysis
+output: 
+  bookdown::pdf_book: default
+urlcolor: blue
+header-includes:
+- \usepackage{float}
+- \floatplacement{figure}{H}
+- \floatplacement{table}{H}
+- \usepackage{sectsty}
+- \allsectionsfont{\color{NavyBlue}}
+csl: zje.csl
+bibliography: My Collection.bib
+---
+
+# Introduction
+
+Osteoporosis is a systematic skeletal disease characterised by low bone density and deterioration of bone architecture which leads to an increased risk of fracture [@Compston2019]. It is related to ageing and is more commonly reported in females than in males [@Pietschmann2009]. Worldwide, it is a major public health issue that affects 1 in 3 women aged over 50 years old. Great importance should be attached to understanding how to treat and prevent the disease [@Sozen2017].
+
+In females, osteoporosis is primarily caused by oestrogen decline, which can be effectively reversed and prevented by hormone replacement therapy (HRT) [@Gambacciani2014]. However, the safety concerns of the therapy, especially its link to cancer onset [@Gambacciani2014;@WritingGroupfortheWomensHealthInitiativeInvestigators2002;@MillionWomenStudyCollaborators2003], decreases its use, which consequently increases the risk of osteoporosis for women [@Karim2011]. The use of HRT is still controversial due to a lack of comprehensive evaluation of the effect of HRT [@Shulman2011]. 
+
+To find out whether and how HRT and/or Age can affect the risk of osteoporosis, our study analysed data from a case-control study involving 4500 females. We used R to assess how the odds of osteoporosis are influenced by HRT and/or age so that we can explain their relationships to the risk of the disease.
+
+# Text analytic
+
+**Understanding the data** is the first step of our analysis.
+
+First, the result of the case-control study is the proportions of subjects with osteoporosis, called cases, and those without osteoporosis, called controls in each group of certain age ranged between 50-90 and given certain treatment, either HRT or no HRT. By definition, the proportions are prevalence as prevalence is defined as the proportion of a population with certain condition among a population-at-risk (PAR). [@Schoenbach2000] Elderly females in our study are PAR. We can know the prevalence of osteoporosis/no osteoporosis within each experimental group.
+
+Second, with increasing sample size, according to the law of large numbers, the observed frequency of a certain condition, should converge to the probability of the condition [@Siegmund2018]. Therefore, prevalence almost equals to possibility when the sample size is large enough. Considering that the dataset given to us is a summative result involving 4,500 individuals in the case-control study, the sample size (n=4,500) for the whole study, and the respective sample size for each age group should be large enough to make the values of the observed prevalence almost equals to those of the probability.
+
+**Understanding the aims** is the second step. We are required to discover the relationship between Age, HRT and the risk of osteoporosis. Statistically, risk is defined as the incidence proportion of an event, which refers to the incidence of osteoporosis in this report, during a period of time[@Ranganathan2015]. However, risk is unable to be calculated in our study since the study design does not use disease-free populations [@Dicker2006].
+
+Nevertheless, odds is more often used in such a study to infer the risk. Odds is defined as the ratio of the possibility of the occurrence of an event to the possibility that the event does not happen. In this report, it means the ratio of the possibility of osteoporosis, whose values equal to those of the prevalence, to the possibility of no osteoporosis, equals to the prevalence of no osteoporosis within the group (Equation \@ref(eq:odds)).
+
+\begin{equation} 
+Odds = \frac{Probability(osteoporosis) }{Probability(no\,osteoporosis)}
+= \frac{Prevalence(osteoporosis) }{Prevalence(no\,osteoporosis)} (\#eq:odds)
+\end{equation} 
+
+To compare the change of risk, odds ratio (OR) and the relative risk (RR) are usually calculated as measures of association between groups. OR correlates with RR and is well recognised as an indicator of risk for disease. [@Chen2010] If the ratio is larger than 1, it means the exposure is associated with a higher chance of disease incidence, i.e. the risk, while if it is less than 1, it means the exposure is associated with a lower chance of disease incidence. OR can be calculated by Equation \@ref(eq:or):
+
+\begin{equation} 
+OR = \frac{Odds(exposed)}{Odds(unexposed)} = \frac{Odds(HRT) }{Odds(no\,HRT) }(\#eq:or)
+\end{equation} 
+
+Therefore, to find the relationship between the effect of Age and HRT on osteoporosis risk, we need to find the relationship between the two factors and the odds of osteoporosis. Then we should examine whether the correlation between these variables and the odds is significant and we should also determine the effect size indicated by the OR. Besides, considering that the data set is multivariate, the interaction between variables should be described, if it is found significant.
+
+# Exploratory analysis
+```{r include=FALSE}
+# r setup
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Data preparation
+To analyse the results, we need to import them with R, along with the packages we will use for our analysis:
+```{r importing the data}
+suppressPackageStartupMessages(library(emmeans))# for: emmean, emmip
+library(ggplot2)                 # ggplot
+theme_set(theme_bw())            # ggplot theme
+library(reshape2)                # for: melt, dcast
+library(knitr)                   # for: kable
+options(knitr.table.format = "pandoc")  # change all kables to pandoc format
+results <- read.csv("osteo.csv") # Import the dataset
+```
+We can exhibit the first 6 lines of the dataset with the following code, but we may not exhibit the output of the code, since it could be duplicate information after we visualise them in a well-labelled graph later.
+```{r eval=FALSE, include=TRUE}
+head(results)
+```
+
+Then, we will notice that HRT is both the name of the variable and its values, which may lead to confusion when we refer to the variable or its values, so we change the name of the variable to treatment:
+
+```{r}
+names(results)[names(results)=="HRT"] <- "Treatment" 
+```
+
+## Data visualisation
+
+Note that the prevalence of two contradicting medical conditions, which sums up to 100%. It should be better if we can visualise them in a percentage stacked plot or a stacked plot as the data have been normalised to percentages, as shown in Figure \@ref(fig:Proportion-plot) below. This gives us several benefits: 1) two different treatment groups are visualised in two graphs; 2) two different medical conditions, osteoporosis and no osteoporosis, are visualised in different colours. In short, it is more informative than presenting a table alone. 
+
+```{r Proportion-plot, fig.cap = "(Percentage) stacked plots of the proportion of osteoporotic and non-osteoporotic subjects"}
+# Use a backup dataset to avoiding mess up with results from other chunks
+results4plot <- results
+# Change the name of the column before using ggplot::facet_wrap()
+names(results4plot)[names(results4plot)=="NoOsteoporosis"] <- "No Osteoporosis"
+# Number all rows with unique IDs
+results4plot$ID <- 1:nrow(results4plot) 
+# Remain the first 3 columns and reshape the latter 3 columns
+results4plot.headers <- results4plot[c("ID","Age","Treatment")]
+results4plot.values<- melt(results4plot[c("ID","Osteoporosis","No Osteoporosis")],
+                           variable.name ="Outcome",value.name="Proportion",id.vars="ID")
+# Merge the 2 subsets according to preencoded ID
+results4plot <- merge(by="ID",results4plot.headers,results4plot.values)
+# Visualise the outcome table in percentage stacked barplots
+ggplot(results4plot, aes(fill=Outcome, y=Proportion, x=Age)) +   # Define variables
+  geom_bar(position="stack", stat="identity")+                   # Stacked plot
+  scale_x_continuous(breaks=seq(50,90,5))+ylab("% proportion")+  # Axis scale & label
+  theme(legend.position="bottom",legend.direction="horizontal",  # Legend options
+        legend.title = element_blank())+
+  geom_text(aes(x = Age, y = Proportion, label = paste0(Proportion,"%")), # Data label                
+            position = position_stack(vjust = 0.5), size = 2.5)+
+  facet_wrap(vars(Treatment))  # Divide the plot according to Treatment
+```
+
+By looking at Figure \@ref(fig:Proportion-plot), there are two categories which refer to two different types of treatment, HRT and no HRT. The proportions of subjects with and without osteoporosis are calculated for 9 ages and every 5 years between 50 and 90 years, which makes 9 pairs of data. Although 4,500 is a large sample size, the 9 pairs of data for analysis based on the results from 4,500 subjects is a small sample size for most analyses. When using the statistic methods that require a normal distribution, a normality test is needed.
+
+Interestingly, the data are not organised as typical results from a case-control study. In each group at a given age, the proportions of the two conditions, no osteoporosis and osteoporosis, instead of the proportions of different exposures, HRT or no HRT, are shown. The two proportions seem to be different dimensions, yet they are not independent, because they always sum up to 100 in a given treatment group at any age. Thus, the dataset can be simplified to 3 dimensions (i.e. age, treatment, and osteoporosis prevalence) as Table \@ref(tab:results-wide):
+
+```{r results-wide}
+results.wide <- # Transform to a wide data showing the prevalence of osteoporosis
+  dcast(results, Treatment~Age, value.var = "Osteoporosis") 
+names(results.wide)[1] <- "Age" # Change the first column name to "Age"
+kable(results.wide, caption = "Osteoporosis prevalence by age and treatment groups")
+```
+
+Table \@ref(tab:results-wide) shows how osteoporosis prevalence changes with age, which can be visualised by Figure \@ref(fig:prevalence-plot) below:
+
+```{r prevalence-plot,fig.height=2.5, fig.cap = "Change of the prevalence of osteoporosis with age"}
+ggplot(results, aes(x=Age,y =Osteoporosis, colour=Treatment)) +
+  geom_line(size=1)+
+  ylab("% prevalence of osteoporosis")+
+  scale_colour_manual(name="Treatment",values=c("darkred","steelblue"))
+```
+
+Note that in the HRT group, the osteoporosis prevalence at the age of 65 is lower than at the age of 60 (Table \@ref(tab:results-wide) and Figure \@ref(fig:prevalence-plot)). Considering that there is no cure for osteoporosis [@Lewiecki2019], the decrease suggests that there were different groups of people of the two ages. Also, no country has a life expectancy longer than 85 years in the world [@Roser2013], making it unlikely to track the 4,500 subjects throughout the years. Tracking those who can live until 90 years old often makes the statistics lack representativeness of the general public who are mostly unable to live that long. In conclusion, each age group should be distinct from each other, making it possible that the study be a cross-sectional case-control study that uses, as described in a previous study [@Klossek2005], but we are unable to know whether this conjecture is right unless given further details.
+
+## Measures of central tendency
+
+Assuming each age group and treatment are weighted the same, we can see the summary of the data set to observe its central tendency:
+```{r sum}
+kable(summary(results),caption = "Measures of central tendency")
+```
+
+Table \@ref(tab:sum) above that describes measures of the central tendency in our data set. Note that the measures are only meaningful when the data from each group is of the same weight, or else there might be a base rate fallacy^[For example, we calculate the mean of age because we assume each age group has the same sample size. However, if among the 4,500 individuals involved in the study, there are 3,700 aged 50, and for the rest of the ages, there are only 100 subjects. Then the mean of age in the HRT group should be equal to $(3700\times50+100\times55+100\times60+100\times65+...+100\times90)\div4500=54$ instead of the value of arithmetic mean of age which equals to 70.]. Table \@ref(tab:sum) shows major deviance of the median from the mean in both HRT and no HRT groups, which could suggest a non-normal distribution. We can examine this with Shapiro–Wilk test, as shown below:
+```{r}
+# Normality test for osteoporosis prevalence in HRT group
+shapiro.test(results[results$Treatment=="HRT",]$Osteoporosis)
+# Normality test for osteoporosis prevalence in no HRT group
+shapiro.test(results[results$Treatment=="No HRT",]$Osteoporosis)
+```
+The test results show that the prevalence data of osteoporosis in no HRT groups are not normally distributed ($p=0.1493>0.05$), while those in HRT groups is normally distributed ($p=0.001678<0.05$). 
+
+# Aims and hypotheses
+
+We are aimed to assess whether Age and HRT affect the risk of osteoporosis and describe how each of the terms can influence the risk of osteoporosis. Figure \@ref(fig:prevalence-plot) can be considered as an interaction plot^[A similar but essentially the same interaction plot can be made with R script: `interaction.plot(results$Age, results$Treatment, results$Osteoporosis)`] that shows how Age and HRT interact with each other on the effect on osteoporosis prevalence. Since the odds of osteoporosis depends on prevalence, the interaction, which is statistically defined as a situation where the effect of a fixed factor is changed due to the values of another variable [@Darwin2005], affects the odds and the risk. Assume that $p=0.05$ is the significant level in this report. We can have three hypotheses based on our aim and what we have observed in Figure \@ref(fig:prevalence-plot):
+
+1. Age has a significant impact on the odds of osteoporosis. More specifically, the odds of osteoporosis increases with age, regardless of treatment.
+2. HRT has a significant impact on the odds of osteoporosis. More specifically, HRT can significantly reduce the odds of HRT.
+3. There is a significant interaction between age and treatment.
+
+To prove the hypotheses involving more than two terms and potentially interrelated variables, a regression model is recommended. With the regression model, we should test whether the terms, including Age, Treatment and the interaction term are significant and describe the effect of Age and HRT on the odds osteoporosis and if there is a significant interaction between Age and Treatment, we should also describe how the effect of HRT changes with age and how the effect of age differ when there is and is not HRT.
+
+# Model fitting
+
+## Rationale
+
+### Consideration of the interaction term
+
+The presence of interactions in a multivariate model, such as our data, makes the main effects no longer of interest, because the main effects alone fail to describe the relationship between variables. [@Darwin2005, pp.146] Although not all interactions may have biological plausibility and reproducibility [@Altman1996], it is reasonable to analyse the interaction between Age and HRT and its effects on the risk of osteoporosis. First, ageing is associated with the increased risk of osteoporosis onset [@Sozen2017], whereas HRT has been known to reduce the risk [@Gambacciani2014]. Thus, the preventive effect of HRT might be reduced or even reversed by the increase of the age. Second, previous studies have shown such interactions. For example, @Port2003 reported that HRT was a more effective method to prevent osteoporosis for women aged 80 years or more. Therefore, finding out both what are the main effects and whether there is a significant interaction between the age and the treatment is important.
+
+### Model choice
+
+To study our multivariate data set that includes non-normally distributed data (see *[Measures of Central Tendency](#measures-of-central-tendency)* section), we can use a generalised linear model (GLM) that requires no normality test. In the *[Text Analytic](#text-analytic)* session, we learn that we can calculate the odds to estimate the risk. In GLM, we can use the link function of the $logit$ function, as shown by Equation \@ref(eq:glm), to create a logistic regression.
+
+\begin{equation} 
+  log(odds(Y))=log(\frac{p(Y)}{1-p(Y)})=\beta_0+\beta_1X_1+\beta_2X_2+...+\beta_nX_n
+  (\#eq:glm)
+\end{equation} 
+
+In Equation \@ref(eq:glm), Y represents the event of interest, i.e. developing osteoporosis, X represents the factors that influence the log-odds of Y. For $log(\frac{p(Y)}{1-p(Y)})>0$, $0<p(Y)<1$. This feature makes the logistic regression very suitable for the data ranging between 0 and 1, such as the prevalence of osteoporosis. So, a logistic regression model could be more suitable than others for us to find the relationships between variables.
+
+## Logistic regression model
+
+To establish a logistic regression model, we need suitable parameters and a well-defined formula. Since the smallest age is 50, we will deduce all the ages by 50 to create a variable called $AgeAdj$. Using such a variable does not affect other coefficients in the model but the intercept. The intercept shows the log(odds) when $Age = 50$ instead of $Age = 0$, which simplifies our calculation. Treatment is regarded as a dummy variable where HRT equals to 1 and No HRT equals to 0. Then we can establish a model as below:
+
+\begin{equation} 
+  log(odds)=\beta_0+\beta_1\times AgeAdj+\beta_2\times Treatment+\beta_3\times AgeAdj\times Treatment 
+  (\#eq:logitmodel)
+\end{equation}
+
+The R script to build the model accordingly is shown below:
+
+```{r GLM}
+results4GLM <- results
+# To change the order of factors for GLM
+results4GLM$Treatment <- factor(results4GLM$Treatment, levels = c("No HRT","HRT"))
+# Deduce age by 50 to make it start from 0
+results4GLM$AgeAdj<- results$Age -50
+GLM <- glm(cbind(Osteoporosis,NoOsteoporosis)~AgeAdj*Treatment,
+           family = binomial(link = "logit"), 
+           data= results4GLM)
+```
+
+Then we can visualise the model parameters in Table \@ref(tab:glm-summary) below:
+```{r glm-summary}
+
+kable(cbind(
+  coef(GLM),             # beta
+  exp(coef(GLM)),        # OR 
+  format(as.data.frame(suppressMessages(exp(confint(GLM))),digit=3)),  ## CIs
+  format(as.data.frame(summary(GLM)$coefficients)$"Pr(>|z|)",digit=3)),
+  caption = "GLM parameters",  ## Caption
+  col.names=c("beta","OR", "2.5%CI", "97.5%CI", "p-value"))
+```
+
+## Model evaluation
+
+### Hypothesis testing
+
+```{r goodness}
+kable(cbind(GLM[["deviance"]],GLM[["null.deviance"]], GLM[["aic"]]),
+      col.names = c("Deviance","Null deviance", "AIC"),
+      caption = "Parameters of goodness-of-fit")
+```
+
+Table \@ref(tab:goodness) shows three parameters related to the goodness-of-fit. The null deviance is the deviance of the null model that supposes that either Treatment or AgeAdj affects the odds of disease, while the residual deviance is that of our model. Apparently, the deviance of our model is much smaller than that of the null model, suggesting a bad fitting for the null model, which hypothesise that none of the age and the treatment influences the odds of disease. Furthermore, the p-value for the intercept is significant ($p=5.3\times10^{-51}<0.05$; Table \@ref(tab:glm-summary)), meaning that our model is significantly different from the null model. Thus, we can reject the null model. Either/both of Age and Treatment has a significant impact.
+
+### In-sample forecast
+
+After we have developed a regression model based on our analysed data, an in-sample forecast can help us to evaluate the predictive capabilities of the model. To do this, we should calculate the values and the CIs of the predicted prevalence, or called possibility, at different ages for females with or without HRT based on our model, as shown in Figure \@ref(fig:prediction-plot).
+
+```{r prediction-plot, fig.height=2.5, fig.cap="Predicted proablity and observed prevalence of osteoporosis^[Why we use different terms is because although the prevalence is close to the probability, but it is not probability. ]  "}
+#Build a function to calculate HRT prediction and CIs
+Pred_with_CI <- function(model, category){
+  newdata <- list(AgeAdj = 50:90-50, Treatment = rep(category,length(50:90)))
+  model <- predict(model, type = "link", newdata, se.fit = TRUE)
+  model$loCI <- plogis(model$fit - qnorm(1 - (1 - 0.95)/2)*model$se.fit)*100
+  model$hiCI <- plogis(model$fit + qnorm(1 - (1 - 0.95)/2)*model$se.fit)*100
+  model$fit <-  plogis(model$fit)*100
+  model$Age <-  50:90 
+  return(model)}
+# Data preparation for visualisation
+pred <- list(Age=50:90,NoHRT=Pred_with_CI(GLM, "No HRT"),HRT=Pred_with_CI(GLM, "HRT"))
+prev_by_treatment <-reshape2::dcast(results,Age~Treatment,value.var ="Osteoporosis")
+# Not changeing the name will disable ggplot to choose the column for y.
+names(prev_by_treatment)[names(prev_by_treatment)=="No HRT"] <- "NoHRT"
+ggplot() +ylab("%")+#plot all data: geom_point for observed, geom_smooth for predicted
+  geom_point(aes(x=Age,y=NoHRT,colour="No HRT",shape="No HRT"),prev_by_treatment)+ 
+  geom_point(aes(x=Age,y=HRT,colour="HRT",shape="HRT"), prev_by_treatment)+  
+  geom_smooth(aes(x=Age,y = HRT.fit, ymin = HRT.loCI, ymax = HRT.hiCI,         
+                  colour="HRT"), stat = "identity", as.data.frame(pred))+         
+  geom_smooth(aes(x=Age,y = NoHRT.fit,ymin = NoHRT.loCI, ymax = NoHRT.hiCI,    
+                  colour="No HRT"), stat = "identity", as.data.frame(pred))+
+  # Manually add legends based on shape and colour
+  scale_colour_manual(values = c("No HRT"="steelblue", "HRT"="darkred"), 
+                      name = "Predicted possibility \n(with 95% CI)")+
+  scale_shape_manual(values = c("No HRT"=16, "HRT"=17), name = "Observed prevalence") 
+```
+
+Figure \@ref(fig:prediction-plot) actually shows a poor predictive capability of our model, since most observations do not fall in the confidence band where 95% of data fall in, which could suggest a bad fitting. So we will analyse the goodness of fit of the model compared to other models in the next section.
+
+### Comparison between possible models
+
+Although the in-sample forecast provides visible information about the model fitting, considering that the potential bad fitting shown in Figure \@ref(fig:prediction-plot), it is better to compare our model with other possible models. Comparison of the models with and without the interaction is shown in Table \@ref(tab:compare1) below:
+
+```{r compare1}
+kable(drop1(GLM), caption = "Goodness-of-fit change  after dropping
+      the interaction term")
+```
+
+Table \@ref(tab:compare1) compares the models with and without drop one term, which is AgeAdj:Treatment. It shows the coefficients indicating goodness-of-fit of the two models. After dropping the interaction, AIC rises from 122.6511 to 126.9000, suggesting that the model with the interaction has a better goodness-of-fit. Also, failure to include the interaction in the model leads to the increase of deviance from 37.47361 to 43.72252, which also supports the better goodness-of-fit of the model with the interaction.
+
+We can drop more terms, as shown in Table \@ref(tab:compare2):
+```{r compare2}
+GLM.no_interaction <-  # Creating a model with the interaction term
+  glm(cbind(Osteoporosis,NoOsteoporosis)~AgeAdj+Treatment, 
+      family = binomial(link = "logit"), 
+      data= results4GLM)
+kable(drop1(GLM.no_interaction), digits = 3, 
+      caption = "Goodness-of-fit change after dropping more terms")
+```
+
+Table \@ref(tab:compare2) shows that the model that only consider Age or Treatment has much higher deviance (Treatment-only model: 582.40849, Age-only model: 173.62469) and a much higher AICs ((Treatment-only model: 663.5860, Age-only model: 254.8022), compared to the model which considers the two factors without interaction (AIC: 126.9000, deviance: 43.72252), which has proven to be no better fitting than the model considering the interaction term. In conclusion, the model with the interaction is the best-fitting among all these models.
+
+# Interpretations and further analyses
+
+Table \@ref(tab:glm-summary) is a summary of logistic regression model parameters, including $\beta$, the odds calculated according to $\beta$, 95% confidence intervals, p values for each term. We fill the $/beta$ values we have acquired according to the logistic model into Equation \@ref(eq:logitmodel) that we use to build our model:
+$$
+log(odds)=-3.2502787+0.1307565\times AgeAdj-0.605865\times Treatment-0.0314041  \times AgeAdj  \times Treatment
+$$
+Apparently, according to Table \@ref(tab:glm-summary), the interaction term ($p=1.19e-02$) is significant. Therefore, when describing the effect of either of HRT or Age, it is necessary to describe the value of the other variable. Then we will begin with analysing the effect of age.
+
+## The effect of age
+
+Our observations in Figure \@ref(fig:prevalence-plot) lead to the hypothesis that the risk of osteoporosis increases significantly with age, which is confirmed in our model. The effect of age has a p-value of $3.5\times10^{-53}$ which is far less than 0.05, indicating the significance of the effect. The increase of age can have an impact on the odds of disease, since every single year, the OR of disease increases to 1.14 times (95% CI: [1.12, 1.16]; Table \@ref(tab:glm-summary)) of the OR of the previous year, which suggests the increased risk owing to the increasing age. 
+
+To appreciate the effect of age, we need to figure out what is the reference level. First, the intercept is -3.25, which means that the basal log(odds) of getting osteoporosis for an individual who does not use HRT (i.e. in the reference group) at the age of 50 (alternatively, $AgeAdj=0$). Thus, the odds for the person is $e^{-3.25}\approx0.03877421=3.9\%$ (Table \@ref(tab:glm-summary)). The CIs of the odds is between 0.02498 and 0.0584 (Table \@ref(tab:glm-summary)), which is significant, suggesting only 3.9% (95%CI: [2.5, 5.8]) of females have osteoporosis at the age of 50. 
+
+Taking the interaction into account, for Treatment is a dummy variable where HRT=1 and No HRT = 0, 
+
+$$
+log(odds)=\begin{cases}
+-3.856144+0.0993524\times AgeAdj & (with\ HRT) \\
+-3.2502787+0.1307565\times AgeAdj & (without\ HRT) \\
+\end{cases}
+$$
+
+When HRT is used, the reference level of the odds of osteoporosis (i.e. $Age=50\ or\ AgeAdj=0$) equals to $e^{-3.856144}=0.02114939$, which means it is estimated that only around 2.1% of the subjects who use HRT has osteoporosis when they are 50 years old. Similarly, when HRT is not used, the reference level of the odds of the disease equals to $e^{-3.2502787}=0.0387634$, which means only 3.9% of the subjects without HRT is expected to have osteoporosis when they are 50. For both groups, the odds are fairly low at the age of 50, but HRT already lowers the odds at the age, as our model shows.
+
+What makes a difference is that the rate of odds increasing with every single age. For HRT users, log(odds) increases by 0.0993524 each year after they are 50 years old, which means the odds increases to $e^{0.0993524}=1.104455$ times of the previous year, while for non-HRT users, log(odds) increases by 0.1307565 each year and odds increases to $e^{0.1307565}=1.13969$ times of the previous year every year. The yearly odds ratio is much larger for non-HRT users. Although both HRT and non-HRT users are exposed to increased risk, as our model suggests, the odds increase faster for non-HRT users.
+
+## The effect of HRT
+
+### Regression model-based interpretation
+
+For HRT, $p=0.08>0.05$, which means its effect is not significant if we compare two groups as a whole (Table \@ref(tab:glm-summary)). Yet, for the effect of HRT, $\hat{\beta} = -0.6059$. This means that compared to the references, which refers to no HRT group, the subjects with HRT have an odds of 54.6%, which suggests that the odds equals to $e^{-0.6059}\approx0.5455832=54.6\%$ (Table \@ref(tab:glm-summary)). The 95% CI is between 0.2717 and 1.075 (Table \@ref(tab:glm-summary)), indicating a broad range of possibility where the true effect size could be. Therefore, in this sense, it is also reasonable to see that HRT increases the chance of osteoporosis when OR is larger than 1 but smaller than 1.075, the upper boundary of the CI. Although there is a large effect size, the effect itself is not significant.
+
+One of the reasons to cause the insignificance of the effect could be that the effect is not always significant at all ages. Recall that the interaction term is significant, so we should evaluate the age-specific effect of HRT with pairwise comparison, as shown by Table \@ref(tab:pairwise) below: 
+```{r pairwise}
+marginals <- emmeans(GLM, ~AgeAdj*Treatment, cov.reduce = unique)
+pairwise_comparison <-as.data.frame(pairs(marginals, by = "AgeAdj", type = "response"))
+pairwise_comparison$p.value <- pairwise_comparison$p.value
+kable(pairwise_comparison, caption="Pairwise comparison of HRT effect")
+```
+
+Table \@ref(tab:pairwise) shows a significant effect of HRT ($p<0.05$) for those aged between 55 ($AgeAdj=5$) and 90 ($AgeAdj=40$), while it shows that the effect of HRT is not significant for those aged 50 ($AgeAdj=0$). However, the odds ratio increases steadily with age, from 1.83283 at the age of 50 to 6.43677 at the age of 90, which suggests an increasing effect of HRT when people grow older. Also, note that the odds ratio of No HRT/HRT increases with age. 
+
+In conclusion, our results show that not taking HRT can significantly increase the odds of osteoporosis, which suggests a protective effect of HRT against osteoporosis. The effect increases with age and becomes significant after the age of 55. Therefore, our hypothesis that HRT can lower the odds of osteoporosis is not completely statistically correct, since there is no significant effect at the age of 50, while there is increasing protective effect after 55 years old. The increasing effect can be visualised in Figure \@ref(fig:byage), as the slope rate increases with age.
+
+```{r byage, fig.height=3, fig.cap="The effect of HRT by age"}
+emmip(GLM, AgeAdj~Treatment, type = "response",cov.reduce = FALSE)
+```
+
+### Disparity in age threshold
+
+Interestingly, however, Fisher's exact test shows a different result for the effect of HRT at different ages. For example, for Age=50 (AgeAdj=0), we can have a $2 \times 2$ table like Table \@ref(tab:exemplar):
+```{r exemplar}
+results.Age50<-results[which(results$Age==50), ]
+results.Age50$Age<-NULL
+kable(results.Age50, col.names = c("","% Osteoporosis","% No osteoporosis"),
+      caption = "Exemplar 2×2 Table for Fisher's exact test ($Age=50$)")
+```
+
+Then, for all different ages, we can have 9 $2 \times 2$ tables, which can be used for the calculation of Fisher's exact test. The test can tell us he OR and their CIs and p-values, as shown in Table \@ref(tab:fisher) below: 
+
+```{r fisher}
+OR_results<-NULL          # create an empty dataframe
+for (age in unique(results$Age)){
+  results.age<-results[which(results$Age==age), ]
+  results.age$Age<-NULL
+  fisher<-fisher.test(data.matrix(results.age[,-1]))
+  new_results<-data.frame(  # Define values in dataframe
+    "Age"=age,
+    "p.value"=format(fisher[["p.value"]],digits=3), 
+    "OR"=fisher[["estimate"]][["odds ratio"]],
+    "loCI"=as.vector(fisher[["conf.int"]])[1],
+    "hiCI"=as.vector(fisher[["conf.int"]])[2])
+  OR_results<-rbind(OR_results, new_results)}
+kable(OR_results, digits = 3, 
+      caption="Result of Fisher's exact test",
+      col.names = c("Age","p-value", "OR", "2.5%","97.5%"))
+```
+
+According to Table \@ref(tab:fisher), when the age equals to 50, 55 or 60, the effect of HRT is not significant, while when the age equals to 65, 70, 75, 80, 85, 90, the effect is significant. This may suggest that the effect of HRT only becomes significant after 60 years old, while before that the drug does not significantly protect the patients from osteoporosis. The difference in the age threshold for significant HRT effect could be due to the conservative nature of the Fisher's exact test, since the actual rejection rate of the test is actually lower than the nominal significance level of 0.05%.
+
+### Disparity in odds ratios
+
+Nevertheless, the odds ratio calculated from the samples, as Fisher's exact test shows, are different from those based on logistic regression model. The disparity between the observed and predicted OR can be visualised in Figure \@ref(fig:or-compare) below:
+
+```{r or-compare, echo=TRUE, fig.cap="The change of observed and predicted OR for HRT with age", fig.height=2.5}
+# Calculating odds ratios for GLM
+Odds.pred<-data.frame(cbind(pred$Age, ((pred$HRT$fit/100)/(1-pred$HRT$fit/100))/
+                              (pred$NoHRT$fit/100/(1-pred$NoHRT$fit/100))))
+colnames(Odds.pred)<-c("Age", "OR")
+# Plotting the OR changes with age
+ggplot()+
+  geom_line(aes(x = Age, y = OR, colour = "Observed"), OR_results, size=1)+ #Observed OR
+  geom_line(aes(x = Age, y = OR, colour = "Predicted"), Odds.pred, size=1)+ #Prediceted OR
+  geom_hline(yintercept=1, linetype="dashed", colour = "red")+ # OR = 1 dashed line
+  labs(x ="Age", y = "OR")+  # y axis label
+  # Manual legend
+  scale_colour_manual(name=NULL, values=c("Predicted"="slategray3", "Observed"="steelblue4"))
+```
+
+Figure \@ref(fig:or-compare) shows the age-dependent change of HRT effect on osteoporosis that supports the presence of the interaction term, since no matter whether it is according to our observations and our predictive model, the effect of HRT is different at different ages, but note that Figure \@ref(fig:or-compare) itself indicates nothing about the significance of the effect but the odds ratios, which indicates the effect size. According to our predictive model, the ORs are always below 0, which means HRT have a protective effect at all ages, whereas according to our observed ORs, there was not any protective effect when the age was no less 60 years. This could be a result of wide confidence interval during the ages, because there is no significant effect of HRT at before 55 based on either of our model or Fisher's exact test. 
+
+# Limitations
+
+A major drawback in our analysis is that our predictive model does not have enough predictiveness. According to our in-sample forecast (in Figure \@ref(fig:prediction-plot)), most observations we have so far acquired do not fall in the confidence intervals. One reason for this is that our measure is a single experiment with random effects that need to be duplicated for more times to acquire the correct result. The second reason is that we could have failed to consider some factors that affect the model. Thus, we should take them into consideration and introduces more terms in the model. The third reason is that there are biases and major errors that disadvantage the study, which will soon be discussed.
+
+## Overestimating risk with OR
+
+We are unable to calculate the risk of osteoporosis but to infer the association between age and treatment through risk-related variable, the odds and odds ratio. However, our results could overestimate the effect of age and underestimate the effect of HRT. The comparative risk of one group with certain exposure compared to another without the exposure can be shown as the relative risk (RR).
+OR and relative risk (RR) are different measures of association that correlate with each other. OR tends to exaggerate the association: when RR is larger than 1, OR is larger than RR; when RR is smaller than 1, OR is smaller than 1. The disparity between the two parameters is small, only when there is no association (i.e. $OR=RR=1$), or when the event is rare (normally smaller than 10%). However, in our study, osteoporosis is not at all a rare disease; in fact, more than two-thirds of the people got the disease when they were 90, which means that our OR could greatly exaggerate the risk. Since the ORs for every single year older (Table \@ref(tab:glm-summary)) and no HRT (Table \@ref(tab:pairwise)) are greater than 1, **the protective effect of HRT could be underestimated while the relative risk of age could be overestimated.** 
+
+## Opaque experimental design and records
+
+The data set we acquired does not report the protocol and records of data collection, as well as possible alterations or transformation to the data. How the study was carried out and how the data were recorded may have a significant impact on the results. We can assume that the study is a cross-sectional case-control study that uses different age groups because of 1) a reduction in prevalence which is unlikely due to no cure for osteoporosis and 2) the fact that most people hardly stay alive until their 90s. However, our assumption could be wrong, if the study could use a diagnostic protocol that allows the reduction to happen or the study really measures 4,500 consistently for 40 years, or the prevalence data at that age could be wrong. 
+
+If the diagnostic protocol is different from what is recognised today, then what were the criteria for admission of subjects and their grouping? Were they consistent across different doctors and different medical centres? If the criteria were inconsistent, a patient with osteoporosis might be diagnosed by one doctor and be considered healthy by another. Then our results of osteoporosis prevalence could be inaccurate. If the study really measures 4,500 consistently for 40 years, then will the result still be useful for ordinary people who normally cannot live that long? Besides, how do the researcher define the HRT users? How frequent should one take HRT to be defined in the study? These differences in **unreported background information** could all lead to changes in how to interpret the results and should be reported in detail. 
+
+Besides, since we cannot ensure all experimental groups in a study to have an equal number of subjects and cannot expect them all to agree to provide their data, especially when the experiment is a large-scale one involving thousands of people. However, we are not reported the **sample size** of each age group. Since people aged older are relatively rarer, it is likely that the researchers fail to recruit a sample population of the same size for older age groups, or they fail to acquire a sample population with large enough sample sizes. In that case, we can not calculate the probablity because we cannot use the law of large numbers. Also, unbalanced group design could lead to base ratio fallacy that diminished the predictiveness of our logistic regression model.
+
+## Age-related selection bias
+
+First, there could **survivorship bias** where osteoporotic patients who die from other diseases are not taken into consideration. The cumulative death unavoidably increases with age and most people die before 85 years old even in the areas with the world-leading medical care systems. For example, Japan has the highest life expectancy in the world, which is 83.98 years. So, people aged 90 could be less representative of ordinary people. The results from them could be wrong when applying to the general public. The number of available subjects will be reduced as age increases. Thus, a higher prevalence of osteoporosis among the older population could be a result of cumulative mortality from other diseases which are more deadly than osteoporosis. In this case, the association between osteoporosis prevalence and age may be biologically false although statistically true and the effect of HRT could be overestimated for those of older ages.
+
+The increase of osteoporosis prevalence could be due to its relatively low risk of death compared to other diseases, which could fail to predict the risk of osteoporosis. For each age group we select, they were all the survivors from all the other causes of death whose risk could increase year by year. Many of those causes of death, e.g. breast cancer, can cause osteoporosis, but those osteoporotic patients who die from breast cancer are more and more unlikely to be examined by older age groups in the study, because age is also a major risk factor for cancer. So, those who happened to be in the experiment could be just those "lucky" survivors, whereas a major proportion of osteoporosis could be missed due to the increasing deaths associated with ageing-related diseases. Therefore, a comprehensive study and analysis that considers more ageing-related disease should be done.
+
+Second, there could be **sampling bias** for younger subjects, where people with the awareness of early diagnosis of osteoporosis are more likely to be selected. The awareness could arise from many factors including a family history and genetic testing that could suggest a higher chance of osteoporosis. It is reasonable to guess that those HRT users who come to clinics for osteoporosis screening have a higher frequency and willingness to take the examinations, because taking HRT could be associated with a good awareness of osteoporosis prevention and treatment, which encouraged them to get diagnosed earlier than most people. Thus, the odds of disease positively correlates with HRT for the females of younger age, and therefore, the presumedly significant effects of HRT are insignificant during the younger ages (Table \@ref(tab:pairwise); Table \@ref(tab:fisher)) and the odds ratio is even larger than 1 in some cases (Figure \@ref(fig:or-compare)).
+
+# Conclusion
+
+Based on a case-control study involving 4500 females, our report analyses and describes the effects of two major risk factors for osteoporosis including failure to take hormonal replacement therapy (HRT) and ageing on the prevalence of osteoporosis among females aged between 50-90. We find that **both age and HRT can affect the risk of osteoporosis for the population.** First, **age is significantly associated with the increasing risk** of osteoporosis, because for every year between 50-90, for HRT users, the odds of osteoporosis increase to 1.104455 times of the odds in the previous year, while for non-HRT users, the odds only increases to 1.13969 times of that in the previous year. Second, **HRT can significantly reduce the odds of osteoporosis after an age threshold.** The logistic model shows that the effect of HRT becomes significant after 55 years old, while Fisher's exact test, which is a more conservative statistical test, shows that the threshold is 65 or above. The effect of HRT varies according to age. The model predicts that the protective effect of HRT increases with age. The odds ratio increases steadily each year, from 1.83283 at the age of 50 to 6.43677 at the age of 90. Lastly, more comprehensive research considering more ageing-related conditions, such as breast cancer, should be studied to reduce the potential bias and errors in the study and to provide more evidence-based approaches for using HRT. 
+
+# References
