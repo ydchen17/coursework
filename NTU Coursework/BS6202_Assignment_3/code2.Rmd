@@ -1,0 +1,29 @@
+---
+title: "code2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(ggfortify)
+library(preprocessCore)
+library(altcdfenvs)
+
+DMD_Haslett <- read.csv("DMD-HaslettData.csv")
+DMD_Pescatori  <- read.csv("DMD-PescatoriData.csv")
+Leuk_Armstrong  <- read.csv("Leuk-ArmstrongData.csv")
+Leuk_Golub  <- read.csv("Leuk-GolubData.csv")
+Subtype_Mary  <- read.csv("Subtype-MaryData.csv")
+Subtype_Allen  <- read.csv("Subtype-AllenData.csv")
+```
+
+```{r}
+make.cdf.package("~/Desktop/BS6202Assignment3/U95Av2_to_8k_cDNA.cdf",
+                 species = "Homo_sapiens",
+                 )
+```
+

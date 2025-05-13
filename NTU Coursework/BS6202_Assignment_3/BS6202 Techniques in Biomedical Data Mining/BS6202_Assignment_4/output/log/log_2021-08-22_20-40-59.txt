@@ -1,0 +1,895 @@
+System OS: Windows 10, Architecture: AMD64
+Java Info: 11.0.9.1, OpenJDK 64-Bit Server VM, AdoptOpenJDK
+
+
+Version info:
+FragPipe version 16.0
+MSFragger version 3.3
+Philosopher version 4.0.0 (build 1626989421)
+
+
+LCMS files:
+  Experiment/Group: 
+  - C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzML
+
+
+16 commands to execute:
+CheckCentroid
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -Xmx3G -cp "C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\lib\fragpipe-16.0.jar;C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\batmass-io-1.23.4.jar" com.dmtavt.fragpipe.util.CheckCentroid C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzML 3
+WorkspaceCleanInit [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe workspace --clean --nocheck
+WorkspaceCleanInit [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe workspace --init --nocheck
+MSFragger [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -jar -Dfile.encoding=UTF-8 -Xmx3G C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\MSFragger-3.3\MSFragger-3.3.jar C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\fragger.params C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzML
+MSFragger move pepxml
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -cp C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\lib\fragpipe-16.0.jar;/C:/Users/ydchen/Desktop/PG-BS6202/BS6202_Assignment_4/fragpipe2/lib/commons-io-2.6.jar com.github.chhh.utils.FileMove C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.pepXML C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.pepXML
+MSFragger move tsv
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -cp C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\lib\fragpipe-16.0.jar;/C:/Users/ydchen/Desktop/PG-BS6202/BS6202_Assignment_4/fragpipe2/lib/commons-io-2.6.jar com.github.chhh.utils.FileMove --no-err C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.tsv C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.tsv
+MSFragger move pin
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -cp C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\lib\fragpipe-16.0.jar;/C:/Users/ydchen/Desktop/PG-BS6202/BS6202_Assignment_4/fragpipe2/lib/commons-io-2.6.jar com.github.chhh.utils.FileMove --no-err C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.pin C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.pin
+Crystal-C [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -Dbatmass.io.libs.thermo.dir="C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\MSFragger-3.3\ext\thermo" -Xmx3G -cp "C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\original-crystalc-1.4.2.jar;C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\batmass-io-1.23.4.jar;C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\grppr-0.3.23.jar" crystalc.Run C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\crystalc-0-20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.pepXML.params C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.pepXML
+PeptideProphet [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe peptideprophet --nonparam --expectscore --decoyprobs --masswidth 1000.0 --clevel -2 --decoy rev_ --database C:\Users\ydchen\Desktop\PG-BS6202\dependencies\2021-08-22-decoys-reviewed-contam-UP000005640.fas --combine 20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7_c.pepXML
+Rewrite pepxml [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -cp C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\lib/* com.dmtavt.fragpipe.util.RewritePepxml C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\interact.pep.xml C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzML
+ProteinProphet [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe proteinprophet --maxppmdiff 2000000 --output combined C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\filelist_proteinprophet.txt
+PhilosopherDbAnnotate [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe database --annotate C:\Users\ydchen\Desktop\PG-BS6202\dependencies\2021-08-22-decoys-reviewed-contam-UP000005640.fas --prefix rev_
+PhilosopherFilter [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe filter --sequential --razor --prot 0.01 --mapmods --tag rev_ --pepxml C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output --protxml C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\combined.prot.xml --razorbin C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\.meta\razor.bin
+PhilosopherReport [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe report
+WorkspaceClean [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe workspace --clean --nocheck
+PTMShepherd [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -Xmx3G -Dbatmass.io.libs.thermo.dir="C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\MSFragger-3.3\ext\thermo" -cp "C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\ptmshepherd-1.1.0.jar;C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\batmass-io-1.23.4.jar;C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\commons-math3-3.6.1.jar" edu.umich.andykong.ptmshepherd.PTMShepherd "C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\shepherd.config"
+~~~~~~~~~~~~~~~~~~~~~~
+
+Execution order:
+
+    Cmd: [START], Work dir: [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+    Cmd: [CheckCentroid], Work dir: [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+    Cmd: [WorkspaceCleanInit], Work dir: [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+    Cmd: [MSFragger], Work dir: [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+    Cmd: [Crystal-C], Work dir: [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+    Cmd: [PeptideProphet], Work dir: [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+    Cmd: [ProteinProphet], Work dir: [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+    Cmd: [PhilosopherDbAnnotate], Work dir: [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+    Cmd: [PhilosopherFilter], Work dir: [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+    Cmd: [PhilosopherReport], Work dir: [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+    Cmd: [WorkspaceClean], Work dir: [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+    Cmd: [PTMShepherd], Work dir: [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~ fragpipe.config ~~~~~~~~~
+# FragPipe v16.0ui state cache
+
+crystalc.run-crystalc=true
+database.db-path=C\:\\Users\\ydchen\\Desktop\\PG-BS6202\\dependencies\\2021-08-22-decoys-reviewed-contam-UP000005640.fas
+database.decoy-tag=rev_
+diaumpire.AdjustFragIntensity=true
+diaumpire.BoostComplementaryIon=false
+diaumpire.CorrThreshold=0
+diaumpire.DeltaApex=0.2
+diaumpire.ExportPrecursorPeak=false
+diaumpire.Q1=true
+diaumpire.Q2=true
+diaumpire.Q3=true
+diaumpire.RFmax=500
+diaumpire.RPmax=25
+diaumpire.RTOverlap=0.3
+diaumpire.SE.EstimateBG=false
+diaumpire.SE.IsoPattern=0.3
+diaumpire.SE.MS1PPM=10
+diaumpire.SE.MS2PPM=20
+diaumpire.SE.MS2SN=1.1
+diaumpire.SE.MassDefectFilter=true
+diaumpire.SE.MassDefectOffset=0.1
+diaumpire.SE.NoMissedScan=1
+diaumpire.SE.SN=1.1
+diaumpire.run-diaumpire=false
+fragpipe-config.bin-msfragger=C\:\\Users\\ydchen\\Desktop\\PG-BS6202\\BS6202_Assignment_4\\fragpipe2\\tools\\MSFragger-3.3\\MSFragger-3.3.jar
+fragpipe-config.bin-philosopher=C\:\\Users\\ydchen\\Desktop\\PG-BS6202\\BS6202_Assignment_4\\fragpipe2\\tools\\philosopher\\philosopher.exe
+fragpipe-config.bin-python=C\:\\Python39\\python
+freequant.mz-tol=10
+freequant.rt-tol=0.4
+freequant.run-freequant=true
+ionquant.excludemods=
+ionquant.heavy=
+ionquant.imtol=0.05
+ionquant.ionfdr=0.01
+ionquant.light=
+ionquant.mbr=0
+ionquant.mbrimtol=0.05
+ionquant.mbrmincorr=0
+ionquant.mbrrttol=1
+ionquant.mbrtoprun=100000
+ionquant.medium=
+ionquant.minexps=1
+ionquant.minfreq=0.5
+ionquant.minions=2
+ionquant.minisotopes=2
+ionquant.minscans=3
+ionquant.mztol=10
+ionquant.normalization=1
+ionquant.peptidefdr=1
+ionquant.proteinfdr=1
+ionquant.proteinquant=2
+ionquant.requantify=1
+ionquant.rttol=0.4
+ionquant.run-ionquant=false
+ionquant.tp=3
+ionquant.writeindex=0
+msfragger.Y_type_masses=
+msfragger.add_topN_complementary=0
+msfragger.allowed_missed_cleavage=2
+msfragger.calibrate_mass=2
+msfragger.clip_nTerm_M=true
+msfragger.data_type=0
+msfragger.deisotope=1
+msfragger.delta_mass_exclude_ranges=(-1.5,3.5)
+msfragger.deneutralloss=1
+msfragger.diagnostic_fragments=
+msfragger.diagnostic_intensity_filter=0
+msfragger.digest_max_length=50
+msfragger.digest_min_length=7
+msfragger.fragment_ion_series=b,y
+msfragger.fragment_mass_tolerance=20
+msfragger.fragment_mass_units=1
+msfragger.intensity_transform=0
+msfragger.ion_series_definitions=
+msfragger.isotope_error=0
+msfragger.labile_search_mode=off
+msfragger.localize_delta_mass=true
+msfragger.mass_diff_to_variable_mod=0
+msfragger.mass_offsets=0
+msfragger.max_fragment_charge=2
+msfragger.max_variable_mods_combinations=5000
+msfragger.max_variable_mods_per_peptide=3
+msfragger.min_fragments_modelling=2
+msfragger.min_matched_fragments=4
+msfragger.minimum_peaks=15
+msfragger.minimum_ratio=0.01
+msfragger.misc.fragger.clear-mz-hi=0
+msfragger.misc.fragger.clear-mz-lo=0
+msfragger.misc.fragger.digest-mass-hi=5000
+msfragger.misc.fragger.digest-mass-lo=500
+msfragger.misc.fragger.enzyme-dropdown=stricttrypsin
+msfragger.misc.fragger.precursor-charge-hi=4
+msfragger.misc.fragger.precursor-charge-lo=1
+msfragger.misc.fragger.remove-precursor-range-hi=1.5
+msfragger.misc.fragger.remove-precursor-range-lo=-1.5
+msfragger.misc.slice-db=1
+msfragger.num_enzyme_termini=2
+msfragger.output_format=pepXML_pin
+msfragger.output_max_expect=50
+msfragger.output_report_topN=1
+msfragger.override_charge=false
+msfragger.precursor_mass_lower=-150
+msfragger.precursor_mass_mode=corrected
+msfragger.precursor_mass_units=0
+msfragger.precursor_mass_upper=500
+msfragger.precursor_true_tolerance=20
+msfragger.precursor_true_units=1
+msfragger.remove_precursor_peak=0
+msfragger.report_alternative_proteins=true
+msfragger.restrict_deltamass_to=all
+msfragger.run-msfragger=true
+msfragger.search_enzyme_butnotafter=
+msfragger.search_enzyme_cutafter=KR
+msfragger.search_enzyme_name=stricttrypsin
+msfragger.table.fix-mods=0.000000,C-Term Peptide,true,-1; 0.000000,N-Term Peptide,true,-1; 0.000000,C-Term Protein,true,-1; 0.000000,N-Term Protein,true,-1; 0.000000,G (glycine),true,-1; 0.000000,A (alanine),true,-1; 0.000000,S (serine),true,-1; 0.000000,P (proline),true,-1; 0.000000,V (valine),true,-1; 0.000000,T (threonine),true,-1; 57.021460,C (cysteine),true,-1; 0.000000,L (leucine),true,-1; 0.000000,I (isoleucine),true,-1; 0.000000,N (asparagine),true,-1; 0.000000,D (aspartic acid),true,-1; 0.000000,Q (glutamine),true,-1; 0.000000,K (lysine),true,-1; 0.000000,E (glutamic acid),true,-1; 0.000000,M (methionine),true,-1; 0.000000,H (histidine),true,-1; 0.000000,F (phenylalanine),true,-1; 0.000000,R (arginine),true,-1; 0.000000,Y (tyrosine),true,-1; 0.000000,W (tryptophan),true,-1; 0.000000,B ,true,-1; 0.000000,J,true,-1; 0.000000,O,true,-1; 0.000000,U,true,-1; 0.000000,X,true,-1; 0.000000,Z,true,-1
+msfragger.table.var-mods=15.994900,M,true,3; 42.010600,[^,true,1; 79.966330,STY,false,3; -17.026500,nQnC,false,1; -18.010600,nE,false,1; 4.025107,K,false,2; 6.020129,R,false,2; 8.014199,K,false,2; 10.008269,R,false,2; 0.000000,site_10,false,1; 0.000000,site_11,false,1; 0.000000,site_12,false,1; 0.000000,site_13,false,1; 0.000000,site_14,false,1; 0.000000,site_15,false,1; 0.000000,site_16,false,1
+msfragger.track_zero_topN=0
+msfragger.use_all_mods_in_first_search=false
+msfragger.use_topN_peaks=150
+msfragger.write_calibrated_mgf=false
+msfragger.zero_bin_accept_expect=0
+msfragger.zero_bin_mult_expect=1
+peptide-prophet.cmd-opts=--nonparam --expectscore --decoyprobs --masswidth 1000.0 --clevel -2
+peptide-prophet.combine-pepxml=true
+peptide-prophet.run-peptide-prophet=true
+percolator.cmd-opts=--only-psms --no-terminate --post-processing-tdc
+percolator.keep-tsv-files=false
+percolator.run-percolator=false
+phi-report.dont-use-prot-proph-file=false
+phi-report.filter=--sequential --razor --prot 0.01 --mapmods
+phi-report.pep-level-summary=false
+phi-report.philosoher-msstats=false
+phi-report.print-decoys=false
+phi-report.run-report=true
+protein-prophet.cmd-opts=--maxppmdiff 2000000
+protein-prophet.run-protein-prophet=true
+ptmprophet.cmdline=
+ptmprophet.run-ptmprophet=false
+ptmshepherd.annotation-common=false
+ptmshepherd.annotation-custom=false
+ptmshepherd.annotation-glyco=false
+ptmshepherd.annotation-unimod=true
+ptmshepherd.annotation_file=
+ptmshepherd.annotation_tol=0.01
+ptmshepherd.cap_y_ions=
+ptmshepherd.diag_ions=
+ptmshepherd.glyco_mode=false
+ptmshepherd.histo_smoothbins=2
+ptmshepherd.iontype_a=false
+ptmshepherd.iontype_b=true
+ptmshepherd.iontype_c=false
+ptmshepherd.iontype_x=false
+ptmshepherd.iontype_y=true
+ptmshepherd.iontype_z=false
+ptmshepherd.localization_allowed_res=
+ptmshepherd.localization_background=4
+ptmshepherd.normalization-psms=true
+ptmshepherd.normalization-scans=false
+ptmshepherd.output_extended=false
+ptmshepherd.peakpicking_mass_units=0
+ptmshepherd.peakpicking_minPsm=10
+ptmshepherd.peakpicking_promRatio=0.3
+ptmshepherd.peakpicking_width=0.002
+ptmshepherd.precursor_mass_units=0
+ptmshepherd.precursor_tol=0.01
+ptmshepherd.remainder_masses=
+ptmshepherd.run-shepherd=true
+ptmshepherd.spectra_maxfragcharge=2
+ptmshepherd.spectra_ppmtol=20
+ptmshepherd.varmod_masses=
+quantitation.run-label-free-quant=false
+run-psm-validation=true
+speclibgen.easypqp.extras.max_delta_ppm=15
+speclibgen.easypqp.extras.max_delta_unimod=0.02
+speclibgen.easypqp.extras.rt_lowess_fraction=0.01
+speclibgen.easypqp.im-cal=Automatic selection of a run as reference IM
+speclibgen.easypqp.rt-cal=ciRT
+speclibgen.easypqp.select-file.text=
+speclibgen.easypqp.select-im-file.text=
+speclibgen.keep-intermediate-files=false
+speclibgen.run-speclibgen=false
+speclibgen.use-easypqp=true
+speclibgen.use-spectrast=false
+tmtintegrator.add_Ref=-1
+tmtintegrator.aggregation_method=0
+tmtintegrator.allow_overlabel=true
+tmtintegrator.allow_unlabeled=false
+tmtintegrator.best_psm=true
+tmtintegrator.channel_num=10
+tmtintegrator.dont-run-fq-lq=false
+tmtintegrator.groupby=-1
+tmtintegrator.max_pep_prob_thres=0
+tmtintegrator.min_ntt=0
+tmtintegrator.min_pep_prob=0.9
+tmtintegrator.min_percent=0.05
+tmtintegrator.min_purity=0.5
+tmtintegrator.min_site_prob=-1
+tmtintegrator.mod_tag=none
+tmtintegrator.ms1_int=true
+tmtintegrator.outlier_removal=true
+tmtintegrator.print_RefInt=false
+tmtintegrator.prot_exclude=none
+tmtintegrator.prot_norm=-1
+tmtintegrator.psm_norm=false
+tmtintegrator.quant_level=2
+tmtintegrator.ref_tag=pool
+tmtintegrator.run-tmtintegrator=false
+tmtintegrator.top3_pep=true
+tmtintegrator.unique_gene=0
+tmtintegrator.unique_pep=false
+workdir=C\:\\Users\\ydchen\\Desktop\\PG-BS6202\\BS6202_Assignment_4\\output
+workflow.input.data-type.im-ms=false
+workflow.input.data-type.regular-ms=true
+workflow.ram=0
+workflow.threads=3
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CheckCentroid
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -Xmx3G -cp "C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\lib\fragpipe-16.0.jar;C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\batmass-io-1.23.4.jar" com.dmtavt.fragpipe.util.CheckCentroid C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzML 3
+Process 'CheckCentroid' finished, exit code: 0
+Done in 3502 ms.
+WorkspaceCleanInit [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe workspace --clean --nocheck
+INFO[20:26:34] Executing Workspace  v4.0.0                  
+INFO[20:26:35] Removing workspace                           
+INFO[20:26:35] Done                                         
+Process 'WorkspaceCleanInit' finished, exit code: 0
+WorkspaceCleanInit [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe workspace --init --nocheck
+INFO[20:26:35] Executing Workspace  v4.0.0                  
+INFO[20:26:35] Creating workspace                           
+INFO[20:26:35] Done                                         
+Process 'WorkspaceCleanInit' finished, exit code: 0
+MSFragger [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -jar -Dfile.encoding=UTF-8 -Xmx3G C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\MSFragger-3.3\MSFragger-3.3.jar C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\fragger.params C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzML
+MSFragger version MSFragger-3.3
+Batmass-IO version 1.23.4
+timsdata library version timsdata-2-8-7-1
+(c) University of Michigan
+RawFileReader reading tool. Copyright (c) 2016 by Thermo Fisher Scientific, Inc. All rights reserved.
+System OS: Windows 10, Architecture: AMD64
+Java Info: 11.0.9.1, OpenJDK 64-Bit Server VM, AdoptOpenJDK
+JVM started with 3 GB memory
+Checking database...
+Checking spectral files...
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzML: Scans = 24213
+***********************************FIRST SEARCH************************************
+Parameters:
+num_threads = 3
+database_name = C:\Users\ydchen\Desktop\PG-BS6202\dependencies\2021-08-22-decoys-reviewed-contam-UP000005640.fas
+decoy_prefix = rev_
+precursor_mass_lower = -20.0
+precursor_mass_upper = 20.0
+precursor_mass_units = 1
+data_type = 0
+precursor_true_tolerance = 20.0
+precursor_true_units = 1
+fragment_mass_tolerance = 20.0
+fragment_mass_units = 1
+calibrate_mass = 2
+use_all_mods_in_first_search = false
+write_calibrated_mgf = 0
+isotope_error = 0/1
+mass_offsets = 0
+labile_search_mode = OFF
+restrict_deltamass_to = all
+precursor_mass_mode = CORRECTED
+localize_delta_mass = false
+delta_mass_exclude_ranges = (-1.5,3.5)
+fragment_ion_series = b,y
+ion_series_definitions = 
+search_enzyme_name = stricttrypsin
+search_enzyme_cutafter = KR
+search_enzyme_butnotafter = 
+num_enzyme_termini = 2
+allowed_missed_cleavage = 2
+clip_nTerm_M = true
+allow_multiple_variable_mods_on_residue = false
+max_variable_mods_per_peptide = 3
+max_variable_mods_combinations = 5000
+output_format = pepxml_pin
+output_report_topN = 1
+output_max_expect = 50.0
+report_alternative_proteins = false
+override_charge = false
+precursor_charge_low = 1
+precursor_charge_high = 4
+digest_min_length = 7
+digest_max_length = 50
+digest_mass_range_low = 500.0
+digest_mass_range_high = 5000.0
+max_fragment_charge = 2
+deisotope = 1
+deneutralloss = true
+track_zero_topN = 0
+zero_bin_accept_expect = 0.0
+zero_bin_mult_expect = 1.0
+add_topN_complementary = 0
+minimum_peaks = 15
+use_topN_peaks = 150
+minIonsScoring = 2
+min_matched_fragments = 4
+minimum_ratio = 0.01
+intensity_transform = 0
+remove_precursor_peak = 0
+remove_precursor_range = -1.500000,1.500000
+clear_mz_range_low = 0.0
+clear_mz_range_high = 0.0
+excluded_scan_list_file = 
+mass_diff_to_variable_mod = 0
+min_sequence_matches = 2
+check_spectral_files = true
+variable_mod_01 = 15.994900 M 3
+variable_mod_02 = 42.010600 [^ 1
+add_A_alanine = 0.000000
+add_B_user_amino_acid = 0.000000
+add_C_cysteine = 57.021460
+add_Cterm_peptide = 0.0
+add_Cterm_protein = 0.0
+add_D_aspartic_acid = 0.000000
+add_E_glutamic_acid = 0.000000
+add_F_phenylalanine = 0.000000
+add_G_glycine = 0.000000
+add_H_histidine = 0.000000
+add_I_isoleucine = 0.000000
+add_J_user_amino_acid = 0.000000
+add_K_lysine = 0.000000
+add_L_leucine = 0.000000
+add_M_methionine = 0.000000
+add_N_asparagine = 0.000000
+add_Nterm_peptide = 0.0
+add_Nterm_protein = 0.0
+add_O_user_amino_acid = 0.000000  # O = pyrrolysine (237.14773 Da)
+add_P_proline = 0.000000
+add_Q_glutamine = 0.000000
+add_R_arginine = 0.000000
+add_S_serine = 0.000000
+add_T_threonine = 0.000000
+add_U_user_amino_acid = 0.000000  # U = selenocysteine (150.95363 Da)
+add_V_valine = 0.000000
+add_W_tryptophan = 0.000000
+add_X_user_amino_acid = 0.000000
+add_Y_tyrosine = 0.000000
+add_Z_user_amino_acid = 0.000000
+Selected fragment index width 0.10 Da.
+318491452 fragments to be searched in 4 slices (4.75 GB total)
+Operating on slice 1 of 4: 
+	Fragment index slice generated in 2.30 s
+	001. 20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzML 2.6 s | deisotoping 0.3 s
+		[progress: 24044/24044 (100%) - 10939 spectra/s] 2.2s
+Operating on slice 2 of 4: 
+	Fragment index slice generated in 1.75 s
+	001. 20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzML 1.9 s | deisotoping 0.0 s
+		[progress: 24044/24044 (100%) - 45366 spectra/s] 0.5s
+Operating on slice 3 of 4: 
+	Fragment index slice generated in 1.77 s
+	001. 20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzML 1.8 s | deisotoping 0.0 s
+		[progress: 24044/24044 (100%) - 45366 spectra/s] 0.5s
+Operating on slice 4 of 4: 
+	Fragment index slice generated in 2.11 s
+	001. 20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzML 1.9 s | deisotoping 0.0 s
+		[progress: 24044/24044 (100%) - 47053 spectra/s] 0.5s | postprocessing 0.2 s
+***************************FIRST SEARCH DONE IN 0.460 MIN**************************
+
+*********************MASS CALIBRATION AND PARAMETER OPTIMIZATION*******************
+-----|---------------|---------------|---------------|---------------
+     |  MS1   (Old)  |  MS1   (New)  |  MS2   (Old)  |  MS2   (New)  
+-----|---------------|---------------|---------------|---------------
+ Run |  Median  MAD  |  Median  MAD  |  Median  MAD  |  Median  MAD  
+ 001 |   0.85   1.22 |   0.01   1.31 |  -0.03   3.14 |   0.05   3.14  
+-----|---------------|---------------|---------------|---------------
+Finding the optimal parameters:
+-------|-------|-------|-------|-------|-------|-------|-------|-------
+  MS2  |    5  |    7  |   10  |   15  |   20  |   25  |   30  |   50  
+-------|-------|-------|-------|-------|-------|-------|-------|-------
+ Count | skip  |  14634|  15009|  14929| skip rest
+-------|-------|-------|-------|-------|-------|-------|-------|-------
+-------|-------|-------|-------|-------|-------|-------
+ Peaks | 300_0 | 200_0 | 175_0 | 150_1 | 125_1 | 100_1 
+-------|-------|-------|-------|-------|-------|-------
+
+
+
+ Count |  15075|  15075|  15075|  15009|  15009|  15005
+-------|-------|-------|-------|-------|-------|-------
+-------|-------
+ Int.  |    1  
+-------|-------
+ Count 
+
+|  14967
+-------|-------
+-------|-------
+ Rm P. |    1  
+-------|-------
+ Count |  15072
+-------|-------
+New fragment_mass_tolerance = 10 PPM
+New use_topN_peaks = 100
+New minimum_ratio = 0.010000
+New intensity_transform = 0
+New remove_precursor_peak = 1
+New precursor_true_tolerance = 7.000000 PPM (tie breaker)
+************MASS CALIBRATION AND PARAMETER OPTIMIZATION DONE IN 2.613 MIN*********
+
+************************************MAIN SEARCH************************************
+Checking database...
+Parameters:
+num_threads = 3
+database_name = C:\Users\ydchen\Desktop\PG-BS6202\dependencies\2021-08-22-decoys-reviewed-contam-UP000005640.fas
+decoy_prefix = rev_
+precursor_mass_lower = -150.0
+precursor_mass_upper = 500.0
+precursor_mass_units = 0
+data_type = 0
+precursor_true_tolerance = 7.0
+precursor_true_units = 1
+fragment_mass_tolerance = 10.0
+fragment_mass_units = 1
+calibrate_mass = 2
+use_all_mods_in_first_search = false
+write_calibrated_mgf = 0
+isotope_error = 0
+mass_offsets = 0
+labile_search_mode = OFF
+restrict_deltamass_to = all
+precursor_mass_mode = CORRECTED
+localize_delta_mass = true
+delta_mass_exclude_ranges = (-1.5,3.5)
+fragment_ion_series = b,y
+ion_series_definitions = 
+search_enzyme_name = stricttrypsin
+search_enzyme_cutafter = KR
+search_enzyme_butnotafter = 
+num_enzyme_termini = 2
+allowed_missed_cleavage = 2
+clip_nTerm_M = true
+allow_multiple_variable_mods_on_residue = false
+max_variable_mods_per_peptide = 3
+max_variable_mods_combinations = 5000
+output_format = pepxml_pin
+output_report_topN = 1
+output_max_expect = 50.0
+report_alternative_proteins = true
+override_charge = false
+precursor_charge_low = 1
+precursor_charge_high = 4
+digest_min_length = 7
+digest_max_length = 50
+digest_mass_range_low = 500.0
+digest_mass_range_high = 5000.0
+max_fragment_charge = 2
+deisotope = 1
+deneutralloss = true
+track_zero_topN = 0
+zero_bin_accept_expect = 0.0
+zero_bin_mult_expect = 1.0
+add_topN_complementary = 0
+minimum_peaks = 15
+use_topN_peaks = 100
+minIonsScoring = 2
+min_matched_fragments = 4
+minimum_ratio = 0.01
+intensity_transform = 0
+remove_precursor_peak = 1
+remove_precursor_range = -1.500000,1.500000
+clear_mz_range_low = 0.0
+clear_mz_range_high = 0.0
+excluded_scan_list_file = 
+mass_diff_to_variable_mod = 0
+min_sequence_matches = 2
+check_spectral_files = true
+variable_mod_01 = 15.994900 M 3
+variable_mod_02 = 42.010600 [^ 1
+add_A_alanine = 0.000000
+add_B_user_amino_acid = 0.000000
+add_C_cysteine = 57.021460
+add_Cterm_peptide = 0.0
+add_Cterm_protein = 0.0
+add_D_aspartic_acid = 0.000000
+add_E_glutamic_acid = 0.000000
+add_F_phenylalanine = 0.000000
+add_G_glycine = 0.000000
+add_H_histidine = 0.000000
+add_I_isoleucine = 0.000000
+add_J_user_amino_acid = 0.000000
+add_K_lysine = 0.000000
+add_L_leucine = 0.000000
+add_M_methionine = 0.000000
+add_N_asparagine = 0.000000
+add_Nterm_peptide = 0.0
+add_Nterm_protein = 0.0
+add_O_user_amino_acid = 0.000000  # O = pyrrolysine (237.14773 Da)
+add_P_proline = 0.000000
+add_Q_glutamine = 0.000000
+add_R_arginine = 0.000000
+add_S_serine = 0.000000
+add_T_threonine = 0.000000
+add_U_user_amino_acid = 0.000000  # U = selenocysteine (150.95363 Da)
+add_V_valine = 0.000000
+add_W_tryptophan = 0.000000
+add_X_user_amino_acid = 0.000000
+add_Y_tyrosine = 0.000000
+add_Z_user_amino_acid = 0.000000
+Number of unique peptides
+	of length 7: 289674
+	of length 8: 279354
+	of length 9: 278398
+	of length 10: 262633
+	of length 11: 249259
+	of length 12: 238537
+	of length 13: 232216
+	of length 14: 217685
+	of length 15: 206516
+	of length 16: 192897
+	of length 17: 180419
+	of length 18: 173297
+	of length 19: 170316
+	of length 20: 152300
+	of length 21: 145798
+	of length 22: 136754
+	of length 23: 127490
+	of length 24: 120886
+	of length 25: 113797
+	of length 26: 105807
+	of length 27: 100963
+	of length 28: 96325
+	of length 29: 87595
+	of length 30: 83149
+	of length 31: 77981
+	of length 32: 73943
+	of length 33: 69032
+	of length 34: 64612
+	of length 35: 58634
+	of length 36: 56921
+	of length 37: 51937
+	of length 38: 48846
+	of length 39: 43994
+	of length 40: 41910
+	of length 41: 39029
+	of length 42: 35992
+	of length 43: 30213
+	of length 44: 24459
+	of length 45: 18754
+	of length 46: 12290
+	of length 47: 7721
+	of length 48: 4462
+	of length 49: 2419
+	of length 50: 1474
+In total 5006688 peptides.
+Generated 7808014 modified peptides.
+Number of peptides with more than 5000 modification patterns: 0
+Selected fragment index width 0.01 Da.
+636982904 fragments to be searched in 7 slices (9.49 GB total)
+Operating on slice 1 of 7: 
+	Fragment index slice generated in 3.37 s
+	001. 20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzBIN_calibrated 0.2 s
+		[progress: 23968/23968 (100%) - 73 spectra/s] 328.4s
+Operating on slice 2 of 7: 
+	Fragment index slice generated in 4.30 s
+	001. 20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzBIN_calibrated 0.2 s
+		[progress: 23968/23968 (100%) - 338 spectra/s] 70.9s
+Operating on slice 3 of 7: 
+	Fragment index slice generated in 4.62 s
+	001. 20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzBIN_calibrated 0.2 s
+		[progress: 23968/23968 (100%) - 677 spectra/s] 35.4s
+Operating on slice 4 of 7: 
+	Fragment index slice generated in 5.01 s
+	001. 20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzBIN_calibrated 0.2 s
+		[progress: 23968/23968 (100%) - 791 spectra/s] 30.3s
+Operating on slice 5 of 7: 
+	Fragment index slice generated in 5.12 s
+	001. 20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzBIN_calibrated 0.2 s
+		[progress: 23968/23968 (100%) - 844 spectra/s] 28.4s
+Operating on slice 6 of 7: 
+	Fragment index slice generated in 4.88 s
+	001. 20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzBIN_calibrated 0.2 s
+		[progress: 23968/23968 (100%) - 855 spectra/s] 28.0s
+Operating on slice 7 of 7: 
+	Fragment index slice generated in 4.67 s
+	001. 20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzBIN_calibrated 0.2 s
+		[progress: 23968/23968 (100%) - 878 spectra/s] 27.3s | postprocessing 5.0 s
+***************************MAIN SEARCH DONE IN 9.948 MIN***************************
+
+*******************************TOTAL TIME 13.020 MIN********************************
+Process 'MSFragger' finished, exit code: 0
+MSFragger move pepxml
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -cp C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\lib\fragpipe-16.0.jar;/C:/Users/ydchen/Desktop/PG-BS6202/BS6202_Assignment_4/fragpipe2/lib/commons-io-2.6.jar com.github.chhh.utils.FileMove C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.pepXML C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.pepXML
+Process 'MSFragger move pepxml' finished, exit code: 0
+MSFragger move tsv
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -cp C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\lib\fragpipe-16.0.jar;/C:/Users/ydchen/Desktop/PG-BS6202/BS6202_Assignment_4/fragpipe2/lib/commons-io-2.6.jar com.github.chhh.utils.FileMove --no-err C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.tsv C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.tsv
+Process 'MSFragger move tsv' finished, exit code: 0
+MSFragger move pin
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -cp C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\lib\fragpipe-16.0.jar;/C:/Users/ydchen/Desktop/PG-BS6202/BS6202_Assignment_4/fragpipe2/lib/commons-io-2.6.jar com.github.chhh.utils.FileMove --no-err C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.pin C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.pin
+Process 'MSFragger move pin' finished, exit code: 0
+Crystal-C [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -Dbatmass.io.libs.thermo.dir="C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\MSFragger-3.3\ext\thermo" -Xmx3G -cp "C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\original-crystalc-1.4.2.jar;C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\batmass-io-1.23.4.jar;C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\grppr-0.3.23.jar" crystalc.Run C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\crystalc-0-20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.pepXML.params C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.pepXML
+20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.pepXML Done!   The execution time is 0.16490 min.
+Process 'Crystal-C' finished, exit code: 0
+PeptideProphet [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe peptideprophet --nonparam --expectscore --decoyprobs --masswidth 1000.0 --clevel -2 --decoy rev_ --database C:\Users\ydchen\Desktop\PG-BS6202\dependencies\2021-08-22-decoys-reviewed-contam-UP000005640.fas --combine 20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7_c.pepXML
+INFO[20:39:54] Executing PeptideProphet  v4.0.0             
+ file 1: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7_c.pepXML
+ processed altogether 23408 results
+INFO: Results written to file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\interact.pep.xml
+
+  - C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\interact.pep.xml
+  - Building Commentz-Walter keyword tree...
+  - Searching the tree...
+  - Linking duplicate entries...
+  - Printing results...
+
+Using Decoy Label "rev_".
+Decoy Probabilities will be reported.
+Using non-parametric distributions
+ (X! Tandem) (using Tandem's expectation score for modeling)
+using search_offsets in mass mixture distr: 0
+init with X! Tandem stricttrypsin 
+MS Instrument info: Manufacturer: UNKNOWN, Model: UNKNOWN, Ionization: UNKNOWN, Analyzer: UNKNOWN, Detector: UNKNOWN
+
+ PeptideProphet  (TPP v5.2.1-dev Flammagenitus, Build 201906281613-exported (Windows_NT-x86_64)) AKeller@ISB
+ read in 0 1+, 16130 2+, 6455 3+, 718 4+, 58 5+, 19 6+, and 0 7+ spectra.
+Found 2983 Decoys, and 20397 Non-Decoys
+INFO: Processing standard MixtureModel ... 
+Initialising statistical models ...
+Iterations: .........10.........20......WARNING: Mixture model quality test failed for charge (1+).
+..
+WARNING: Mixture model quality test failed for charge (2+).
+WARNING: Mixture model quality test failed for charge (6+).
+WARNING: Mixture model quality test failed for charge (7+).
+model complete after 29 iterations
+Process 'PeptideProphet' finished, exit code: 0
+INFO[20:40:31] Done                                         
+Rewrite pepxml [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -cp C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\lib/* com.dmtavt.fragpipe.util.RewritePepxml C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\interact.pep.xml C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7.mzML
+Fixing pepxml: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\interact.pep.xml
+Writing output to: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\interact.pep.xml13207393398716717470.temp-rewrite
+Deleting file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\interact.pep.xml
+Moving rewritten file to original location: [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\interact.pep.xml13207393398716717470.temp-rewrite] -> [C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\interact.pep.xml]
+Process 'Rewrite pepxml' finished, exit code: 0
+ProteinProphet [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe proteinprophet --maxppmdiff 2000000 --output combined C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\filelist_proteinprophet.txt
+INFO[20:40:33] Executing ProteinProphet  v4.0.0             
+ProteinProphet (C++) by Insilicos LLC and LabKey Software, after the original Perl by A. Keller (TPP v6.0.0-rc15 Noctilucent, Build 202105101442-exported (Windows_NT-x86_64))
+ (no FPKM) (using degen pep info)
+Reading in C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\interact.pep.xml...
+...read in 0 1+, 0 2+, 5071 3+, 494 4+, 30 5+, 0 6+, 0 7+ spectra with min prob 0.05
+
+Initializing 4817 peptide weights: 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Calculating protein lengths and molecular weights from database c:/Users/ydchen/Desktop/PG-BS6202/dependencies/2021-08-22-decoys-reviewed-contam-UP000005640.fas
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........1000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........2000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........3000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........4000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........5000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........6000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........7000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........8000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........9000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........10000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........11000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........12000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........13000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........14000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........15000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........16000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........17000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........18000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........19000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........20000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........21000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........22000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........23000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:......WARNING: Found the following zero-mass residues in protein entry sp|P07203|GPX1_HUMAN : U
+MCAARLAAAAAAAQSVYAFSARPLAGGEPVSLGSLRGKVLLIENVASLUGTTVRDYTQMNELQRRLGPRGLVVLGFPCNQFGHQENAKNEEILNSLKYVRPGGGFEPNFMLFEKCEVNGAGAHPLFAFLREALPAPSDDATALMTDPKLITWSPVCRNDVAWNFEKFLVGPDGVPLRRYSRRFQTIDIEPDIEALLSQGPSCA
+...24000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........25000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........26000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........27000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........28000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........29000
+.........:.....WARNING: Found the following zero-mass residues in protein entry sp|Q16881|TRXR1_HUMAN : U
+MGCAEGKAVAAAAPTELQTKGKNGDGRRRSAKDHHPGKTLPENPAGFTSTATADSRALLQAYIDGHSVVIFSRSTCTRCTEVKKLFKSLCVPYFVLELDQTEDGRALEGTLSELAAETDLPVVFVKQRKIGGHGPTLKAYQEGRLQKLLKMNGPEDLPKSYDYDLIIIGGGSGGLAAAKEAAQYGKKVMVLDFVTPTPLGTRWGLGGTCVNVGCIPKKLMHQAALLGQALQDSRNYGWKVEETVKHDWDRMIEAVQNHIGSLNWGYRVALREKKVVYENAYGQFIGPHRIKATNNKGKEKIYSAERFLIATGERPRYLGIPGDKEYCISSDDLFSLPYCPGKTLVVGASYVALECAGFLAGIGLDVTVMVRSILLRGFDQDMANKIGEHMEEHGIKFIRQFVPIKVEQIEAGTPGRLRVVAQSTNSEEIIEGEYNTVMLAIGRDACTRKIGLETVGVKINEKTGKIPVTDEEQTNVPYIYAIGDILEDKVELTPVAIQAGRLLAQRLYAGSTVKCDYENVPTTVFTPLEYGACGLSEEKAVEKFGEENIEVYHSYFWPLEWTIPSRDNNKCYAKIICNTKDNERVVGFHVLGPNAGEVTQGFAAALKCGLTKKQLDSTIGIHPVCAEVFTTLSVTKRSGASILQAGCUG
+....:.........:.........:.........:.........:.........:.........:.........:.........30000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........31000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........32000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........33000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........34000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........35000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........36000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........37000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........38000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........39000
+.........:.........:.........:.........:.........:.........:.........:.........:.........:.........40000
+.........:.........:.........:.........:.........:.........:.........:.........:....  Total: 40840
+Computing degenerate peptides for 1898 proteins: 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Computing probabilities for 1971 proteins.  Loop 1: 0%...20%...40%...60%...80%...100%  Loop 2: 0%...20%...40%...60%...80%...100%
+Computing probabilities for 1971 proteins.  Loop 1: 0%...20%...40%...60%...80%...100%  Loop 2: 0%...20%...40%...60%...80%...100%
+Computing probabilities for 1971 proteins.  Loop 1: 0%...20%...40%...60%...80%...100%  Loop 2: 0%...20%...40%...60%...80%...100%
+Computing probabilities for 1971 proteins.  Loop 1: 0%...20%...40%...60%...80%...100%  Loop 2: 0%...20%...40%...60%...80%...100%
+Computing 1779 protein groups: 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Calculating sensitivity...and error tables...
+INFO: mu=7.8108e-06, db_size=45492565
+Computing MU for 1971 proteins: 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+INFO[20:40:36] Done                                         
+Process 'ProteinProphet' finished, exit code: 0
+PhilosopherDbAnnotate [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe database --annotate C:\Users\ydchen\Desktop\PG-BS6202\dependencies\2021-08-22-decoys-reviewed-contam-UP000005640.fas --prefix rev_
+INFO[20:40:37] Executing Database  v4.0.0                   
+INFO[20:40:37] Annotating the database                      
+Process 'PhilosopherDbAnnotate' finished, exit code: 0
+INFO[20:40:39] Done                                         
+PhilosopherFilter [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe filter --sequential --razor --prot 0.01 --mapmods --tag rev_ --pepxml C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output --protxml C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\combined.prot.xml --razorbin C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\.meta\razor.bin
+INFO[20:40:39] Executing Filter  v4.0.0                     
+INFO[20:40:39] Processing peptide identification files      
+INFO[20:40:40] 1+ Charge profile                             decoy=0 target=0
+INFO[20:40:40] 2+ Charge profile                             decoy=0 target=0
+INFO[20:40:40] 3+ Charge profile                             decoy=147 target=4924
+INFO[20:40:40] 4+ Charge profile                             decoy=11 target=483
+INFO[20:40:40] 5+ Charge profile                             decoy=1 target=29
+INFO[20:40:40] 6+ Charge profile                             decoy=0 target=0
+INFO[20:40:40] Database search results                       ions=4818 peptides=4487 psms=5595
+INFO[20:40:40] Converged to 1.00 % FDR with 5274 PSMs        decoy=53 threshold=0.2338 total=5327
+INFO[20:40:40] Converged to 1.00 % FDR with 4170 Peptides    decoy=42 threshold=0.2782 total=4212
+INFO[20:40:40] Converged to 1.00 % FDR with 4501 Ions        decoy=45 threshold=0.2669 total=4546
+INFO[20:40:40] Protein inference results                     decoy=161 target=1618
+INFO[20:40:40] Converged to 1.04 % FDR with 1347 Proteins    decoy=14 threshold=0.6435 total=1361
+INFO[20:40:40] Applying sequential FDR estimation            ions=4473 peptides=4146 psms=5235
+INFO[20:40:40] Converged to 0.26 % FDR with 5221 PSMs        decoy=14 threshold=0.2371 total=5235
+INFO[20:40:40] Converged to 0.33 % FDR with 4132 Peptides    decoy=14 threshold=0.2453 total=4146
+INFO[20:40:40] Converged to 0.31 % FDR with 4459 Ions        decoy=14 threshold=0.2453 total=4473
+INFO[20:40:41] Post processing identifications              
+INFO[20:40:41] Mapping modifications                        
+INFO[20:40:42] Assigning protein identifications to layers  
+INFO[20:40:42] Processing protein inference                 
+INFO[20:40:44] Synchronizing PSMs and proteins              
+INFO[20:40:44] Saving                                       
+INFO[20:40:45] Done                                         
+Process 'PhilosopherFilter' finished, exit code: 0
+PhilosopherReport [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe report
+INFO[20:40:45] Executing Report  v4.0.0                     
+INFO[20:40:46] Creating reports                             
+Process 'PhilosopherReport' finished, exit code: 0
+INFO[20:40:46] Done                                         
+WorkspaceClean [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\philosopher\philosopher.exe workspace --clean --nocheck
+INFO[20:40:46] Executing Workspace  v4.0.0                  
+INFO[20:40:46] Removing workspace                           
+INFO[20:40:46] Done                                         
+Process 'WorkspaceClean' finished, exit code: 0
+PTMShepherd [Work dir: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output]
+C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\jre\bin\java.exe -Xmx3G -Dbatmass.io.libs.thermo.dir="C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\MSFragger-3.3\ext\thermo" -cp "C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\ptmshepherd-1.1.0.jar;C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\batmass-io-1.23.4.jar;C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\fragpipe2\tools\commons-math3-3.6.1.jar" edu.umich.andykong.ptmshepherd.PTMShepherd "C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\shepherd.config"
+
+PTM-Shepherd version 1.1.0(c) University of Michigan
+
+Using Java 11.0.9.1 on 3072MB memory
+
+Counting MS2 scans for dataset dataset01
+	5202 MS2 scans present in dataset dataset01
+
+
+Creating combined histogram
+	Generated histogram file for dataset dataset01 [-133 - 503]
+Created combined histogram!
+
+Running peak picking
+
+Picked top 500 peaks
+
+	Removed 477 peaks with insufficient PSMs
+Created summary table
+
+Annotated summary table
+
+Mapping modifications back into PSM lists
+Created modification summary
+Begin localization annotation
+	20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7 - 5202 (3131 ms, 820 ms)
+Done
+
+
+Created localization reports
+
+Begin similarity and retention time annotation
+	Spectral data read into memory (2620 ms)
+	20190202_QExHFX2_RSLC8_PST_HeLa_10ng_1ulLoop_muPAC_1hr_15k_7 - 5202 (160 ms)
+Done
+
+Created similarity/RT reports
+
+Combining and cleaning reports
+Writing combined table for dataset dataset01
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\peaks.tsv
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\peaksummary.annotated.tsv
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\peaksummary.tsv
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\combined.tsv
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\combined.histo
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\global.locprofile.txt
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\global.simrtprofile.txt
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\dataset01.locprofile.txt
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\dataset01.simrtprofile.txt
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\dataset01.profile.tsv
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\dataset01.histo
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\dataset01.ms2counts
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\dataset01.rawlocalize
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\dataset01.rawsimrt
+Deleted file: C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output\cache-49cbef001d212c.txt
+Process 'PTMShepherd' finished, exit code: 0
+
+Please cite:
+(Any searches) MSFragger: ultrafast and comprehensive peptide identification in mass spectrometry–based proteomics. Nat Methods 14:513 (2017)
+(Any searches) Fast deisotoping algorithm and its implementation in the MSFragger search engine. J. Proteome Res. 20:498 (2021)
+(Open search) Identification of modified peptides using localization-aware open search. Nat Commun. 11:4065 (2020)
+(Open search) Crystal-C: A Computational Tool for Refinement of Open Search Results. J. Proteome Res. 19.6:2511 (2020)
+(Open search) PTM-Shepherd: analysis and summarization of post-translational and chemical modifications from open search results. Mol Cell Proteomics 20:100018 (2020)
+(Glyco/labile search) Fast and comprehensive N- and O-glycoproteomics analysis with MSFragger-Glyco. Nat Methods 17:1125 (2020)
+(timsTOF PASEF) Fast quantitative analysis of timsTOF PASEF data with MSFragger and IonQuant. Mol Cell Proteomics 19:1575 (2020)
+(PSM validation with Percolator) Semi-supervised learning for peptide identification from shotgun proteomics datasets. Nat Methods 4:923 (2007)
+(Label-free quantification/SILAC) IonQuant Enables Accurate and Sensitive Label-Free Quantification With FDR-Controlled Match-Between-Runs. Mol Cell Proteomics 20:100077 (2021)
+(PeptideProphet/ProteinProphet/PTMProphet/Filtering) Philosopher: a versatile toolkit for shotgun proteomics data analysis. Nat Methods 17:869 (2020)
+(TMT-Integrator) Quantitative proteomic landscape of metaplastic breast carcinoma pathological subtypes and their relationship to triple-negative tumors. Nat Commun. 11:1723 (2020)
+(DIA-Umpire) DIA-Umpire: comprehensive computational framework for data-independent acquisition proteomics. Nat Methods 12:258 (2015)
+
+==================================================================================DONE============================================================

@@ -1,0 +1,14 @@
+# Crystal-C (Version: 2019.08)
+
+thread = 3
+fasta = C:\Users\ydchen\Desktop\PG-BS6202\dependencies\2021-08-22-decoys-reviewed-contam-UP000005640.fas
+raw_file_location = C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4
+raw_file_extension = mzML
+output_location = C:\Users\ydchen\Desktop\PG-BS6202\BS6202_Assignment_4\output
+
+precursor_charge = 1 6			# precursor charge range for detecting chimeric spectra
+isotope_number = 3			# number of theoretical isotope peaks
+precursor_mass = 20			# precursor mass tolerance (unit: ppm)
+precursor_isolation_window = 0.7			# precursor isolation window
+correct_isotope_error = false			# correct isotope error by updating precursor neutral mass with the monoisotopic mass
+
