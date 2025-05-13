@@ -1,0 +1,19 @@
+"","Study.Identifier","Year","Intervention","Intervention.types","Intervention.subgroups","Country","Setting","Types.of.disease_clean","Type.of.disease.in.two.categories.(dementia.and.MCI)","Updated.Dementia.Severity","Is.this.a.study.focusing.on.carers.of.people.living.with.dementia.or.mild.cognitive.impairment?","Primary.Cognition.Measure.standardized.z-score.change","Type","Baseline.Score.-.Primary.Cognition","Number.of.Participants.at.Baseline","Baseline.SD","Post.Treatment.Score","Post.Treatment.N","Post.Treatment.SD","Post.Treatment.Time.(Weeks.from.Start)","Domain.1","Domain.2","Domain.3","Domain.4","Domain.5","Overall","Baseline.Educational.level.(indicate.how.this.was.measured)","Baseline.Female.(percent)","Baseline.MMSE.score.(mean)","Intervention.Brief.description.of.intervention","Intervention.Intervention.details","Intervention.Interv..type.[SELECT:.Pharmaceutical;.Traditional.Chinese.Medicine;.Other.trad..medicines;.Non-pharmacol.;.Multicomponent.(record.each.component);.Interv..for.carers;.End.of.life.care;.Treatment/prevention.of.co-morbidities;.Technology;.Diagn","MMSE.after.treatment.mean.1","MMSE.after.treatment.N_324","MMSE.after.treatment.SD_325","MMSE.Baseline.mean.1","MMSE.Baseline.N_348","MMSE.Baseline.SD_349"
+"113","TAN 2010",2010,"control group","No intervention","No intervention","China","The Third Peoplel's Hospital of Foshan City","Alzheimer's Disease","Dementia","Mild to moderate","Yes （Intervention was implemented among carer, but outcomes were measured among patients）","MMSE","Raw","15.32","60","1.98","14.07","60","1.63","12","some concerns","some concerns","low risk","some concerns","some concerns","some concerns",NA,NA,15.32,"no any intervention",NA,NA,14.07,60,1.63,15.32,60,1.98
+"114","TAN 2010",2010,"Intervention group (Carer training)","Training and education for carers","Training and education for unpaid carers","China","The Third Peoplel's Hospital of Foshan City","Alzheimer's Disease","Dementia","Mild to moderate","Yes （Intervention was implemented among carer, but outcomes were measured among patients）","MMSE","Raw","15.1","60","2.56","16.12","60","2.84","12","some concerns","some concerns","low risk","some concerns","some concerns","some concerns","""文盲1l例，小学22例，初中18例，高中以上9例""","53.33",15.1,"The caregivers of observation groups were taught of AD disease nowledge，daily care，
+safe care knowledge，training and rehabilitation training guidance to improve their nursing skills","1．2．1对观察组照顾者的干预
+1．2．1．1 对照顾者进行AD相关护理知识和技巧的训练，内容
+包括：①AD患者的分期和常见的表现，让照顾者了解AD患者
+病情的发展。②日常生活护理。③AD患者安全护理，针对患者常
+见的走失、跌倒、自我伤害、意外受伤等安全问题对照顾者进行相
+关知识指导。④训练AD患者的康复技巧，根据AD患者的分期进
+行认图、物品分类、计算力、理解力和记忆力等方面的训练。⑤照
+顾者心理指导。尊重AD患者的人格、隐私，接纳痴呆老人的怪异
+言行，鼓励照顾者寻求邻居、朋友、同事的帮助和心理支持，主动
+利用社会支持，缓解照顾压力。
+1．2．1．2 课题组护士电话随访1次／周，家访2次／月。我们给
+照顾者留下咨询电话，随时帮助照顾者解决AD患者出现的问
+题。每季度去社区举办健康教育讲座1次，并现场指导照顾者对
+AD患者的康复训练，了解照顾者反馈的信息、有针对性调整讲
+课内容，提高培训效果。
+","Non-pharmacol",16.12,60,2.84,15.1,60,2.56

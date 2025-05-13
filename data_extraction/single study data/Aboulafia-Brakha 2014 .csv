@@ -1,0 +1,52 @@
+"","Study.Identifier","Year","Intervention","Intervention.types","Intervention.subgroups","Country","Setting","Types.of.disease_clean","Type.of.disease.in.two.categories.(dementia.and.MCI)","Updated.Dementia.Severity","Is.this.a.study.focusing.on.carers.of.people.living.with.dementia.or.mild.cognitive.impairment?","Domain.1","Domain.2","Domain.3","Domain.4","Domain.5","Overall","Baseline.For.studies.in.carers.only:.Caregiver.age.in.years.(mean)","Baseline.For.studies.in.carers.only:.Caregiver.female.(percent)","Baseline.For.studies.in.carers.only:.Full-time.working.(percent)","Intervention.Brief.description.of.intervention","Intervention.Intervention.details.(duration.and.intensity.of.the.intervention,.dosage.of.drugs,.existence.of.a.protocol.or.manual.for.psychosocial,.training.or.education.interventions)","Intervention.Interv..type.[SELECT:.Pharmaceutical;.Traditional.Chinese.Medicine;.Other.trad..medicines;.Non-pharmacol.;.Multicomponent.(record.each.component);.Interv..for.carers;.End.of.life.care;.Treatment/prevention.of.co-morbidities;.Technology;.Diagn","Caregiver.burden.at.8.weeks.(Zarit.Burden.Interview).8.weeks.mean","Caregiver.burden.at.8.weeks.(Zarit.Burden.Interview).8.weeks.N","Caregiver.burden.at.8.weeks.(Zarit.Burden.Interview).8.weeks.SD","Caregiver.burden.at.8.weeks.(Zarit.Burden.Interview).Baseline.mean","Caregiver.burden.at.8.weeks.(Zarit.Burden.Interview).Baseline.N","Caregiver.burden.at.8.weeks.(Zarit.Burden.Interview).Baseline.SD"
+"322","Aboulafia-Brakha 2014",2014,"Cognitive–behavioural group therapy","Support for carers","Group support and therapy","Brazil","""The recruitment was carried out at the Cognitive Disorders Reference Center – CEREDIC of the Medical School of Universidade de S~ao Paulo – Clinical Hospital (HCFMUSP).""","Alzheimer's Disease","Dementia","Moderate to severe","Yes","high risk","some concerns","high risk","high risk","some concerns","high risk","59.42","100","(8.3% were in paid emplyment)","Structured group discussion and CBT sessions for caregivers (90 minutes, 1/week, over 8 weeks)","""CBT group: caregivers allocated to this group were
+divided in small groups of six to eight participants.
+They benefited from eight 90-minute group sessions
+held once a week, with pre-established discussion
+themes. These included life activities before
+and after caring for their AD relative, the family
+dynamic around the affected member and the caregiver
+relationship with his/her relative. Using cognitive–
+behavioural techniques, such as cognitive
+restructuring and behaviour modifications, participants
+were encouraged to resume some of the activities
+they had abandoned after becoming a
+caregiver and to favour the inclusion of other family
+members in caregiving activities. For example,
+in one of the sessions, participants chose one activity
+they wanted to carry out during the next week
+and that was feasible if someone else took care of
+their proxy. Cognitions and emotions related to this
+attitude were discussed prior to exposure, and participants
+could also benefit from encouragement of
+the other group fellows. The following week, they
+were invited to share their experience in the group,
+where alternative ways of thinking and feeling
+about the situation were identified. Further, psychoeducation facts transmitted to the EDUC
+group (including management of AD’s neuropsychiatric
+symptoms) were also covered in the CBT
+group, but in an interactive manner, which explains
+the need for slightly longer sessions. Discussions
+between group members and role-plays were regularly
+encouraged in order to strengthen the understanding
+of the different topics. In order to test and
+apply the skills learned during the sessions, homework
+tasks were recommended, such as practicing
+in vivo what was rehearsed in role-plays.""","Intervention for carers","38.1","11","12.9","35.0","11","13.5"
+"323","Aboulafia-Brakha 2014",2014,"Psychoeducation group programme (Control)","Support for carers","Information, education, and training to support carers","Brazil","""The recruitment was carried out at the Cognitive Disorders Reference Center – CEREDIC of the Medical School of Universidade de S~ao Paulo – Clinical Hospital (HCFMUSP).""","Alzheimer's Disease","Dementia","Moderate to severe","Yes","high risk","some concerns","high risk","high risk","some concerns","high risk","55.07","67","(53.3% were in paid employment)","Structured group education session for caregivers (60 minutes,  1/week, over 8 weeks)","EDUC group: in this group, caregivers participated
+in eight 60-minute group sessions held once
+a week, with up to 17 participants together. They
+received information on AD. The programme was based on the work of Zarit, Anthony, and Boutselis
+(1987) and Parks and Novielli (2000), and covered
+the diagnosis process, cognitive symptoms,
+different stages of the disease and available treatment
+methods. Advices concerning interaction
+with the patient, how to deal with neuropsychiatric
+symptoms such as disinhibition, aggressiveness
+and delusions, as well as security issues
+were also given. Information was transmitted in a
+structured format with the aid of presentation software.
+At the end of the sessions, participants were
+allowed to ask questions, but little opportunity
+was given for discussion of personal issues and
+interactions between participants.""","Intervention for carers","34.2","15","16.3","31.3","15","11.9"

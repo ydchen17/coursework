@@ -1,0 +1,28 @@
+Intervention types,Study Identifier
+Comprehensive care interventions,Wang 2010b
+Comprehensive care interventions,ZHAO 2010
+Comprehensive care interventions,SUN 2010
+Comprehensive care interventions,SU 2012
+Comprehensive care interventions,JIANG 2012
+Comprehensive care interventions,Wang 2014a
+Comprehensive care interventions,Yang 2017a
+Structured therapeutic psychosocial interventions,He 2012
+Structured therapeutic psychosocial interventions,Novelli 2018
+Structured therapeutic psychosocial interventions,Lok 2019
+Support for carers,Pahlavanzadeh 2010
+Support for carers,Wang 2012e
+Support for carers,Aboulafia-Brakha 2014
+Support for carers,Mercedeh 2014
+Support for carers,Kamkhagi 2015
+Support for carers,Söylemez 2016
+Support for carers,Shata 2017
+Support for carers,Salamizadeh 2017
+Support for carers,Mahdavi 2017
+Support for carers,Lök 2017
+Support for carers,Orawan 2018
+Training and education for carers,Amit 2008
+Training and education for carers,TAN 2010
+Training and education for carers,Guerra 2011
+Training and education for carers,Wang 2017e
+Training and education for carers,Wang 2017c
+Training and education for carers,Lin 2017

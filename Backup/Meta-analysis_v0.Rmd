@@ -1,0 +1,690 @@
+---
+title: "Meta-analysis"
+output:
+  word_document: 
+    toc: true
+    toc_depth: 5
+  pdf_document:
+    toc: true
+    toc_depth: 5
+    latex_engine: xelatex
+---
+
+```{r eval = FALSE}
+library(openxlsx)
+library(metafor)
+library(esc)
+library(dmetar)
+library(metafor)
+library(dplyr)
+# install.packages('ggpubr')
+library(ggpubr)
+```
+
+## Meta-analysis with R
+
+```{r}
+meta_df.es.g <- read.xlsx('Dataset_effect_size_calculated.xlsx')
+colnames(meta_df.es.g)
+```
+
+
+### Perform meta-analysis with 'meta'
+
+```{r}
+es.freq_df <- data.frame(table(meta_df.es.g$Effect.measure))
+selected_names <- es.freq_df[es.freq_df$Freq < 4, ]$Var1
+selected_names <- selected_names[grepl('Caregiver', selected_names)]
+selection_df <- meta_df.es.g[meta_df.es.g$Effect.measure %in% selected_names, ]
+
+library(meta)
+m.gen <- metagen(TE = mean.effect,
+                 seTE = standard_error,
+                 studlab = Study.Identifier,
+                 data = selection_df,
+                 sm = "SMD",
+                 comb.fixed = FALSE,
+                 comb.random = FALSE,
+                 byvar = Effect.measure,
+                 text.common = 'Fixed-effects model',
+                 text.random = 'Random-effects model')
+
+
+pdf('Figures/combined_forest_1.pdf', width = 10, height = 8.4)
+forest(m.gen, 
+       prediction.subgroup = FALSE, subgroup.name = NULL, 
+       overall = FALSE, overall.hetstat = FALSE, 
+       leftcols = c('Study.Identifier','Ctrl_Post_N', 'Expt_Post_N',  'Overall'),
+       leftlabs = c('Study Identifier', 
+                    expression(N[Control]), 
+                    expression(N[Intervention]), 
+                    'Risk of bias'),
+       xlim = c(-5, 5))
+dev.off()
+
+es.freq_df <- data.frame(table(meta_df.es.g$Effect.measure))
+selected_names <- es.freq_df[es.freq_df$Freq < 4, ]$Var1
+selected_names <- selected_names[grepl('Patient', selected_names)]
+selection_df <- meta_df.es.g[meta_df.es.g$Effect.measure %in% selected_names, ]
+
+m.gen <- metagen(TE = mean.effect,
+                 seTE = standard_error,
+                 studlab = Study.Identifier,
+                 data = selection_df,
+                 sm = "SMD",
+                 comb.fixed = FALSE,
+                 comb.random = FALSE,
+                 byvar = Effect.measure,
+                 
+                 text.common = 'Fixed-effects model',
+                 text.random = 'Random-effects model')
+
+
+pdf('Figures/combined_forest_2.pdf', width = 10, height = 3.2)
+forest(m.gen, 
+       prediction.subgroup = FALSE, 
+       subgroup.name = NULL, 
+       leftcols = c('Study.Identifier','Ctrl_Post_N', 'Expt_Post_N',  'Overall'),
+       leftlabs = c('Study Identifier', 
+                    expression(N[Control]), 
+                    expression(N[Intervention]), 
+                    'Risk of bias'),
+       overall = FALSE, 
+       overall.hetstat = FALSE, 
+       xlim = c(-5, 5))
+dev.off()
+```
+
+```{r}
+es.freq_df <- data.frame(table(meta_df.es.g$Effect.measure))
+selected_names <- es.freq_df[es.freq_df$Freq > 0, ]$Var1
+# selected_names <- selected_names[grepl('Caregiver', selected_names)]
+selection_df <- meta_df.es.g[meta_df.es.g$Effect.measure %in% selected_names, ]
+
+# colnames(caregiver_es)
+# caregiver_es_names
+caregiver.m <- metagen(TE = mean.effect,
+                 seTE = standard_error,
+                 studlab = Study.Identifier,
+                 data = selection_df,
+                 sm = "SMD",
+                 comb.fixed = TRUE,
+                 byvar = Effect.measure)
+pdf('Figures/combined_forest.pdf', width = 10, height = 20)
+forest(caregiver.m, prediction.subgroup = TRUE, 
+       subgroup.name = NULL, 
+       overall = FALSE, overall.hetstat = FALSE,
+       leftcols = NULL, # c('Study.Identifier','Ctrl_Post_N', 'Expt_Post_N',  'Overall')
+       leftlabs = NULL, #c('Study Identifier', 
+                  #  expression(N[Control]), 
+                  #  expression(N[Intervention]), 
+                  #  'Risk of bias'),
+       study.results = FALSE,
+       test.subgroup = FALSE,
+       xlim = c(-14, 14), print.tau2 = FALSE,
+       text.common = 'Fixed-effects model',
+       text.random = 'Random-effects model'
+       )
+dev.off()
+
+pdf('Figures/combined_forest_full.pdf', width = 15, height = 50)
+forest(caregiver.m, prediction.subgroup = TRUE, 
+       subgroup.name = NULL, 
+       overall = TRUE, overall.hetstat = TRUE,
+       leftcols = c('Study.Identifier','Ctrl_Post_N', 'Expt_Post_N',  'Overall'),
+       leftlabs = c('Study Identifier', 
+                    expression(N[Control]), 
+                    expression(N[Intervention]), 
+                    'Risk of bias'),
+       study.results = TRUE,
+       test.subgroup = TRUE,
+       xlim = c(-14, 14), print.tau2 = TRUE,
+       text.common = 'Fixed-effects model',
+       text.random = 'Random-effects model'
+       )
+dev.off()
+```
+
+### Caregiver burden
+
+#### Perform meta-analysis with 'metafor'
+
+```{r eval = FALSE}
+library(metafor)
+caregiver_burden <- meta_df.es.g[meta_df.es.g$Effect.measure == 'Caregiver burden',]
+# caregiver_burden
+res <- rma(mean.effect, variance, data=caregiver_burden, slab = Study.Identifier)
+# res
+# forest(res)
+library(ggpubr)
+ggqqplot(res$data$mean.effect)
+shapiro.test(res$data$mean.effect)
+```
+```{r}
+full.model.1 <- rma.mv(yi = mean.effect, 
+                     V = variance, 
+                     slab = Study.Identifier,
+                     data = caregiver_burden,
+                     random = ~ 1 |Country/Study.Identifier)
+full.model.1
+var.comp(full.model.1)
+plot(var.comp(full.model.1))
+
+full.model.2 <- rma.mv(yi = mean.effect, 
+                     V = variance, 
+                     slab = Study.Identifier,
+                     data = caregiver_burden,
+                     random = ~ 1 |Study.Identifier/Effect.measure)
+full.model.2
+var.comp(full.model.2)
+plot(var.comp(full.model.2))
+
+
+full.model.2.removed <- rma.mv(yi = mean.effect, 
+                     V = variance, 
+                     slab = Study.Identifier,
+                     data = caregiver_burden,
+                     random = ~ 1 | Place.of.intervention.updated/Study.Identifier, 
+                     test = "t", 
+                     method = "REML",
+                     sigma2 =  c(0, NA))
+
+anova(full.model.2, full.model.2.removed)
+
+full.model.3 <- rma.mv(yi = mean.effect, 
+                     V = variance, 
+                     slab = Study.Identifier,
+                     data = caregiver_burden,
+                     random = ~ 1 |Caregiver.intervention.type/Study.Identifier)
+full.model.3
+var.comp(full.model.3)
+plot(var.comp(full.model.3))
+
+full.model.3.removed <- rma.mv(yi = mean.effect, 
+                     V = variance, 
+                     slab = Study.Identifier,
+                     data = caregiver_burden,
+                     random = ~ 1 | Caregiver.intervention.type/Study.Identifier, 
+                     test = "t", 
+                     method = "REML",
+                     sigma2 =  c(0, NA))
+
+anova(full.model.3, full.model.3.removed)
+```
+
+#### Perform GOSH analysis with 'metafor'
+
+```{r eval = FALSE}
+qqnorm(res)
+gosh_diac <- gosh.diagnostics(gosh(res))
+plot(gosh_diac, which = "cluster")
+plot(gosh_diac, which = "outlier")
+gosh_diac
+```
+
+#### GOSH after removing outliers
+
+```{r eval = FALSE}
+res <- rma(mean.effect, variance, 
+           data=caregiver_burden[-1, ], 
+           slab = Study.Identifier)
+qqnorm(res)
+gosh_diac <- gosh.diagnostics(gosh(res))
+plot(gosh_diac, which = "cluster")
+plot(gosh_diac, which = "outlier")
+gosh_diac
+```
+
+#### Perform meta-analysis with 'meta'
+
+```{r}
+colnames(caregiver_burden)
+```
+
+```{r}
+#es.freq_df <- data.frame(table(meta_df.es.g$Effect.measure))
+#selected_names <- es.freq_df[es.freq_df$Freq < 4, ]$Var1
+#selected_names <- selected_names[grepl('Patient', selected_names)]
+#selection_df <- meta_df.es.g[meta_df.es.g$Effect.measure %in% selected_names, ]
+caregiver_burden <- meta_df.es.g[meta_df.es.g$Effect.measure == 'Caregiver burden',]
+
+caregiver_burden.m <- metagen(TE = mean.effect,
+                 seTE = standard_error,
+                 studlab = Study.Identifier,
+                 data = caregiver_burden,
+                 sm = "SMD",
+                 comb.fixed = FALSE,
+                 comb.random = TRUE,
+                 # byvar = Effect.measure,
+                 text.common = 'Fixed-effects model',
+                 text.random = 'Random-effects model')
+
+pdf('Figures/caregiver_burden_forest_with_outlier.pdf', width = 10, height = 5)
+forest(caregiver_burden.m, 
+       prediction = TRUE,
+       prediction.subgroup = TRUE, 
+       sortvar = Year,
+       subgroup.name = NULL, 
+       leftcols = c('Study.Identifier','Ctrl_Post_N', 'Expt_Post_N',  'Overall'),
+       leftlabs = c('Study Identifier', 
+                    expression(N[Control]), 
+                    expression(N[Intervention]), 
+                    expression("Overall risk of bias")),
+       overall = TRUE, 
+       overall.hetstat = TRUE, 
+       xlim = c(-7, 7))
+dev.off()
+
+caregiver_burden <- caregiver_burden[
+  -which(caregiver_burden$Study.Identifier == 'Govindakumari 2020'), 
+  ]
+caregiver_burden.m <- metagen(TE = mean.effect,
+                 seTE = standard_error,
+                 studlab = Study.Identifier,
+                 data = caregiver_burden,
+                 sm = "SMD",
+                 comb.fixed = FALSE,
+                 comb.random = TRUE,
+                 # byvar = Effect.measure,
+                 text.common = 'Fixed-effects model',
+                 text.random = 'Random-effects model')
+
+pdf('Figures/caregiver_burden_forest_without_outlier.pdf', width = 10, height = 5)
+forest(caregiver_burden.m, 
+       predict = TRUE,
+       prediction.subgroup = TRUE, 
+       sortvar = Year,
+       subgroup.name = NULL, 
+       leftcols = c('Study.Identifier','Ctrl_Post_N', 'Expt_Post_N',  'Overall'),
+       leftlabs = c('Study Identifier', 
+                    expression(N[Control]), 
+                    expression(N[Intervention]), 
+                    expression("Overall risk of bias")),
+       overall = TRUE, 
+       overall.hetstat = TRUE, 
+       xlim = c(-7, 7))
+dev.off()
+```
+
+#### Funnel plot
+
+```{r eval = FALSE}
+pdf('Figures/caregiver_burden_funnel.pdf', width = 10, height = 7)
+# funnel(m.gen, studlab = TRUE, xlim = c(-8, 1))
+col.contour = c("gray75", "gray85", "gray95")
+funnel.meta(m.gen, xlim = c(-6.2, 1.2),
+            contour = c(0.9, 0.95, 0.99),
+            col.contour = col.contour, 
+            studlab = TRUE, pos.studlab = '4')
+
+# Add a legend
+legend(x = -4, y = 0.01, 
+       legend = c("p < 0.1", "p < 0.05", "p < 0.01"),
+       fill = col.contour)
+dev.off()
+```
+
+#### Subgroup analysis by country
+
+```{r eval = FALSE}
+caregiver_burden.m.by.country <- update.meta(caregiver_burden.m, 
+            subgroup = Country, 
+            tau.common = FALSE)
+pdf('Figures/caregiver_burden_country.pdf', width = 10, height = 7.5)
+forest(caregiver_burden.m.by.country, 
+       subgroup.name = NULL, 
+       prediction = TRUE, 
+       prediction.subgroup = FALSE,
+       leftcols = c('Study.Identifier','Ctrl_Post_N', 'Expt_Post_N',  'Overall'),
+       leftlabs = c('Study Identifier', 
+                    expression(N[Control]), 
+                    expression(N[Intervention]), 
+                    expression("Overall risk of bias")),
+       )
+dev.off()
+caregiver_burden.m.by.country
+```
+
+```{r}
+caregiver_burden.m.by.country
+```
+
+#### Subgroup analysis by intervention type
+
+```{r eval = FALSE}
+caregiver_burden.m.by.intervention <- update.meta(caregiver_burden.m, 
+            subgroup = Caregiver.intervention.type, tau.common = FALSE)
+caregiver_burden.m.by.intervention
+pdf('Figures/caregiver_burden_intervention.pdf', width = 10, height = 10)
+forest(caregiver_burden.m.by.intervention, subgroup.name = NULL, 
+       prediction = TRUE, prediction.subgroup = TRUE)
+dev.off()
+```
+
+```{r}
+caregiver_burden.m.Domain <- update.meta(caregiver_burden.m, 
+            subgroup = Domain.1.unmodified, tau.common = FALSE)
+caregiver_burden.m.Domain
+pdf('Figures/caregiver_burden.m.Domain.pdf', width = 10, height = 10)
+forest(caregiver_burden.m.Domain, subgroup.name = NULL, 
+       prediction = TRUE, prediction.subgroup = TRUE)
+dev.off()
+```
+
+### Meta-regression
+
+```{r}
+caregiver_burden.metareg <- metareg(caregiver_burden.m, ~Year)
+print(caregiver_burden.metareg)
+bubble(caregiver_burden.metareg,
+       studlab = TRUE, pos.studlab = 4,
+       xlim = c(2008, 2022), ylim = c(-2.5, 1),
+       xlab = "Covariate Year")
+```
+
+```{r}
+caregiver_burden.metareg <- metareg(caregiver_burden.m, ~Measurement.point)
+print(caregiver_burden.metareg)
+bubble(caregiver_burden.metareg,
+       studlab = TRUE, pos.studlab = 4,
+       xlim = c(0, 200), ylim = c(-2.5, 1),
+       xlab = "Covariate Follow-up Duration (Days)")
+```
+
+```{r}
+library(ggplot2)
+caregiver_burden.metareg <- metareg(caregiver_burden.m, ~Treatment.duration)
+print(caregiver_burden.metareg)
+bubble(caregiver_burden.metareg, 
+       studlab = TRUE, pos.studlab = 4,
+       xlim = c(0, 200), ylim = c(-2.5, 1),
+       xlab = "Covariate Treatment Duration (Days)")
+```
+
+```{r}
+caregiver_burden.metareg <- metareg(caregiver_burden.m, ~Caregiver.intervention.type)
+print(caregiver_burden.metareg)
+bubble(caregiver_burden.metareg)
+```
+
+```{r}
+
+
+caregiver_burden.metareg <- metareg(caregiver_burden.m, ~Measurement.point)
+print(caregiver_burden.metareg)
+caregiver_burden.metareg <- metareg(caregiver_burden.m, ~Treatment.duration)
+print(caregiver_burden.metareg)
+caregiver_burden.metareg <- metareg(caregiver_burden.m, 
+                                    ~Measurement.point * Treatment.duration)
+print(caregiver_burden.metareg)
+caregiver_burden.metareg <- metareg(caregiver_burden.m, 
+                                    ~as.factor(Caregiver.intervention.type))
+print(caregiver_burden.metareg)
+caregiver_burden.metareg <- metareg(caregiver_burden.m, 
+                                    ~as.factor(Caregiver.intervention.type) * Treatment.duration)
+print(caregiver_burden.metareg)
+caregiver_burden.metareg <- metareg(caregiver_burden.m, 
+                                    ~as.factor(Caregiver.intervention.type) * Measurement.point)
+print(caregiver_burden.metareg)
+
+caregiver_burden.metareg <- metareg(caregiver_burden.m, ~Updated.Dementia.Severity)
+print(caregiver_burden.metareg)
+
+```
+
+```{r}
+caregiver_burden.metareg <- metareg(caregiver_burden.m, 
+                                    ~as.factor(Caregiver.intervention.type) * 
+                                      Measurement.point *
+                                      Country)
+print(caregiver_burden.metareg)
+```
+
+## Caregiver QoL
+
+```{r}
+library(meta)
+caregiver_QoL <- meta_df.es.g[meta_df.es.g$Effect.measure == 'Caregiver quality of life',]
+pdf('Figures/Caregiver_QoL_forest.pdf', width = 12, height = 3.2)
+caregiver_QoL.m <- metagen(TE = mean.effect,
+                 seTE = standard_error,
+                 studlab = Study.Identifier,
+                 data = caregiver_QoL,
+                 sm = "SMD",
+                 comb.fixed = FALSE,
+                 comb.random = TRUE,
+                 text.common = 'Fixed-effects model',
+                 text.random = 'Random-effects model')
+forest(caregiver_QoL.m, prediction = TRUE, 
+       leftcols = c('Study.Identifier',
+                    'Caregiver.intervention.subgroups',
+                    'Ctrl_Post_N', 
+                    'Expt_Post_N',  
+                    'Overall'),
+       leftlabs = c('Study Identifier', 
+                    'Intervention content',
+                    expression(N[Control]), 
+                    expression(N[Intervention]), 
+                    expression("Overall risk of bias")))
+dev.off()
+```
+
+```{r}
+library(metafor)
+res <- rma(mean.effect, variance, data=caregiver_QoL, slab = Study.Identifier)
+res <- rma(mean.effect, variance, 
+           data=caregiver_QoL, 
+           slab = Study.Identifier)
+qqnorm(res)
+gosh_diac <- gosh.diagnostics(gosh(res))
+plot(gosh_diac, which = "cluster")
+plot(gosh_diac, which = "outlier")
+gosh_diac
+caregiver_QoL
+```
+
+## Caregiver depression
+
+```{r}
+library(meta)
+caregiver_depression <- meta_df.es.g[meta_df.es.g$Effect.measure == 'Caregiver depression',]
+# caregiver_QoL <- caregiver_QoL[-5, ]
+pdf('Figures/Caregiver_depression_forest.pdf', width = 12, height = 3.2)
+caregiver_depression.m <- metagen(TE = mean.effect,
+                 seTE = standard_error,
+                 studlab = Study.Identifier,
+                 data = caregiver_depression,
+                 sm = "SMD",
+                 comb.fixed = TRUE,
+                 comb.random = TRUE,
+                 text.common = 'Fixed-effects model',
+                 text.random = 'Random-effects model')
+caregiver_depression.m
+forest(caregiver_depression.m, 
+       prediction = TRUE, 
+       leftcols = c('Study.Identifier',
+                    'Caregiver.intervention.subgroups',
+                    'Ctrl_Post_N', 
+                    'Expt_Post_N',  
+                    'Overall'),
+       leftlabs = c('Study Identifier', 
+                    'Intervention content',
+                    expression(N[Control]), 
+                    expression(N[Intervention]), 
+                    expression("Overall risk of bias")))
+dev.off()
+funnel(caregiver_depression.m)
+library(metafor)
+res <- rma(mean.effect, variance, 
+           data=caregiver_depression, 
+           slab = Study.Identifier)
+gosh_diac <- gosh.diagnostics(gosh(res))
+plot(gosh_diac, which = "cluster")
+plot(gosh_diac, which = "outlier")
+gosh_diac
+```
+
+### Caregiver anxiety
+
+```{r}
+library(meta)
+caregiver_anxiety <- meta_df.es.g[meta_df.es.g$Effect.measure == 'Caregiver anxiety',]
+# caregiver_QoL <- caregiver_QoL[-5, ]
+pdf('Figures/Caregiver_anxiety_forest.pdf', width = 12, height = 3.2)
+caregiver_anxiety.m <- metagen(TE = mean.effect,
+                 seTE = standard_error,
+                 studlab = Study.Identifier,
+                 data = caregiver_anxiety,
+                 sm = "SMD",
+                 comb.fixed = FALSE,
+                 comb.random = TRUE,
+                 text.common = 'Fixed-effects model',
+                 text.random = 'Random-effects model')
+caregiver_anxiety.m
+forest(caregiver_anxiety.m, 
+       prediction = TRUE, 
+       leftcols = c('Study.Identifier',
+                    'Caregiver.intervention.subgroups',
+                    'Ctrl_Post_N', 
+                    'Expt_Post_N',  
+                    'Overall'),
+       leftlabs = c('Study Identifier', 
+                    'Intervention content',
+                    expression(N[Control]), 
+                    expression(N[Intervention]), 
+                    expression("Overall risk of bias")))
+dev.off()
+funnel(caregiver_anxiety.m)
+library(metafor)
+res <- rma(mean.effect, variance, 
+           data=caregiver_depression, 
+           slab = Study.Identifier)
+gosh_diac <- gosh.diagnostics(gosh(res))
+plot(gosh_diac, which = "cluster")
+plot(gosh_diac, which = "outlier")
+gosh_diac
+```
+
+## Patient cognitive function
+
+```{r}
+patient_cognition <- meta_df.es.g[meta_df.es.g$Effect.measure == 'Patient cognitive function',]
+pdf('Figures/Patient_cognitive_function_forest.pdf', width = 12, height = 3.2)
+patient_cognition.m <- metagen(TE = mean.effect,
+                 seTE = standard_error,
+                 studlab = Study.Identifier,
+                 data = patient_cognition,
+                 sm = "SMD",
+                 comb.fixed = TRUE,
+                 comb.random = FALSE,
+                 text.common = 'Fixed-effects model',
+                 text.random = 'Random-effects model')
+forest(patient_cognition.m, prediction = TRUE, 
+       leftcols = c('Study.Identifier',
+                    'Caregiver.intervention.subgroups',
+                    'Ctrl_Post_N', 
+                    'Expt_Post_N',  
+                    'Overall'),
+       leftlabs = c('Study Identifier', 
+                    'Intervention content',
+                    expression(N[Control]), 
+                    expression(N[Intervention]), 
+                    expression("Overall risk of bias")))
+dev.off()
+```
+
+```{r}
+library(meta)
+patient_QoL <- meta_df.es.g[meta_df.es.g$Effect.measure == 'Patient quality of life',]
+pdf('Figures/Patient_QoL_forest.pdf', width = 12, height = 3.2)
+patient_QoL.m <- metagen(TE = mean.effect,
+                 seTE = standard_error,
+                 studlab = Study.Identifier,
+                 data = patient_QoL,
+                 sm = "SMD",
+                 comb.fixed = FALSE,
+                 comb.random = TRUE,
+                 text.common = 'Fixed-effects model',
+                 text.random = 'Random-effects model')
+patient_QoL.m
+forest(patient_QoL.m, 
+       prediction = TRUE, 
+       leftcols = c('Study.Identifier',
+                    'Caregiver.intervention.subgroups',
+                    'Ctrl_Post_N', 
+                    'Expt_Post_N',  
+                    'Overall'),
+       leftlabs = c('Study Identifier', 
+                    'Intervention content',
+                    expression(N[Control]), 
+                    expression(N[Intervention]), 
+                    expression("Overall risk of bias")))
+dev.off()
+funnel(patient_QoL.m)
+library(metafor)
+res <- rma(mean.effect, variance, 
+           data=patient_QoL, 
+           slab = Study.Identifier)
+gosh_diac <- gosh.diagnostics(gosh(res))
+plot(gosh_diac, which = "cluster")
+plot(gosh_diac, which = "outlier")
+gosh_diac
+
+patient_QoL <- meta_df.es.g[meta_df.es.g$Effect.measure == 'Patient quality of life',]
+patient_QoL <- patient_QoL[-1, ]
+pdf('Figures/Patient_QoL_forest.pdf', width = 12, height = 3.2)
+patient_QoL.m <- metagen(TE = mean.effect,
+                 seTE = standard_error,
+                 studlab = Study.Identifier,
+                 data = patient_QoL,
+                 sm = "SMD",
+                 comb.fixed = FALSE,
+                 comb.random = TRUE,
+                 text.common = 'Fixed-effects model',
+                 text.random = 'Random-effects model')
+patient_QoL.m
+forest(patient_QoL.m, 
+       prediction = TRUE, 
+       leftcols = c('Study.Identifier',
+                    'Caregiver.intervention.subgroups',
+                    'Ctrl_Post_N', 
+                    'Expt_Post_N',  
+                    'Overall'),
+       leftlabs = c('Study Identifier', 
+                    'Intervention content',
+                    expression(N[Control]), 
+                    expression(N[Intervention]), 
+                    expression("Overall risk of bias")))
+dev.off()
+funnel(patient_QoL.m, )
+library(metafor)
+res <- rma(mean.effect, variance, 
+           data=patient_QoL, 
+           slab = Study.Identifier)
+gosh(res)
+#gosh_diac <- gosh.diagnostics(gosh(res))
+#plot(gosh_diac, which = "cluster")
+#plot(gosh_diac, which = "outlier")
+#gosh_diac
+```
+
+## Combine studies
+
+```{r}
+caregiver_burden.m <- metagen(TE = mean.effect,
+                 seTE = standard_error,
+                 studlab = Study.Identifier,
+                 data = caregiver_burden,
+                 sm = "SMD",
+                 comb.fixed = TRUE)
+
+caregiver_depression.m <- metagen(TE = mean.effect,
+                 seTE = standard_error,
+                 studlab = Study.Identifier,
+                 data = caregiver_depression,
+                 sm = "SMD",
+                 comb.fixed = TRUE)
+
+forest(metabind(caregiver_burden.m, caregiver_depression.m), prediction = TRUE)
+```
+

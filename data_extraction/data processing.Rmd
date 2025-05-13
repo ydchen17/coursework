@@ -1,0 +1,382 @@
+---
+title: "Description of data processing"
+author: ""
+date: "`r Sys.Date()`"
+output: 
+  word_document: 
+    toc: true
+    toc_depth: 3
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    latex_engine: xelatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1 Introduction
+
+The aim of this documentation is to illustrate how the data pre-processing is done for the data-set of the HP407 group project.
+
+To replicate this study, you will need to install R, which is available at https://r-project.org/. For this preprocessing workflow, the current version of R on my computer is as follows:
+
+```{r}
+R.Version()$version.string
+```
+
+To proceed, you must install and load the required packages, which is as follows:
+
+```{r, eval=FALSE}
+# installation
+install.packages("openxlsx")
+install.packages("naniar")
+
+# loading
+library(openxlsx)
+library(naniar)
+```
+
+```{r include=FALSE}
+library(openxlsx)
+library(naniar)
+```
+
+# 2 Loading the dataset
+
+Use the following code to load the dataset:
+
+```{r}
+# load the dataset
+dataset <- read.xlsx("Dataset.xlsx")
+
+# replace the string value "-" with NA
+dataset[dataset=="-"]  <- NA
+
+# remove the rows all data item is NA
+dataset <- dataset[rowSums(is.na(dataset)) != ncol(dataset), ]
+
+# remove the columns all data item is NA
+dataset <- dataset[,colSums(is.na(dataset))<nrow(dataset)]
+```
+
+When loading the dataset, R will alter some of the row names in case of incompatibility. After loading the dataset, we will first have a look at its size, with the following code:
+
+```{r}
+# show the size of the dataset
+dim(dataset)
+```
+
+It is clear that this is a very large dataset with 733 rows and 3705 columns. This means the dataset contains 733 studies. We can first have a look at the first five rows of the dataset, with the following code to know what the columns might be about. The output of the code is omitted, as they are too long, due to the very large number of columns.
+
+```{r eval=FALSE, include=TRUE}
+# show first five rows
+head(dataset)
+```
+The 3705 columns are not all useful to us, except for the first several columns containing basic information. Because it will be very difficult for us to read all the columns with either Excel or R, we can first output all these names to a seperate file with the following code:
+
+```{r eval=FALSE, include=TRUE}
+sink("colnames.txt")
+colnames(dataset)
+sink()
+```
+
+# 3 Screening by intervention type
+
+Here we aim to filter the studies by the intervention type. First we can have a look at the column names related to  "Intervention":
+
+```{r}
+df_cols <- colnames(dataset)
+df_cols[grep('Intervention', df_cols)]
+```
+
+## 3.1 Intervention types
+
+Among these variables, "Intervention types" seems to provide most relevant information for fast screening:
+
+```{r}
+knitr::kable(table(dataset$'Intervention.types'))
+```
+Thus, we will select 'Support for carers' and 'Training and education for carers'. But in case of any missingness, we also explore the studies under the intervention types of 'Structured therapeutic psychosocial interventions', 'Comprehensive care interventions', 'Supportive psychosocial interventions', 'Treatment of co-morbidities or additional risks', 'Unstructured therapeutic interventions' and 'Multicomponent interventions', but there is none related to support or education for caregivers.
+
+```{r}
+df_studies <- dataset[dataset$'Intervention.types' %in% c(
+    "Training and education for carers", 
+    "Support for carers",
+    "Comprehensive care interventions"), ]
+dim(df_studies)
+```
+
+Thus, we reduce the scope of the analysis from 733 studies to only 27 of them. Then we can have a look at the further details of the intervention.
+
+```{r}
+knitr::kable(table(df_studies$'Intervention.subgroups'))
+```
+
+
+Thus, the following studies are selected:
+
+```{r}
+# df_studies
+selected_studies <- unique(df_studies$Study.Identifier)
+rownames(df_studies) <- NULL
+knitr::kable(df_studies[c('Study.Identifier', 'Intervention.types', 'Intervention.subgroups', 'Country')])
+```
+
+# 4 Screening by column names
+
+However, it will be hard in term of human labour to look thourgh the 3000+ columns for data extraction, so I use a series of keywords to screen the relevant columns for meta-analysis.
+
+## 4.1 Reserved columns
+
+Before we start, we reserved the first 19 columns as they contain the most essential information about the studies from our perspective.
+
+```{r}
+reserved_cols <- head(df_cols,93)
+reserved_cols
+```
+
+## 4.2 Keyword screening
+
+We note that there are quite a lot of depression/caregiver burden related metrics also in the columns. So we output the colnames to a seperate file named colnames.txt for manual screening of useful columns. According to our preliminary screening, we notice a number of metrics to measure caregiver burden. 
+
+### 4.2.1 Direct measure of care giver burdern
+
+First we screen the column names with the keywords for direct measurement of caregiver burden
+
+- **Hinton 2020** and **Uyar 2019:** Zarit Burden Interview (ZBI)
+- **Govindakumari 2020:** Care giver burden, unspecified
+
+```{r}
+caregiver_burden_keys <- unique(c(
+    grep("Burden", df_cols, ignore.case=TRUE),
+    grep("ZBI", df_cols, ignore.case=TRUE),
+    grep("Zarit", df_cols, ignore.case=TRUE)
+    ))
+caregiver_burden_keys <- df_cols[caregiver_burden_keys]
+
+# show the number of selected columns
+length(caregiver_burden_keys) 
+```
+
+There are a total of 91 columns selected. We will look at all the columns selected but for brevity of this article, we omit the output of the following code.
+
+```{r eval=FALSE, include=TRUE}
+caregiver_burden_keys
+```
+
+
+### 4.2.2 Neuropsychiatric symptom scales
+
+Similar procedures are used to screen the colunms related to neuropsychiatric symptoms of caregivers.
+
+Neuropsychiatric symptoms of caregivers:
+
+- **Hinton 2020:** Depression/anxiety symptoms, measured with the Patient Health Questionnaire-4 (PHQ-4)
+- **Uyar 2019:** Depression symptoms, measured with Beck Depression Inventory (BDI)
+- **Uyar 2019:** Anxiety symptoms, measured with Beck Anxiety Inventory (BAI)
+- **Uyar 2019:** Neuropsychiatric symptoms, measured with Neuropsychiatric Inventory-Distress (NPI-D)
+- **Ghaffari 2019:** Neuropsychiatric symptoms, measured with General Health Questionnaire (GHQ-28)
+- **Zarepour 2020:** Anxiety symtoms, measured with the Spielberger questionnaires
+- **Pan 2019:** Depression symptoms, measured with 10-item CES-D
+- **Uyar 2019:** Quality of life, measured with Quality of Life Scale SF36 (SF36 mental health)
+
+Neuropsychiatric symptoms of patients:
+
+- **Chen 2020** and **Pan 2019:** Mini Mental State Examinination (MMSE)
+- **Uyar 2019:** Neuropsychiatric symptoms, measured with Neuropsychiatric Inventory–Severity (NPI-S)
+
+```{r}
+
+# keywords for neuropsychiatric symptoms:
+mental_health_keys <- unique(c(
+
+    # abbreviations
+    grep("PHQ", df_cols, ignore.case=TRUE),
+    grep("SF36", df_cols, ignore.case=TRUE),
+    grep("NPI", df_cols, ignore.case=TRUE),
+    grep("GHQ", df_cols, ignore.case=TRUE),
+    grep("PHQ", df_cols, ignore.case=TRUE),
+    grep("BDI", df_cols, ignore.case=TRUE),
+    grep("BAI", df_cols, ignore.case=TRUE),
+    grep("MMSE", df_cols, ignore.case=TRUE), 
+
+    # words and phrases
+    grep("neuropsychiatric", df_cols, ignore.case=TRUE),
+    grep("depression", df_cols, ignore.case=TRUE),
+    grep("anxiety", df_cols, ignore.case=TRUE)
+    ))
+
+# select mental health keys and drop columns and rows with only NAs
+mental_health_keys <- df_cols[mental_health_keys]
+
+# show the number of selected columns
+length(mental_health_keys)
+```
+
+### 4.2.3 Behavioural metrics
+
+Behavioural metrics of caregivers:
+
+- **Uyar 2019:** Quality of life, measured with Quality of Life Scale SF36 (SF36 physical health)
+- **Pan 2019:** Positive/Negative coping, measured with the Simplified Coping Scale
+- **Pan 2019:** Mutuality, measured with 15-item Mutuality Scale
+
+Behavioural metrics of patients:
+
+- **Uyar 2019:** Quality of life, measured with Quality of life in Alzheimer’s Disease (QoL-AD)
+- **Chen 2020:** Barthel activities of daily living scale (BADL)
+- **Chen 2020:** Behavioral pathology assessment scale of Alzheimer’s disease (BEHAVE-AD)
+- **Govindakumari 2020:** Quality of life, unspecified
+- **Pan 2019:** Quality of life, measured with the 14-item Activities of Daily Living scale (ADL)
+
+```{r}
+# keywords for behavioural metrics:
+behvaioural_keys <- unique(c(
+
+    # abbreviations
+    grep("SF36", df_cols, ignore.case=TRUE),
+    grep("QoL", df_cols, ignore.case=TRUE),
+    grep("BADL", df_cols, ignore.case=TRUE),
+    grep("BEHAVE", df_cols, ignore.case=TRUE),
+    grep("ADL", df_cols, ignore.case=TRUE),
+
+    # words and phrases
+    grep("Quality", df_cols, ignore.case=TRUE),
+    grep("Coping", df_cols, ignore.case=TRUE),
+    grep("Mutuality", df_cols, ignore.case=TRUE),
+    grep("Daily", df_cols, ignore.case=TRUE),
+    grep("Barthel", df_cols, ignore.case=TRUE),
+    grep("Behaviour", df_cols, ignore.case=TRUE),
+    grep("Behavior", df_cols, ignore.case=TRUE)
+    ))
+
+# select behavioural keys and drop columns and rows with only NAs
+behvaioural_keys <- df_cols[behvaioural_keys]
+# behvaioural_keys[-grepl('sleep', behvaioural_keys)]
+
+# show the number of selected columns
+length(behvaioural_keys)
+```
+
+## 4.3 Subsetting the dataset
+
+We first simplify the selected studies from a data frame to a list of study identifier.
+
+```{r}
+selected_studies_list <- unique(df_studies$Study.Identifier)
+length(selected_studies_list)
+```
+
+Then we can subset the dataset according to our selection of studies and columns. For example, for the study that directly measures caregiver burden, we can use the following code:
+
+```{r}
+# subset by caregiver burden-related columns
+df_caregiver_burden <- 
+  dataset[which(rowSums(is.na(dataset[caregiver_burden_keys]))
+                != ncol(dataset[caregiver_burden_keys])), ]
+# subset by selected studies
+df_caregiver_burden <- 
+  df_caregiver_burden[df_caregiver_burden$'Study.Identifier' 
+                      %in% as.list(selected_studies_list), ]
+
+# drop rows and columns with only NA
+df_caregiver_burden <- 
+  df_caregiver_burden[rowSums(is.na(df_caregiver_burden)) 
+                      != ncol(df_caregiver_burden), ]
+df_caregiver_burden <- 
+  df_caregiver_burden[,colSums(is.na(df_caregiver_burden))
+                      < nrow(df_caregiver_burden)]
+
+# show the size of simplified dataset
+dim(df_caregiver_burden)
+```
+
+Thus, the dataset is significantly reduced, which we can manually curate for a meta analysis-ready dataset. Similary, we can generate the dataset for caregiver mental health and caregiver quality of life (behaviour): 
+
+```{r}
+# subset for caregiver mental health
+df_mental_health <- 
+  dataset[which(rowSums(is.na(dataset[mental_health_keys]))
+                !=ncol(dataset[mental_health_keys])), ]
+df_mental_health <- 
+  df_mental_health[df_mental_health$'Study.Identifier' 
+                   %in% as.list(selected_studies_list), ]
+df_mental_health <- 
+  df_mental_health[rowSums(is.na(df_mental_health)) 
+                   != ncol(df_mental_health), ]
+df_mental_health <- 
+  df_mental_health[,colSums(is.na(df_mental_health))
+                   < nrow(df_mental_health)]
+
+# print dimensions of the dataset
+dim(df_mental_health)
+```
+
+```{r}
+# subset for caregiver behaviour or quality of life
+df_behavioural <- 
+  dataset[which(rowSums(is.na(dataset[behvaioural_keys]))
+                !=ncol(dataset[behvaioural_keys])), ]
+df_behavioural <- 
+  df_behavioural[df_behavioural$'Study.Identifier' 
+                 %in% as.list(selected_studies_list), ]
+df_behavioural <- 
+  df_behavioural[rowSums(is.na(df_behavioural)) 
+                 != ncol(df_behavioural), ]
+df_behavioural <- 
+  df_behavioural[,colSums(is.na(df_behavioural)) 
+                 < nrow(df_behavioural)]
+
+# print dimensions of the dataset
+dim(df_behavioural)
+```
+
+We further create a dataset with only the necessary columns to allow further manual clean-up of demographic and other information of each study.
+
+```{r}
+# subset by selected studies
+df_selected <- 
+  dataset[dataset$'Study.Identifier' %in% 
+            as.list(selected_studies_list), ]
+df_selected <- df_selected[reserved_cols]
+```
+
+```{r}
+paste(c('study', '.csv'))
+```
+
+```{r}
+for (study in selected_studies_list){
+  study_file <- paste(study, '.csv')
+  study_df <- dataset[dataset$Study.Identifier == study, ]
+  study_df <- study_df[,colSums(is.na(study_df)) < nrow(study_df)]
+  write.csv(study_df, study_file)
+}
+````
+
+
+# 5 Saving the filtered dataset
+
+Eventually, we can write these subsets to a single Excel file for further curation, with the following code:
+
+```{r}
+# create the workbook
+wb <- createWorkbook()
+
+# add the worksheets
+addWorksheet(wb, "info")
+addWorksheet(wb, "caregiver_Burden")
+addWorksheet(wb, "caregiver_MentalHealth")
+addWorksheet(wb, "caregiver_Behaviour")
+
+# write the workbook
+writeData(wb, "info", df_selected)
+writeData(wb, "caregiver_Burden", df_caregiver_burden)
+writeData(wb, "caregiver_MentalHealth", df_mental_health)
+writeData(wb, "caregiver_Behaviour", df_behavioural)
+
+# save the workbook
+saveWorkbook(wb, "Dataset_data_filtered.xlsx", overwrite = TRUE)
+```
