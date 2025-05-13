@@ -1,0 +1,8 @@
+#row order:	all_spectral_nn	all_kmeans++
+#homogeneity_score	completeness_score	v_measure_score	adjusted_rand_score	adjusted_mutual_info_score
+0.958	0.958	0.958	0.964	0.958
+0.945	0.945	0.945	0.951	0.945
+#row order:	all_spectral_nn	all_kmeans++
+#homogeneity_score	completeness_score	v_measure_score	adjusted_rand_score	adjusted_mutual_info_score
+0.959	0.959	0.959	0.965	0.958
+0.945	0.945	0.945	0.950	0.945
