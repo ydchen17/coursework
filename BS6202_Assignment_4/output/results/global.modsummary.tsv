@@ -1,0 +1,23 @@
+Modification	Theoretical Mass Shift	dataset01_PSMs	dataset01_percent_PSMs
+None	0	3770	72.472
+Propionaldehyde +40	40.0313	131	2.518
+Replacement of 3 protons by iron	52.911464	108	2.076
+Unannotated mass-shift 0.0232	0.0232	92	1.768
+First isotopic peak	1.00235	88	1.692
+Carbamylation	43.005814	53	1.019
+Sodium adduct	21.981943	51	0.98
+Unannotated mass-shift -0.0188	-0.0188	49	0.942
+Replacement of proton by potassium	37.955882	34	0.654
+Proline oxidation to 5-hydroxy-2-aminovaleric acid	18.010565	33	0.634
+Pyro-glu from Q/Loss of ammonia	-17.026549	23	0.442
+Replacement of 2 protons by iron	53.919289	23	0.442
+Deamidation	0.984016	22	0.423
+Methylation	14.01565	16	0.308
+Phosphorylation	79.966331	15	0.288
+Dehydration/Pyro-glu from E	-18.010565	15	0.288
+amidination of lysines or N-terminal amines with methyl acetimidate	41.026549	15	0.288
+deuterated methyl ester	17.03448	13	0.25
+Unannotated mass-shift 75.0320	75.032	13	0.25
+di-Methylation/Acetaldehyde +28/Ethylation	28.0313	11	0.211
+Unannotated mass-shift 36.9190	36.919	11	0.211
+Isotopic peak error	-1.00235	10	0.192
