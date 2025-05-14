@@ -1,6 +1,6 @@
 <<<<<<< HEAD
-*/data/*
-*/archive/*
+**/data/**
+**/archive/**
 
 .Rhistory
 .aliases
