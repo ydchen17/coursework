@@ -1,9 +1,0 @@
-# aliases
-alias typora="open -a typora"
-alias chrome="open -a 'Google Chrome'"
-alias azure="ssh -i /Users/ydchen/ssh_keys/ydchen_key.pem azureuser@azure.ydchen.cn"
-alias study='cd "/Users/ydchen/OneDrive - Nanyang Technological University/2 课业笔记"'
-alias dailypaper='cd "/Users/ydchen/OneDrive - Nanyang Technological University/3 科研阅读/DailyPapers"; touch $(date +"%Y-%m-%d")_paper.md;  typora $(date +"%Y-%m-%d")_paper.md'
-alias ignore='[ ! -f ".gitignore" ] && wget "https://raw.githubusercontent.com/ydchen17/archive/main/.gitignore"'
-alias killjupyter='jupyter lab list | awk -F "/|:" "{print $5}" | jupyter lab stop'
-

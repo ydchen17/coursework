@@ -1,0 +1,8 @@
+# aliases
+alias typora="open -a typora"
+alias chrome="open -a 'Google Chrome'"
+alias azure="ssh -i /Users/ydchen/ssh_keys/ydchen_key.pem azureuser@azure.ydchen.cn"
+alias ignore='[ ! -f ".gitignore" ] && wget "https://raw.githubusercontent.com/ydchen17/archive/main/.gitignore"'
+alias killjupyter='jupyter lab list | awk -F "/|:" "{print $5}" | jupyter lab stop'
+
+
