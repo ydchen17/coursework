@@ -1,0 +1,1 @@
+[{"args": {"sender": "0xf164fC0Ec4E93095b804a4795bBe1e041497b92a", "amount0": 1000000000000000000000, "amount1": 200000000000000000}, "event": "Mint", "logIndex": 59, "transactionIndex": 96, "transactionHash": "0x428e25d8f7ee4d052ee63e3fb4c6411717178d340fc5da77d640626628fc1dd8", "address": "0xe817590f81da3b8c383c634c7ce7ef964efe027f", "blockNumber": 10111812}]
