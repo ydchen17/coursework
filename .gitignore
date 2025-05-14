@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 **/data/**
 **/archive/**
+**/nohup.out
 
 .Rhistory
 .aliases
