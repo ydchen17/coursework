@@ -6,16 +6,16 @@ This repository collects selected coursework, assignments, and self-directed pro
 
 ## 🎓 Degree Programmes
 
-* **LSE**
-  MSc International Health Policy — London School of Economics and Political Science (LSE)
+* **LSE**: MSc International Health Policy — London School of Economics and Political Science (LSE)
+ 
   Includes course essays regarding health policy and the meta-analysis project 
 
-* **NTU**
-  MSc Biomedical Data Science — Nanyang Technological University (NTU), Singapore
+* **NTU**: MSc Biomedical Data Science — Nanyang Technological University (NTU), Singapore
+ 
   Covers topics in statistical modelling, machine learning, data engineering, and applied computing.
 
-* **ZJE**
-  BSc (Hons) Integrative Biomedical Sciences — Joint programme between Zhejiang University and the University of Edinburgh
+* **ZJE**: BSc (Hons) Integrative Biomedical Sciences — Joint programme between Zhejiang University and the University of Edinburgh
+  
   Includes course essays in genetics, physiology, and molecular biology.
 
 ## 🧠 Self-Study
